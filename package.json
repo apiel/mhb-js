@@ -4,6 +4,8 @@
   "main": "src/index.js",
   "license": "MIT",
   "dependencies": {
-    "serialport": "^7.0.2"
+    "serialport": "^7.0.2",
+    "zigbee-shepherd": "git+https://github.com/Koenkk/zigbee-shepherd.git#c096ed6719a6c941217c560b4cdcc04e4dd34c3b",
+    "zigbee-shepherd-converters": "^5.0.0"
   }
 }
