@@ -1,7 +1,7 @@
 const SerialPort = require('serialport');
 const CMD = require('./command.js');
 
-const port = new SerialPort('/dev/ttyUSB0', {
+const port = new SerialPort('/dev/ttyUSB1', {
   baudRate: 115200
 });
 
@@ -31,12 +31,23 @@ function parseCmd(data) {
     })
 }
 
+let zigbee;
+module.exports = (_zigbee) => {
+    zigbee = _zigbee;
+}
+
 let lastKey = '';
 let countKeyRepeat = 0;
 function action(key) {
     if (key === 'CERCLE_1_UP') {
         if (getKeyRepeat(key) > 2) {
             console.log('Switch on all');
+            zigbee('on');
+        }
+    } else if (key === 'CERCLE_1_DOWN') {
+        if (getKeyRepeat(key) > 2) {
+            console.log('Switch on all');
+            zigbee('off');
         }
     }
     lastKey = key;

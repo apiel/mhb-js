@@ -1,7 +1,7 @@
 var ZShepherd = require('zigbee-shepherd');
 const zShepherdConverters = require('zigbee-shepherd-converters');
 
-const shepherd = new ZShepherd('/dev/ttyUSB1', {
+const shepherd = new ZShepherd('/dev/ttyUSB0', {
     sp : { baudRate: 115200, rtscts: true },
 });
 
@@ -69,3 +69,61 @@ shepherd.on('ind', (message) => {
         attachDevice(device);
     }
 });
+
+function getDevice(addr) {
+    const device = shepherd.list().find((d) => d.ieeeAddr === addr);
+    if (!device) {
+        throw(`Failed to find device with deviceID ${addr}`);
+    }
+    return device;
+}
+
+module.exports = (value) => {
+    const action = { state: value };
+    const device = getDevice('0xd0cf5efffe6f87e4');
+
+    // const action = {
+    //     brightness: value,
+    //     transition:1,
+    // };
+    // const device = getDevice('0x00158d00020a3941');
+
+    console.log('actionssssss', action);
+    const mappedModel = zShepherdConverters.findByZigbeeModel(device.modelId);
+    if (!mappedModel) {
+        console.log('no model found');
+    } else {
+        const epId = device.epList[0];
+        console.log('yoooo', epId, mappedModel);
+        Object.keys(action).forEach((key) => {
+            // Find converter for this key.
+            const converter = mappedModel.toZigbee.find((c) => c.key === key);
+
+            if (!converter) {
+                console.log(`No converter available for '${key}' (${action[key]})`);
+                return;
+            }
+
+            const message = converter.convert(action[key], action, 'set');
+
+            if (!message) {
+                console.log('no message');
+                return;
+            }
+            // console.log('message', message);
+
+            const callback = (error) => {
+                console.log('change state done', error);
+            };
+
+            const ep = shepherd.find(device.ieeeAddr, epId);
+            if (message.cmdType === 'functional') {
+                ep.functional(message.cid, message.cmd, message.zclData, callback);
+            } else if (message.cmdType === 'foundation') {
+                ep.foundation(message.cid, message.cmd, [message.zclData], callback);
+            } else {
+                console.log(`Unknown zigbee publish type ${message.type}`);
+            }
+        });
+    }
+}
