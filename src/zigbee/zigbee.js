@@ -1,6 +1,8 @@
 var ZShepherd = require('zigbee-shepherd');
 const zShepherdConverters = require('zigbee-shepherd-converters');
 
+const settings = require('./settings.js');
+
 const shepherd = new ZShepherd('/dev/ttyUSB0', {
     sp : { baudRate: 115200, rtscts: true },
 });
@@ -78,52 +80,47 @@ function getDevice(addr) {
     return device;
 }
 
-module.exports = (value) => {
-    const action = { state: value };
-    const device = getDevice('0xd0cf5efffe6f87e4');
-
-    // const action = {
-    //     brightness: value,
-    //     transition:1,
-    // };
-    // const device = getDevice('0x00158d00020a3941');
-
-    console.log('actionssssss', action);
+const sendAction = (addr, action) => {
+    const device = getDevice(addr);
+    // console.log('actions', action);
     const mappedModel = zShepherdConverters.findByZigbeeModel(device.modelId);
     if (!mappedModel) {
         console.log('no model found');
-    } else {
-        const epId = device.epList[0];
-        console.log('yoooo', epId, mappedModel);
-        Object.keys(action).forEach((key) => {
-            // Find converter for this key.
-            const converter = mappedModel.toZigbee.find((c) => c.key === key);
-
-            if (!converter) {
-                console.log(`No converter available for '${key}' (${action[key]})`);
-                return;
-            }
-
-            const message = converter.convert(action[key], action, 'set');
-
-            if (!message) {
-                console.log('no message');
-                return;
-            }
-            // console.log('message', message);
-
-            const callback = (error) => {
-                console.log('change state done', error);
-            };
-
-            const ep = shepherd.find(device.ieeeAddr, epId);
-            if (message.cmdType === 'functional') {
-                ep.functional(message.cid, message.cmd, message.zclData, callback);
-            } else if (message.cmdType === 'foundation') {
-                ep.foundation(message.cid, message.cmd, [message.zclData], callback);
-            } else {
-                console.log(`Unknown zigbee publish type ${message.type}`);
-            }
-        });
+        return;
     }
+    const epId = device.epList[0];
+    Object.keys(action).forEach((key) => {
+        const converter = mappedModel.toZigbee.find((c) => c.key === key);
+        if (!converter) {
+            console.log(`No converter available for '${key}' (${action[key]})`);
+            return;
+        }
+
+        const message = converter.convert(action[key], action, 'set');
+        if (!message) {
+            console.log('no message');
+            return;
+        }
+        // console.log('message', message);
+        sendMessage(device, epId, message);
+    });
+}
+
+function sendMessage(device, epId, message) {
+    const callback = (error) => {
+        console.log('change state done', error);
+    };
+    const ep = shepherd.find(device.ieeeAddr, epId);
+    if (message.cmdType === 'functional') {
+        ep.functional(message.cid, message.cmd, message.zclData, callback);
+    } else if (message.cmdType === 'foundation') {
+        ep.foundation(message.cid, message.cmd, [message.zclData], callback);
+    } else {
+        console.log(`Unknown zigbee publish type ${message.type}`);
+    }
+}
+
+module.exports = {
+    ...settings,
+    sendAction,
 }

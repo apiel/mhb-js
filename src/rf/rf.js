@@ -42,12 +42,12 @@ function action(key) {
     if (key === 'CERCLE_1_UP') {
         if (getKeyRepeat(key) > 2) {
             console.log('Switch on all');
-            zigbee('on');
+            zigbee.sendAction(zigbee.devices.IKEA_OUTLET_TABLE, {state: 'on'});
         }
     } else if (key === 'CERCLE_1_DOWN') {
         if (getKeyRepeat(key) > 2) {
             console.log('Switch on all');
-            zigbee('off');
+            zigbee.sendAction(zigbee.devices.IKEA_OUTLET_TABLE, {state: 'off'});
         }
     }
     lastKey = key;
