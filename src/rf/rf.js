@@ -41,13 +41,17 @@ let countKeyRepeat = 0;
 function action(key) {
     if (key === 'CERCLE_1_UP') {
         if (getKeyRepeat(key) > 2) {
-            console.log('Switch on all');
-            zigbee.sendAction(zigbee.devices.IKEA_OUTLET_TABLE, {state: 'on'});
+            zigbee.sendAction(
+                zigbee.devices.IKEA_OUTLET_TABLE,
+                zigbee.actions.onOff('on'),
+            );
         }
     } else if (key === 'CERCLE_1_DOWN') {
         if (getKeyRepeat(key) > 2) {
-            console.log('Switch on all');
-            zigbee.sendAction(zigbee.devices.IKEA_OUTLET_TABLE, {state: 'off'});
+            zigbee.sendAction(
+                zigbee.devices.IKEA_OUTLET_TABLE,
+                zigbee.actions.onOff('off'),
+            );
         }
     }
     lastKey = key;
