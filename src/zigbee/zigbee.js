@@ -4,7 +4,8 @@ const zShepherdConverters = require('zigbee-shepherd-converters');
 const settings = require('./settings.js');
 
 const shepherd = new ZShepherd('/dev/ttyUSB0', {
-    sp : { baudRate: 115200, rtscts: true },
+    sp: { baudRate: 115200, rtscts: true },
+    dbPath: './zigbee.db',
 });
 
 shepherd.on('ready', async () => {
