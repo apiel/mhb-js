@@ -851,6 +851,10 @@ os-homedir@^1.0.1:
   version "1.0.2"
   resolved "http://registry.npmjs.org/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
 
+peer-ssdp@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/peer-ssdp/-/peer-ssdp-0.0.5.tgz#1b9155ba89465eccc4de2cba2c038e49fde2a281"
+
 pointer-symbol@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/pointer-symbol/-/pointer-symbol-1.0.0.tgz#60f9110204ea7a929b62644a21315543cbb3d447"

@@ -7,6 +7,7 @@
     "start": "node src/index.js"
   },
   "dependencies": {
+    "peer-ssdp": "^0.0.5",
     "serialport": "^7.0.2",
     "zigbee-shepherd": "git+https://github.com/Koenkk/zigbee-shepherd.git#c096ed6719a6c941217c560b4cdcc04e4dd34c3b",
     "zigbee-shepherd-converters": "^5.0.0"
