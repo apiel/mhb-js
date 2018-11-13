@@ -42,14 +42,14 @@ function action(key) {
     if (key === 'CERCLE_1_UP') {
         if (getKeyRepeat(key) > 2) {
             zigbee.sendAction(
-                zigbee.devices.IKEA_OUTLET_TABLE,
+                zigbee.devices.IKEA_OUTLET_TABLE.addr,
                 zigbee.actions.onOff('on'),
             );
         }
     } else if (key === 'CERCLE_1_DOWN') {
         if (getKeyRepeat(key) > 2) {
             zigbee.sendAction(
-                zigbee.devices.IKEA_OUTLET_TABLE,
+                zigbee.devices.IKEA_OUTLET_TABLE.addr,
                 zigbee.actions.onOff('off'),
             );
         }

@@ -1,8 +1,8 @@
-module.exports = `<?xml version="1.0"?>
+module.exports = (name) => `<?xml version="1.0"?>
 <root>
     <device>
         <deviceType>urn:Belkin:device:controllee:1</deviceType>
-        <friendlyName>hello</friendlyName>
+        <friendlyName>${name}</friendlyName>
         <manufacturer>Belkin International Inc.</manufacturer>
         <modelName>Emulated Socket</modelName>
         <modelNumber>3.1415</modelNumber>

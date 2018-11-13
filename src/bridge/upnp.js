@@ -21,7 +21,7 @@ peer.on('search', (headers, address) => {
         ST: 'urn:schemas-upnp-org:device:basic:1',
         SERVER: 'node.js/0.10.28 UPnP/1.1',
         USN: 'uuid:Socket-1_0-221438K0100073::urn:Belkin:device:**',
-        LOCATION: 'http://{{networkInterfaceAddress}}:8080/wemo/setup.xml',
+        LOCATION: 'http://{{networkInterfaceAddress}}:8081/wemo/setup.xml',
     }, address);
 });
 
