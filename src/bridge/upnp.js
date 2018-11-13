@@ -15,6 +15,14 @@ peer.on('search', (headers, address) => {
         USN: 'uuid:Socket-1_0-221438K0100073::urn:Belkin:device:**',
         LOCATION: 'http://{{networkInterfaceAddress}}:8080/api/setup.xml',
     }, address);
+
+    peer.reply({
+        NT: 'urn:schemas-upnp-org:device:basic:1',
+        ST: 'urn:schemas-upnp-org:device:basic:1',
+        SERVER: 'node.js/0.10.28 UPnP/1.1',
+        USN: 'uuid:Socket-1_0-221438K0100073::urn:Belkin:device:**',
+        LOCATION: 'http://{{networkInterfaceAddress}}:8080/wemo/setup.xml',
+    }, address);
 });
 
 peer.start();

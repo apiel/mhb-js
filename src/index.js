@@ -1,6 +1,6 @@
 // const zigbee = require('./zigbee/zigbee.js');
 // const rf = require('./rf/rf.js');
-require('./huebridge/huebridge.js');
+require('./bridge/bridge.js');
 
 // rf(zigbee);
 
