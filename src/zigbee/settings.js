@@ -11,6 +11,9 @@ module.exports = {
     },
     actions: {
         onOff: (state = 'on') => ({ state }),
-        brightness: (brightness = 255) => ({ brightness, transition:1 }),
-    }
+        brightness: (brightness = 255, transition = 0) => ({ brightness, transition }),
+    },
+    read: {
+
+    },
 };

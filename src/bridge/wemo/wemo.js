@@ -19,16 +19,18 @@ app.get('/wemo/setup.xml', (req, res) => {
 app.post('/upnp/control/basicevent1', (req, res) => {
     const binaryState = (/<BinaryState>([0-1])<\/BinaryState>/g).exec(req.body);
     let state = 0;
+    const device = getDevice(req);
+
     if (binaryState) {
         const [match, state] = binaryState;
         console.log('wemo new state', state);
-        const device = getDevice(req);
         zigbee.sendAction(
             device.addr,
             zigbee.actions.onOff(state === '1' ? 'on' : 'off'),
         );
         // we still need to save the state somehow or get it from zigbee
     }
+    zigbee.getState(device.addr);
     res.send(`
         <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <s:Body>
