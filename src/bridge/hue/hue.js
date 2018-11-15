@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 
 const setupXML = require('./setup.xml.js');
 
+let zigbee;
+
 const app = express();
 app.use(bodyParser.json({
     type: (req) => req.is('application/*'), // parse any types that start by application
@@ -42,19 +44,35 @@ function setLightState(req, res) {
     res.json([{ success }]);
 }
 
-function getLightsEndpoint(req, res) {
+async function getLightsEndpoint(req, res) {
     const lights = {
-        '5102d46c-50d5-4bc7-a180-38623e4bbb08': light('5102d46c-50d5-4bc7-a180-38623e4bbb08'),
+        // '5102d46c-50d5-4bc7-a180-38623e4bbb08': light('5102d46c-50d5-4bc7-a180-38623e4bbb08'),
+    }
+
+    const { devices, types } = zigbee;
+    for (key in devices) {
+        const device = devices[key];
+        if (device.type === types.light.name) {
+            lights[device.addr] = await light(device);
+        }
     }
     res.json({ lights });
 }
 
-function light(uniqueid) {
+async function light({ addr, name }) {
+    let onOff = 0;
+    let bri = 255;
+    try {
+        onOff = await zigbee.getState(addr, zigbee.read.onOff);
+        bri = await zigbee.getState(addr, zigbee.read.brightness);
+    } catch (error) {
+        console.error('Cant reach device', addr);
+    }
     return {
-        uniqueid,
+        uniqueid: addr,
         state: {
-            on: false,
-            bri: 254,
+            on: onOff === 1,
+            bri,
             hue: 15823,
             sat: 88,
             effect: 'none',
@@ -65,7 +83,7 @@ function light(uniqueid) {
             xy: [0.4255, 0.3998],
         },
         type: 'Extended color light',
-        name: 'ceiling lights',
+        name,
         modelid: 'LCT001',
         manufacturername: 'Philips',
         swversion: '65003148',
@@ -80,4 +98,8 @@ function light(uniqueid) {
             '8': 'none',
         }
     };
+}
+
+module.exports = (_zigbee) => {
+    zigbee = _zigbee;
 }

@@ -27,7 +27,6 @@ app.post('/upnp/control/basicevent1', async (req, res) => {
             device.addr,
             zigbee.actions.onOff(state === '1' ? 'on' : 'off'),
         );
-        // we still need to save the state somehow or get it from zigbee
     }
     const state = await zigbee.getState(device.addr, zigbee.read.onOff);
     res.send(`
