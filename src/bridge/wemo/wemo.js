@@ -16,9 +16,8 @@ app.get('/wemo/setup.xml', (req, res) => {
     res.send(setupXML(device.name));
 });
 
-app.post('/upnp/control/basicevent1', (req, res) => {
+app.post('/upnp/control/basicevent1', async (req, res) => {
     const binaryState = (/<BinaryState>([0-1])<\/BinaryState>/g).exec(req.body);
-    let state = 0;
     const device = getDevice(req);
 
     if (binaryState) {
@@ -30,7 +29,7 @@ app.post('/upnp/control/basicevent1', (req, res) => {
         );
         // we still need to save the state somehow or get it from zigbee
     }
-    zigbee.getState(device.addr);
+    const state = await zigbee.getState(device.addr, zigbee.read.onOff);
     res.send(`
         <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <s:Body>
@@ -53,7 +52,7 @@ module.exports = (_zigbee) => {
     const { devices, types } = _zigbee;
     for (key in devices) {
         const device = devices[key];
-        if (device.type === types.OUTLET) {
+        if (device.type === types.outlet.name) {
             const port = currentPort++;
             app.listen(port, () => console.log(`Bridge listen on port ${port} for ${device.name}`));
             devicesByPort[port] = devices[key];

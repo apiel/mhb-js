@@ -62,13 +62,15 @@ shepherd.on('error', (err) => {
 });
 
 shepherd.on('ind', (message) => {
-    console.log('ind', message);
+    // console.log('ind', message);
+    console.log('> ind', message.type);
 
     if (message.type === 'devIncoming') {
         const device = message.endpoints[0].device;
         const ieeeAddr = device.ieeeAddr;
 
-        console.log('devIncoming, new device', ieeeAddr, device);
+        // console.log('devIncoming, new device', ieeeAddr, device);
+        console.log('devIncoming, new device', ieeeAddr);
         attachDevice(device);
     }
 });
@@ -81,33 +83,27 @@ function getDevice(addr) {
     return device;
 }
 
-const getMappedModel = (addr) => {
+const getEndPoint = (addr) => {
     const device = getDevice(addr);
+    const epId = device.epList[0];
+    return {device, epId };
+}
+
+const getMappedModel = (addr) => {
+    const { device, epId } = getEndPoint(addr);
     const mappedModel = zShepherdConverters.findByZigbeeModel(device.modelId);
     if (!mappedModel) {
         console.log('no model found');
         return;
     }
-    const epId = device.epList[0];
 
     return { device, mappedModel, epId };
 }
 
-const getState = async (addr) => {
-    sendAction(addr, settings.actions.onOff, 'get');
-
-    // /// use GET :D instead
-    // const { device, mappedModel, epId } = getMappedModel(addr);
-    // const state = {};
-    // const ep = shepherd.find(device.ieeeAddr, epId);
-    // console.log('mappedModel.toZigbee', mappedModel.toZigbee);
-    // for(converter of mappedModel.fromZigbee) {
-    //     console.log('>>>>> converter', converter);
-    //     const attr = 'onOff'; // converter.attr
-    //     const result = await ep.read(converter.cid, attr); // , (...props) => console.log('read from device', props)
-    //     console.log('result read', result);
-    // };
-    // console.log('----- dumpppp', JSON.stringify(ep.dump().clusters.genOnOff, null, 4));
+const getState = (addr, { cId, attrId }) => {
+    const { device, epId } = getEndPoint(addr);
+    const ep = shepherd.find(addr, epId);
+    return ep.read(cId, attrId);
 }
 
 const sendAction = (addr, action, type = 'set') => {
@@ -119,6 +115,7 @@ const sendAction = (addr, action, type = 'set') => {
             return;
         }
 
+        // console.log('convertetrtrtetertrte', action[key], action, type);
         const message = converter.convert(action[key], action, type);
         if (!message) {
             console.log('no message');
@@ -130,8 +127,9 @@ const sendAction = (addr, action, type = 'set') => {
 }
 
 function sendMessage(device, epId, message) { // we could use promise instead
+    console.log('sendMessage', JSON.stringify(message));
     const callback = (error, rsp) => {
-        console.log('change state done', error, rsp);
+        console.log('change state done', rsp, 'with error:', error);
     };
     const ep = shepherd.find(device.ieeeAddr, epId);
     if (message.cmdType === 'functional') {
