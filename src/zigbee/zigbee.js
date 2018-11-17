@@ -145,4 +145,11 @@ module.exports = {
     ...settings,
     sendAction,
     getState,
+    advanceActions: {
+        brightness: async (addr, value) => { // let s improve this to dont require zigbee and addr
+            const bri = await getState(addr, settings.read.brightness);
+            const brightness = Math.min(Math.max(bri + value, 0), 255);
+            sendAction(addr, settings.actions.brightness(brightness));
+        },
+    }
 }
