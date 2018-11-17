@@ -106,6 +106,12 @@ const getState = (addr, { cId, attrId }) => {
     return ep.read(cId, attrId);
 }
 
+const sendActionMany = (devices, action) => {
+    Object.values(devices).forEach(device => {
+        sendAction(device.addr, action);
+    });
+}
+
 const sendAction = (addr, action, type = 'set') => {
     const { device, mappedModel, epId } = getMappedModel(addr);
     Object.keys(action).forEach((key) => {
@@ -144,6 +150,7 @@ function sendMessage(device, epId, message) { // we could use promise instead
 module.exports = {
     ...settings,
     sendAction,
+    sendActionMany,
     getState,
     advanceActions: {
         brightness: async (addr, value) => { // let s improve this to dont require zigbee and addr

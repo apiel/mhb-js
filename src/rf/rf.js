@@ -72,6 +72,16 @@ async function action(key) {
             zigbee.devices.INNR_E14_BULB.addr,
             zigbee.actions.onOff('off'),
         );
+    } else if (key === 'CERCLE_ALL_MILDDLE' || key === 'CERCLE_ALL_DOWN') {
+        zigbee.sendActionMany(
+            zigbee.devices,
+            zigbee.actions.onOff('off'),
+        );
+    } else if (key === 'CERCLE_ALL_UP') {
+        zigbee.sendActionMany(
+            zigbee.devices,
+            zigbee.actions.onOff('on'),
+        );
     }
     lastKey = key;
 }
