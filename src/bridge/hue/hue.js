@@ -40,11 +40,15 @@ app.listen(8080, () => console.log('Bridge listen on port 8080'));
 
 function setLightState(req, res) {
     const { uniqueid } = req.params;
-    const { on } = req.body;
+    const { on, bri } = req.body;
 
     zigbee.sendAction(
         uniqueid,
         zigbee.actions.onOff(on ? 'on' : 'off'),
+    );
+    zigbee.sendAction(
+        uniqueid,
+        zigbee.actions.brightness(bri),
     );
 
     console.log('setLightState', req.params, req.body, on);
