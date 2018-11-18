@@ -1,7 +1,9 @@
 var ZShepherd = require('zigbee-shepherd');
 const zShepherdConverters = require('zigbee-shepherd-converters');
+const zclPacket = require('zcl-packet');
 
 const settings = require('./settings.js');
+const action = require('./action.js');
 
 const shepherd = new ZShepherd('/dev/ttyUSB0', {
     sp: { baudRate: 115200, rtscts: true },
@@ -36,8 +38,12 @@ function attachDevice(device) {
 
 async function registerOnAfIncomingMsg(addr, epId) {
     const ep = shepherd.find(addr, epId);
-    ep.onAfIncomingMsg = (message) => {
-        console.log('onAfIncomingMsg', addr, message.data);
+    ep.onAfIncomingMsg = async (message) => {
+        // console.log('onAfIncomingMsg', addr, message.data);
+        // console.log('onAfIncomingMsg', addr, message.clusterid);
+        const zclData = await zclPacket.parse(message.data, message.clusterid, (error, zclData) => {
+            action(addr, zclData);
+        });
     };
 }
 
@@ -136,7 +142,7 @@ const sendAction = (addr, action, type = 'set') => {
 }
 
 function sendMessage(device, epId, message) { // we could use promise instead
-    console.log('sendMessage', JSON.stringify(message));
+    // console.log('sendMessage', JSON.stringify(message));
     const callback = (error, rsp) => {
         console.log('change state done', rsp, 'with error:', error);
     };
