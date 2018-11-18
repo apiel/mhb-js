@@ -4,7 +4,9 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "restart": "sudo systemctl restart mhb-js",
+    "log": "journalctl -u mhb-js.service -f"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
