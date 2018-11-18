@@ -39,7 +39,19 @@ module.exports = (_zigbee) => {
 let lastKey = '';
 let countKeyRepeat = 0;
 async function action(key) {
-    if (key === 'CERCLE_1_UP') {
+    if (key === 'SWITCH_3_BTN_RIGHT') {
+        zigbee.advanceActions.toggle(
+            zigbee.devices.INNR_E14_BULB.addr,
+        );
+    } else if (key === 'SWITCH_3_BTN_MIDDLE') {
+        zigbee.advanceActions.toggle(
+            zigbee.devices.IKEA_E27_BULB_SOFA.addr,
+        );
+    } else if (key === 'SWITCH_3_BTN_LEFT') {
+        zigbee.advanceActions.toggle(
+            zigbee.devices.IKEA_OUTLET_TABLE.addr,
+        );
+    } else if (key === 'CERCLE_1_UP') {
         if (getKeyRepeat(key) > 1) {
             zigbee.sendAction(
                 zigbee.devices.IKEA_OUTLET_TABLE.addr,

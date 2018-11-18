@@ -147,16 +147,29 @@ function sendMessage(device, epId, message) { // we could use promise instead
     }
 }
 
+const lastToggle = {};
+
 module.exports = {
     ...settings,
     sendAction,
     sendActionMany,
     getState,
     advanceActions: {
-        brightness: async (addr, value) => { // let s improve this to dont require zigbee and addr
+        brightness: async (addr, value) => {
             const bri = await getState(addr, settings.read.brightness);
             const brightness = Math.min(Math.max(bri + value, 0), 255);
             sendAction(addr, settings.actions.brightness(brightness));
+        },
+        toggle: async (addr) => {
+            // console.log('toggle', addr);
+            const now  = new Date();
+            if ( !lastToggle[addr] || now - lastToggle[addr] > 3000 ) { // toggle if last change is more than 2 sec
+                lastToggle[addr] = now;
+                const state = await getState(addr, settings.read.onOff);
+                const onOff = state === 1 ? 'off' : 'on';
+                console.log('toggle new state', addr, state, onOff);
+                sendAction(addr, settings.actions.onOff(onOff));
+            }
         },
     }
 }
