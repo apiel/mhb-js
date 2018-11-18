@@ -31,6 +31,9 @@ function attachDevice(device) {
     }
 }
 
+// Succeed to configure TRADFRI wireless dimmer 0x000b57fffe150865
+// onAfIncomingMsg 0x000b57fffe150865 <Buffer 11 01 07>
+
 async function registerOnAfIncomingMsg(addr, epId) {
     const ep = shepherd.find(addr, epId);
     ep.onAfIncomingMsg = (message) => {

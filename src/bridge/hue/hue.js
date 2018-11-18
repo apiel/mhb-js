@@ -19,9 +19,13 @@ app.get('/api/config.json', getLightsEndpoint);
 app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf', getLightsEndpoint);
 app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights', getLightsEndpoint);
 
-app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights/:uniqueid', (req, res) => {
+app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights/:uniqueid', async (req, res) => {
     const { uniqueid } = req.params;
-    res.json(light(uniqueid));
+    console.log('uniqueiduniqueiduniqueid', uniqueid);
+    const devices = Object.values(zigbee.devices);
+    const index = devices.findIndex(device => device.addr === uniqueid);
+    const device = devices[index];
+    res.json(await light(device));
 });
 
 app.post('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights/:uniqueid/state', setLightState);
@@ -37,6 +41,11 @@ app.listen(8080, () => console.log('Bridge listen on port 8080'));
 function setLightState(req, res) {
     const { uniqueid } = req.params;
     const { on } = req.body;
+
+    zigbee.sendAction(
+        uniqueid,
+        zigbee.actions.onOff(on ? 'on' : 'off'),
+    );
 
     console.log('setLightState', req.params, req.body, on);
     const success = {};
