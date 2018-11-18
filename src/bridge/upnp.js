@@ -8,7 +8,7 @@ peer.on('ready', () => {
 
 peer.on('search', (headers, address) => {
     // console.log('peer search', headers, address);
-    console.log('peer search', address);
+    // console.log('peer search', address.address);
     peer.reply({
         NT: 'urn:schemas-upnp-org:device:basic:1',
         ST: 'urn:schemas-upnp-org:device:basic:1',

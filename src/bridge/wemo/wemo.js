@@ -16,9 +16,24 @@ app.get('/wemo/setup.xml', (req, res) => {
     res.send(setupXML(device.name));
 });
 
-app.post('/upnp/control/basicevent1', async (req, res) => {
-    const binaryState = (/<BinaryState>([0-1])<\/BinaryState>/g).exec(req.body);
+app.post('/upnp/control/basicevent1', basicevent);
+
+app.use((req, res, next) => {
+    console.log('No route for ', req.originalUrl, req.method);
+    res.status(404).send('Sorry cant find that!');
+});
+
+function basicevent(req, res) {
     const device = getDevice(req);
+    if (req.body.indexOf('SetBinaryState') !== -1) {
+        setState(req, device);
+    }
+    genericResponse(res, device);
+}
+
+function setState(req, device) {
+    // console.log('basicevent', req.method, req.body);
+    const binaryState = (/<BinaryState>([0-1])<\/BinaryState>/g).exec(req.body);
 
     if (binaryState) {
         const [match, state] = binaryState;
@@ -28,6 +43,9 @@ app.post('/upnp/control/basicevent1', async (req, res) => {
             zigbee.actions.onOff(state === '1' ? 'on' : 'off'),
         );
     }
+}
+
+async function genericResponse(res, device) {
     const state = await zigbee.getState(device.addr, zigbee.read.onOff);
     res.send(`
         <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
@@ -38,7 +56,7 @@ app.post('/upnp/control/basicevent1', async (req, res) => {
             </s:Body>
         </s:Envelope>
     `);
-});
+}
 
 function getDevice(req) {
     const port = req.get('host').split(':').reverse()[0];
