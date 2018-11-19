@@ -1,6 +1,7 @@
 const types = {
     outlet: { name: 'outlet', attr: ['onOff'] },
     light: { name: 'light', attr: ['onOff', 'brightness'] },
+    remote: { name: 'remote', attr: [] },
 };
 
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
         IKEA_OUTLET_TABLE: { addr: '0xd0cf5efffe6f87e4', name: 'table', type: types.outlet.name }, // { state: 'on' }
         INNR_E14_BULB: { addr: '0x00158d00020a3941', name: 'little light', type: types.light.name }, // { brightness: 255, transition:1 };
         IKEA_E27_BULB_SOFA: { addr: '0x000b57fffe3046b8', name: 'sofa couch light', type: types.light.name },
+        IKEA_DIMMER_SOFA: { addr: '0x000b57fffe150865', name: 'dimmer sofa', type: types.remote.name },
     },
     actions: {
         onOff: (state = 'on') => ({ state }),
