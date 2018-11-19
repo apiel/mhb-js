@@ -10,6 +10,18 @@ app.use(bodyParser.json({
     type: (req) => req.is('application/*'), // parse any types that start by application
 }));
 
+// Nov 19 20:36:52 raspberrypi npm[949]: no message
+// Nov 19 20:36:52 raspberrypi npm[949]: setLightState { uniqueid: '0x00158d00020a3941' } { on: true } true
+// Nov 19 20:36:52 raspberrypi npm[949]: uniqueiduniqueiduniqueid 0x00158d00020a3941
+// Nov 19 20:36:52 raspberrypi npm[949]: change state done { cmdId: 4, statusCode: 0 } with error: null
+// Nov 19 20:36:52 raspberrypi npm[949]: > ind devChange
+// Nov 19 20:36:52 raspberrypi npm[949]: change state done { cmdId: 1, statusCode: 0 } with error: null
+// Nov 19 20:36:54 raspberrypi npm[949]: no message
+// Nov 19 20:36:54 raspberrypi npm[949]: setLightState { uniqueid: '0x00158d00020a3941' } { on: false } false
+// Nov 19 20:36:54 raspberrypi npm[949]: change state done { cmdId: 0, statusCode: 0 } with error: null
+// Nov 19 20:36:54 raspberrypi npm[949]: uniqueiduniqueiduniqueid 0x00158d00020a3941
+// Nov 19 20:36:54 raspberrypi npm[949]: change state done { cmdId: 4, statusCode: 0 } with error: null
+
 app.get('/api/setup.xml', (req, res) => {
     res.header('Content-Type', 'text/xml');
     res.send(setupXML);
@@ -21,11 +33,12 @@ app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights', getLightsEndpoin
 
 app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights/:uniqueid', async (req, res) => {
     const { uniqueid } = req.params;
-    console.log('uniqueiduniqueiduniqueid', uniqueid);
     const devices = Object.values(zigbee.devices);
     const index = devices.findIndex(device => device.addr === uniqueid);
     const device = devices[index];
-    res.json(await light(device));
+    const response = await getLight(device);
+    // console.log('light state', uniqueid, response);
+    res.json(response);
 });
 
 app.post('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights/:uniqueid/state', setLightState);
@@ -46,12 +59,14 @@ function setLightState(req, res) {
         uniqueid,
         zigbee.actions.onOff(on ? 'on' : 'off'),
     );
-    sendAction(
-        uniqueid,
-        zigbee.actions.brightness(bri),
-    );
+    if (bri) {
+        sendAction(
+            uniqueid,
+            zigbee.actions.brightness(bri),
+        );
+    }
 
-    console.log('setLightState', req.params, req.body, on);
+    console.log('setLightState', req.params, req.body, on, bri);
     const success = {};
     success[`/lights/${uniqueid}/state/on`] = on;
     res.json([{ success }]);
@@ -66,13 +81,13 @@ async function getLightsEndpoint(req, res) {
     for (key in devices) {
         const device = devices[key];
         if (device.type === types.light.name) {
-            lights[device.addr] = await light(device);
+            lights[device.addr] = await getLight(device);
         }
     }
     res.json({ lights });
 }
 
-async function light({ addr, name }) {
+async function getLight({ addr, name }) {
     let onOff = 0;
     let bri = 255;
     try {
