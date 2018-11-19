@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const setupXML = require('./setup.xml.js');
+const setupXML = require('./setup.xml');
+const zigbee = require('../../zigbee/settings');
+const { sendAction, getState } = require('../../zigbee/utils/zigbee');
 
 const devicesByPort = {};
 let currentPort = 8081;
-let zigbee;
 
 const app = express();
 app.use(bodyParser.text({ inflate: true, limit: '100kb', type: 'text/xml' }));
@@ -38,7 +39,7 @@ function setState(req, device) {
     if (binaryState) {
         const [match, state] = binaryState;
         console.log('wemo new state', state);
-        zigbee.sendAction(
+        sendAction(
             device.addr,
             zigbee.actions.onOff(state === '1' ? 'on' : 'off'),
         );
@@ -46,7 +47,7 @@ function setState(req, device) {
 }
 
 async function genericResponse(res, device) {
-    const state = await zigbee.getState(device.addr, zigbee.read.onOff);
+    const state = await getState(device.addr, zigbee.read.onOff);
     res.send(`
         <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <s:Body>
@@ -64,9 +65,8 @@ function getDevice(req) {
     return device;
 }
 
-module.exports = (_zigbee) => {
-    zigbee = _zigbee;
-    const { devices, types } = _zigbee;
+module.exports = () => {
+    const { devices, types } = zigbee;
     for (key in devices) {
         const device = devices[key];
         if (device.type === types.outlet.name) {

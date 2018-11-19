@@ -1,6 +1,7 @@
 const SerialPort = require('serialport');
-const CMD = require('./command.js');
-const action = require('./action.js');
+
+const CMD = require('./command');
+const action = require('./action');
 
 const port = new SerialPort('/dev/ttyS0', {
   baudRate: 115200
@@ -26,13 +27,8 @@ function parseCmd(data) {
     Object.keys(CMD).forEach((key) => {
         if (CMD[key].includes(data)) {
             console.log('receive', key);
-            action(zigbee, key);
+            action(key);
             return;
         }
     })
-}
-
-let zigbee;
-module.exports = (_zigbee) => {
-    zigbee = _zigbee;
 }

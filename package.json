@@ -5,6 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js",
+    "prod": "sudo systemctl stop mhb-js",
+    "stop": "sudo systemctl stop mhb-js",
     "restart": "sudo systemctl restart mhb-js",
     "log": "journalctl -u mhb-js.service -f"
   },
