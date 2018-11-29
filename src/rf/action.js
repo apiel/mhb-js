@@ -69,6 +69,25 @@ module.exports = async(key) => {
             zigbee.devices.IKEA_E27_BULB_SOFA.addr,
             zigbee.actions.onOff('off'),
         );
+    }  else if (key === 'CERCLE_4_UP') {
+        if (getKeyRepeat(key) > 1) {
+            advanceActions.brightness(
+                zigbee.devices.IKEA_E27_BULB_TRIANGLE.addr,
+                30,
+            );
+        }
+    } else if (key === 'CERCLE_4_DOWN') {
+        if (getKeyRepeat(key) > 1) {
+            advanceActions.brightness(
+                zigbee.devices.IKEA_E27_BULB_TRIANGLE.addr,
+                -30,
+            );
+        }
+    } else if (key === 'CERCLE_4_MILDDLE') {
+        sendAction(
+            zigbee.devices.IKEA_E27_BULB_TRIANGLE.addr,
+            zigbee.actions.onOff('off'),
+        );
     }  else if (key === 'CERCLE_5_UP') {
         if (getKeyRepeat(key) > 1) {
             sendAction(
