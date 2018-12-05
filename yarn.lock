@@ -359,6 +359,10 @@ bl@^1.0.0:
     readable-stream "^2.3.5"
     safe-buffer "^5.1.1"
 
+bluebird@^3.5.0:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
+
 body-parser@1.18.3, body-parser@^1.18.3:
   version "1.18.3"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
@@ -973,6 +977,13 @@ node-abi@^2.2.0:
   dependencies:
     semver "^5.4.1"
 
+node-milight-promise@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/node-milight-promise/-/node-milight-promise-0.3.1.tgz#2f7345a3964e08cb9480147cab1ee67ae51e59f1"
+  dependencies:
+    bluebird "^3.5.0"
+    promise-retryer "0.0.1"
+
 noop-logger@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/noop-logger/-/noop-logger-0.1.1.tgz#94a2b1633c4f1317553007d8966fd0e841b6a4c2"
@@ -1095,6 +1106,16 @@ process-nextick-args@~2.0.0:
 promirepl@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promirepl/-/promirepl-1.0.1.tgz#2951aaeba2bf3fe2274ff63a16d94c04ca60872e"
+
+promise-object@^0.1.4:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/promise-object/-/promise-object-0.1.7.tgz#32c43a167dfcc6ae8d20a8aee3b180735e326107"
+
+promise-retryer@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/promise-retryer/-/promise-retryer-0.0.1.tgz#1fc42250037efa478296628d9a738aca7a1b2049"
+  dependencies:
+    promise-object "^0.1.4"
 
 prompt-actions@^3.0.2:
   version "3.0.2"
