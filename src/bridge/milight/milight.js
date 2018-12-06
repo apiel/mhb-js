@@ -2,25 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const setupXML = require('./setup.xml');
-const zigbee = require('../../zigbee/settings');
-const { sendAction, getState } = require('../../zigbee/utils/zigbee');
+const milight = require('../../milight/settings');
+const { sendAction /*, getState*/ } = require('../../milight/milight');
 
 const app = express();
 app.use(bodyParser.json({
     type: (req) => req.is('application/*'), // parse any types that start by application
 }));
-
-// Nov 19 20:36:52 raspberrypi npm[949]: no message
-// Nov 19 20:36:52 raspberrypi npm[949]: setLightState { uniqueid: '0x00158d00020a3941' } { on: true } true
-// Nov 19 20:36:52 raspberrypi npm[949]: uniqueiduniqueiduniqueid 0x00158d00020a3941
-// Nov 19 20:36:52 raspberrypi npm[949]: change state done { cmdId: 4, statusCode: 0 } with error: null
-// Nov 19 20:36:52 raspberrypi npm[949]: > ind devChange
-// Nov 19 20:36:52 raspberrypi npm[949]: change state done { cmdId: 1, statusCode: 0 } with error: null
-// Nov 19 20:36:54 raspberrypi npm[949]: no message
-// Nov 19 20:36:54 raspberrypi npm[949]: setLightState { uniqueid: '0x00158d00020a3941' } { on: false } false
-// Nov 19 20:36:54 raspberrypi npm[949]: change state done { cmdId: 0, statusCode: 0 } with error: null
-// Nov 19 20:36:54 raspberrypi npm[949]: uniqueiduniqueiduniqueid 0x00158d00020a3941
-// Nov 19 20:36:54 raspberrypi npm[949]: change state done { cmdId: 4, statusCode: 0 } with error: null
 
 app.get('/api/setup.xml', (req, res) => {
     res.header('Content-Type', 'text/xml');
@@ -33,8 +21,9 @@ app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights', getLightsEndpoin
 
 app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights/:uniqueid', async (req, res) => {
     const { uniqueid } = req.params;
-    const devices = Object.values(zigbee.devices);
-    const index = devices.findIndex(device => device.addr === uniqueid);
+    const devices = Object.values(milight.devices);
+    // console.log('blahhhh', getUniqueId(devices[0]), uniqueid, req);
+    const index = devices.findIndex(device => getUniqueId(device) === uniqueid);
     const device = devices[index];
     const response = await getLight(device);
     // console.log('light state', uniqueid, response);
@@ -49,22 +38,22 @@ app.use((req, res, next) => {
     res.status(404).send('Sorry cant find that!');
 });
 
-app.listen(8080, () => console.log('Hue bridge listen on port 8080'));
+app.listen(8079, () => console.log('Milight bridge listen on port 8079'));
 
 function setLightState(req, res) {
     const { uniqueid } = req.params;
     const { on, bri } = req.body;
 
-    sendAction(
-        uniqueid,
-        zigbee.actions.onOff(on ? 'on' : 'off'),
-    );
-    if (bri) {
-        sendAction(
-            uniqueid,
-            zigbee.actions.brightness(bri),
-        );
-    }
+    // sendAction(
+    //     uniqueid,
+    //     zigbee.actions.onOff(on ? 'on' : 'off'),
+    // );
+    // if (bri) {
+    //     sendAction(
+    //         uniqueid,
+    //         zigbee.actions.brightness(bri),
+    //     );
+    // }
 
     console.log('setLightState', req.params, req.body, on, bri);
     const success = {};
@@ -73,31 +62,33 @@ function setLightState(req, res) {
 }
 
 async function getLightsEndpoint(req, res) {
-    const lights = {
-        // '5102d46c-50d5-4bc7-a180-38623e4bbb08': light('5102d46c-50d5-4bc7-a180-38623e4bbb08'),
-    }
+    const lights = {};
 
-    const { devices, types } = zigbee;
+    const { devices } = milight;
     for (key in devices) {
         const device = devices[key];
-        if (device.type === types.light.name) {
-            lights[device.addr] = await getLight(device);
-        }
+        const uniqueid = getUniqueId(device);
+        lights[uniqueid] = await getLight(device);
     }
     res.json({ lights });
 }
 
-async function getLight({ addr, name }) {
+function getUniqueId({ mac, zone }) {
+    return `${mac}-${zone || 'bridge'}`;
+}
+
+async function getLight({ mac, zone, name }) {
     let onOff = 0;
     let bri = 255;
-    try {
-        onOff = await getState(addr, zigbee.read.onOff);
-        bri = await getState(addr, zigbee.read.brightness);
-    } catch (error) {
-        console.error('Cant reach device', addr);
-    }
-    return {
-        uniqueid: addr,
+    const uniqueid = getUniqueId({ mac, zone });
+    // try {
+    //     onOff = await getState(addr, zigbee.read.onOff);
+    //     bri = await getState(addr, zigbee.read.brightness);
+    // } catch (error) {
+    //     console.error('Cant reach device', addr);
+    // }
+    const light = {
+        uniqueid,
         state: {
             on: onOff === 1,
             bri,
@@ -106,7 +97,7 @@ async function getLight({ addr, name }) {
             effect: 'none',
             ct: 313,
             alert: 'none',
-            'colormode': 'ct',
+            colormode: 'ct',
             reachable: true,
             xy: [0.4255, 0.3998],
         },
@@ -126,4 +117,6 @@ async function getLight({ addr, name }) {
             '8': 'none',
         }
     };
+    // console.log('getMiLight', uniqueid, name, light.uniqueid, light);
+    return light;
 }
