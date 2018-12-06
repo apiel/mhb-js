@@ -24,7 +24,7 @@ Milight.discoverBridges({
     });
 });
 
-function send(light, cmd) {
+function sendAction(light, cmd) {
     if (light) {
         light.sendCommands(cmd);
     }
@@ -33,5 +33,12 @@ function send(light, cmd) {
 setTimeout(() => {
     console.log('settimeout light', settings.devices.MILIGHT_BRIDGE.ip);
     const device = settings.devices.MILIGHT_BRIDGE;
-    send(device.light, settings.actions.onOff(device.zone, 'off'));
-}, 1000);
+    // const cmd = settings.actions.onOff(device.zone, 'on');
+    const cmd = settings.actions.brightness(device.zone, 50);
+    sendAction(device.light, cmd);
+}, 5000);
+
+module.exports = {
+    ...settings,
+    sendAction,
+}
