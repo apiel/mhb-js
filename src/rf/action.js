@@ -51,40 +51,21 @@ module.exports = async(key) => {
             zigbee.devices.INNR_E14_BULB.addr,
             zigbee.actions.onOff('off'),
         );
-    }  else if (key === 'CERCLE_6_UP') {
-        if (getKeyRepeat(key) > 1) {
-            advanceActions.brightness(
-                zigbee.devices.IKEA_E27_BULB_SOFA.addr,
-                30,
-            );
-        }
-    } else if (key === 'CERCLE_6_DOWN') {
-        if (getKeyRepeat(key) > 1) {
-            advanceActions.brightness(
-                zigbee.devices.IKEA_E27_BULB_SOFA.addr,
-                -30,
-            );
-        }
-    } else if (key === 'CERCLE_6_MILDDLE') {
-        sendAction(
-            zigbee.devices.IKEA_E27_BULB_SOFA.addr,
-            zigbee.actions.onOff('off'),
-        );
     }  else if (key === 'CERCLE_3_UP') {
         if (getKeyRepeat(key) > 1) {
-            const device = milight.settings.devices.MILIGHT_BRIDGE;
-            const cmd = milight.settings.actions.onOff(device.zone, 'on');
+            const device = milight.devices.MILIGHT_BRIDGE;
+            const cmd = milight.actions.onOff(device.zone, 'on');
             milight.sendAction(device.light, cmd);
         }
     } else if (key === 'CERCLE_3_DOWN') {
         if (getKeyRepeat(key) > 1) {
-            const device = milight.settings.devices.MILIGHT_BRIDGE;
-            const cmd = milight.settings.actions.onOff(device.zone, 'off');
+            const device = milight.devices.MILIGHT_BRIDGE;
+            const cmd = milight.actions.onOff(device.zone, 'off');
             milight.sendAction(device.light, cmd);
         }
     } else if (key === 'CERCLE_3_MILDDLE') {
-        const device = milight.settings.devices.MILIGHT_BRIDGE;
-        const cmd = milight.settings.actions.onOff(device.zone, 'off');
+        const device = milight.devices.MILIGHT_BRIDGE;
+        const cmd = milight.actions.onOff(device.zone, 'off');
         milight.sendAction(device.light, cmd);
     }  else if (key === 'CERCLE_4_UP') {
         if (getKeyRepeat(key) > 1) {
@@ -127,6 +108,25 @@ module.exports = async(key) => {
                 zigbee.actions.onOff('off'),
             );
         }
+    }  else if (key === 'CERCLE_6_UP') {
+        if (getKeyRepeat(key) > 1) {
+            advanceActions.brightness(
+                zigbee.devices.IKEA_E27_BULB_SOFA.addr,
+                30,
+            );
+        }
+    } else if (key === 'CERCLE_6_DOWN') {
+        if (getKeyRepeat(key) > 1) {
+            advanceActions.brightness(
+                zigbee.devices.IKEA_E27_BULB_SOFA.addr,
+                -30,
+            );
+        }
+    } else if (key === 'CERCLE_6_MILDDLE') {
+        sendAction(
+            zigbee.devices.IKEA_E27_BULB_SOFA.addr,
+            zigbee.actions.onOff('off'),
+        );
     } else if (key === 'CERCLE_ALL_MILDDLE' || key === 'CERCLE_1_MILDDLE' || key === 'CERCLE_5_MILDDLE') {
         sendActionMany(
             zigbee.devices,
