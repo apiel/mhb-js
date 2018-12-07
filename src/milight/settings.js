@@ -4,7 +4,7 @@ const commands = Milight.commandsV6;
 module.exports = {
     devices: {
         MILIGHT_BRIDGE: { mac: 'F0:FE:6B:CF:CB:E4', name: 'night light', zone: null, ip: null },
-        // MILIGHT_ZONE1: { mac: 'F0:FE:6B:CF:CB:E4', name: 'mi-bulb light', zone: 1, ip: null },
+        MILIGHT_ZONE1: { mac: 'F0:FE:6B:CF:CB:E4', name: 'mi-bulb light', zone: 1, ip: null },
     },
     actions: {
         onOff: (zone, state = 'on') => {

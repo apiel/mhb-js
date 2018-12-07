@@ -21,10 +21,7 @@ app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights', getLightsEndpoin
 
 app.get('/api/S6QJ3NqpQzsR6ZFzOBgxSRJPW58C061um8oP8uhf/lights/:uniqueid', async (req, res) => {
     const { uniqueid } = req.params;
-    const devices = Object.values(milight.devices);
-    // console.log('blahhhh', getUniqueId(devices[0]), uniqueid, req);
-    const index = devices.findIndex(device => getUniqueId(device) === uniqueid);
-    const device = devices[index];
+    const device = getDevice(uniqueid);
     const response = await getLight(device);
     // console.log('light state', uniqueid, response);
     res.json(response);
@@ -40,20 +37,24 @@ app.use((req, res, next) => {
 
 app.listen(8079, () => console.log('Milight bridge listen on port 8079'));
 
+function getDevice(uniqueid) {
+    const devices = Object.values(milight.devices);
+    const index = devices.findIndex(device => getUniqueId(device) === uniqueid);
+    const device = devices[index];
+    return device;
+}
+
 function setLightState(req, res) {
     const { uniqueid } = req.params;
     const { on, bri } = req.body;
 
-    // sendAction(
-    //     uniqueid,
-    //     zigbee.actions.onOff(on ? 'on' : 'off'),
-    // );
-    // if (bri) {
-    //     sendAction(
-    //         uniqueid,
-    //         zigbee.actions.brightness(bri),
-    //     );
-    // }
+    const device = getDevice(uniqueid);
+    const cmd = milight.actions.onOff(device.zone, on ? 'on' : 'off');
+    sendAction(device.light, cmd);
+    if (bri) {
+        const cmd = milight.actions.brightness(device.zone, bri);
+        sendAction(device.light, cmd);
+    }
 
     console.log('setLightState', req.params, req.body, on, bri);
     const success = {};
