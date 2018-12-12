@@ -1,6 +1,8 @@
 const Milight = require('node-milight-promise');
 const settings = require('./settings');
 
+const { timeLimitIsOver } = require('../utils');
+
 Milight.discoverBridges({
     type: 'v6'
 }).then((results) => {
@@ -30,15 +32,18 @@ function sendAction(light, cmd) {
     }
 }
 
-setTimeout(() => {
-    console.log('settimeout light', settings.devices.MILIGHT_BRIDGE.ip);
-    const device = settings.devices.MILIGHT_BRIDGE;
-    // const cmd = settings.actions.onOff(device.zone, 'on');
-    const cmd = settings.actions.brightness(device.zone, 50);
-    sendAction(device.light, cmd);
-}, 5000);
+let bridgeToggleState = 'off';
+function bridgeToggle() {
+    if (timeLimitIsOver('MILIGHT_BRIDGE', 1000)) {
+        bridgeToggleState = bridgeToggleState === 'on' ? 'off' : 'on';
+        const device = settings.devices.MILIGHT_BRIDGE;
+        const cmd = settings.actions.onOff(device.zone, bridgeToggleState);
+        sendAction(device.light, cmd);
+    }
+}
 
 module.exports = {
     ...settings,
     sendAction,
+    bridgeToggle,
 }

@@ -2,6 +2,9 @@ const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/utils/advanceActions');
 const { sendAction, sendActionMany } = require('../zigbee/utils/zigbee');
 const milight = require('../milight/milight');
+const { timer } = require('../utils');
+const urls = require('../urls/urls');
+const { call } = urls;
 
 let lastKey = '';
 let countKeyRepeat = 0;
@@ -51,22 +54,22 @@ module.exports = async(key) => {
             zigbee.devices.INNR_E14_BULB.addr,
             zigbee.actions.onOff('off'),
         );
-    }  else if (key === 'CERCLE_3_UP') {
-        if (getKeyRepeat(key) > 1) {
-            const device = milight.devices.MILIGHT_BRIDGE;
-            const cmd = milight.actions.onOff(device.zone, 'on');
-            milight.sendAction(device.light, cmd);
-        }
-    } else if (key === 'CERCLE_3_DOWN') {
-        if (getKeyRepeat(key) > 1) {
-            const device = milight.devices.MILIGHT_BRIDGE;
-            const cmd = milight.actions.onOff(device.zone, 'off');
-            milight.sendAction(device.light, cmd);
-        }
-    } else if (key === 'CERCLE_3_MILDDLE') {
-        const device = milight.devices.MILIGHT_BRIDGE;
-        const cmd = milight.actions.onOff(device.zone, 'off');
-        milight.sendAction(device.light, cmd);
+    // }  else if (key === 'CERCLE_3_UP') {
+    //     if (getKeyRepeat(key) > 1) {
+    //         const device = milight.devices.MILIGHT_BRIDGE;
+    //         const cmd = milight.actions.onOff(device.zone, 'on');
+    //         milight.sendAction(device.light, cmd);
+    //     }
+    // } else if (key === 'CERCLE_3_DOWN') {
+    //     if (getKeyRepeat(key) > 1) {
+    //         const device = milight.devices.MILIGHT_BRIDGE;
+    //         const cmd = milight.actions.onOff(device.zone, 'off');
+    //         milight.sendAction(device.light, cmd);
+    //     }
+    // } else if (key === 'CERCLE_3_MILDDLE') {
+    //     const device = milight.devices.MILIGHT_BRIDGE;
+    //     const cmd = milight.actions.onOff(device.zone, 'off');
+    //     milight.sendAction(device.light, cmd);
     }  else if (key === 'CERCLE_4_UP') {
         if (getKeyRepeat(key) > 1) {
             advanceActions.brightness(
@@ -146,6 +149,15 @@ module.exports = async(key) => {
                 zigbee.actions.onOff('on'),
             );
         }
+    } else if (key === 'SWITCH_1_BTN') {
+        call(urls.LIGHT_BATH_TOGGLE);
+    } else if (key === 'SWITCH_3_BTN_ROOM_RIGHT') {
+        call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+    } else if (key === 'SWITCH_3_BTN_ROOM_MIDDLE') {
+        milight.bridgeToggle();
+    } else if (key === 'PIR_BATH') {
+        call(urls.LIGHT_BATH_ON);
+        timer('PIR_BATH', () => call(urls.LIGHT_BATH_OFF), 5*60);
     }
     lastKey = key;
 }

@@ -13,7 +13,6 @@ port.on('error', (err) => {
 
 let data = '';
 port.on('readable', () => {
-    // console.log('Data:', port.read().toString('utf8'));
     data += port.read().toString('utf8');
     if (data.includes("\n")) {
         data = data.trim();
