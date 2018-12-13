@@ -15,7 +15,7 @@ const { call } = urls;
 // console.log('comparison', m < new Date);
 
 function time(str) {
-    const m = moment('13:00', 'HH:mm');
+    const m = moment(str, 'HH:mm');
     m.utcOffset('-01:00'); // since we give time in utc+1 we have to remove 1 because new Date is utc 0
     return m.toDate();
 }
