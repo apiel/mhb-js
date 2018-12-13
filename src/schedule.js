@@ -16,8 +16,12 @@ const { call } = urls;
 
 function time(str) {
     const m = moment(str, 'HH:mm');
-    m.utcOffset('-01:00'); // since we give time in utc+1 we have to remove 1 because new Date is utc 0
+    m.subtract(1, 'hours'); // since we give time in utc+1 we have to remove 1 because new Date is utc 0
     return m.toDate();
+}
+
+function now() {
+    return moment().toDate();
 }
 
 const scheduleDone = {};
@@ -36,13 +40,18 @@ function shouldTrigger(id, value, time) {
 
 console.log('Start schedule, every 1 min check');
 setInterval(() => {
-    const now = new Date();
-    const times = sunCalc.getTimes(now, 48.230388, 16.370070); // Vienna 1200
-    if (now > times.sunsetStart && shouldTrigger('sunsetStart', now.getDate(), times.sunsetStart)) {
+    const _now = now();
+    const times = sunCalc.getTimes(_now, 48.230388, 16.370070); // Vienna 1200
+    if (_now > times.sunsetStart && shouldTrigger('sunsetStart', _now.getDate(), times.sunsetStart)) {
         call(urls.LIGHT_WALL_ENTRANCE_ON);
     }
     let next = time('23:30');
-    if (now > next && shouldTrigger('entrance OFF evening', now.getDate(), next)) {
+    if (_now > next && shouldTrigger('entrance OFF evening', _now.getDate(), next)) {
         call(urls.LIGHT_WALL_ENTRANCE_OFF);
     }
 }, 60 * 1000); // every min
+
+module.exports = {
+    time,
+    now,
+}

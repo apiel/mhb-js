@@ -3,6 +3,7 @@ const advanceActions = require('../zigbee/utils/advanceActions');
 const { sendAction, sendActionMany } = require('../zigbee/utils/zigbee');
 const milight = require('../milight/milight');
 const { timer } = require('../utils');
+const { time, now } = require('../schedule');
 const urls = require('../urls/urls');
 const { call } = urls;
 
@@ -151,13 +152,16 @@ module.exports = async(key) => {
         }
     } else if (key === 'SWITCH_1_BTN') {
         call(urls.LIGHT_BATH_TOGGLE);
+        timer('BATH', () => call(urls.LIGHT_BATH_OFF), 5*60); // keep call light off with timer
     } else if (key === 'SWITCH_3_BTN_ROOM_RIGHT') {
         call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
     } else if (key === 'SWITCH_3_BTN_ROOM_MIDDLE') {
         milight.bridgeToggle();
     } else if (key === 'PIR_BATH') {
-        call(urls.LIGHT_BATH_ON);
-        timer('PIR_BATH', () => call(urls.LIGHT_BATH_OFF), 5*60);
+        if (now() > time('6:30') && now() < time('23:30')) { // only switch one between 6:30 and 23:30
+                call(urls.LIGHT_BATH_ON);
+                timer('BATH', () => call(urls.LIGHT_BATH_OFF), 5*60);
+        }
     }
     lastKey = key;
 }
