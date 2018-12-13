@@ -6,7 +6,8 @@ const zigbee = require('../../zigbee/settings');
 const { sendAction, getState } = require('../../zigbee/utils/zigbee');
 
 const devicesByPort = {};
-let currentPort = 8081;
+const startPort = 8081;
+let currentPort = startPort;
 
 const app = express();
 app.use(bodyParser.text({ inflate: true, limit: '100kb', type: 'text/xml' }));
@@ -65,7 +66,7 @@ function getDevice(req) {
     return device;
 }
 
-module.exports = () => {
+function start() {
     const { devices, types } = zigbee;
     for (key in devices) {
         const device = devices[key];
@@ -76,3 +77,9 @@ module.exports = () => {
         }
     }
 }
+start();
+
+module.exports = {
+    currentPort,
+    startPort,
+};

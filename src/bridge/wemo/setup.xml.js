@@ -1,3 +1,5 @@
+const md5 = require('md5');
+
 module.exports = (name) => `<?xml version="1.0"?>
 <root>
     <device>
@@ -6,8 +8,8 @@ module.exports = (name) => `<?xml version="1.0"?>
         <manufacturer>Belkin International Inc.</manufacturer>
         <modelName>Emulated Socket</modelName>
         <modelNumber>3.1415</modelNumber>
-        <UDN>uuid:Socket-1_0-38323636-4558-4dda-9188-cda0e6cc3dc0</UDN>
-        <serialNumber>221517K0101769</serialNumber>
+        <UDN>uuid:Socket-1_0-${md5(name)}</UDN>
+        <serialNumber>${md5(name)}</serialNumber>
         <binaryState>0</binaryState>
         <serviceList>
             <service>
