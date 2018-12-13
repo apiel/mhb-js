@@ -34,14 +34,15 @@ function shouldTrigger(id, value, time) {
     return true;
 }
 
+console.log('Start schedule, every 1 min check');
 setInterval(() => {
     const now = new Date();
     const times = sunCalc.getTimes(now, 48.230388, 16.370070); // Vienna 1200
     if (now > times.sunsetStart && shouldTrigger('sunsetStart', now.getDate(), times.sunsetStart)) {
         call(urls.LIGHT_WALL_ENTRANCE_ON);
     }
-    let next = time('18:10');
+    let next = time('23:30');
     if (now > next && shouldTrigger('entrance OFF evening', now.getDate(), next)) {
         call(urls.LIGHT_WALL_ENTRANCE_OFF);
     }
-}, 2000); //60 * 1000); // every min
+}, 60 * 1000); // every min
