@@ -40,7 +40,7 @@ function allOff() {
     sendAction(devices.IKEA_OUTLET_TABLE.addr, actions.onOff('off'));
     sendAction(devices.INNR_E14_BULB.addr, actions.onOff('off'));
     call(urls.LIGHT_KITCHEN_OFF);
-    // under sofa
+    call(urls.LIGHT_UNDER_OFF);
 }
 
 function onIndMessage({ ieeeAddr }, payload, cmdId) {

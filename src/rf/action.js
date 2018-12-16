@@ -55,22 +55,16 @@ module.exports = async(key) => {
             zigbee.devices.INNR_E14_BULB.addr,
             zigbee.actions.onOff('off'),
         );
-    // }  else if (key === 'CERCLE_3_UP') {
-    //     if (getKeyRepeat(key) > 1) {
-    //         const device = milight.devices.MILIGHT_BRIDGE;
-    //         const cmd = milight.actions.onOff(device.zone, 'on');
-    //         milight.sendAction(device.light, cmd);
-    //     }
-    // } else if (key === 'CERCLE_3_DOWN') {
-    //     if (getKeyRepeat(key) > 1) {
-    //         const device = milight.devices.MILIGHT_BRIDGE;
-    //         const cmd = milight.actions.onOff(device.zone, 'off');
-    //         milight.sendAction(device.light, cmd);
-    //     }
-    // } else if (key === 'CERCLE_3_MILDDLE') {
-    //     const device = milight.devices.MILIGHT_BRIDGE;
-    //     const cmd = milight.actions.onOff(device.zone, 'off');
-    //     milight.sendAction(device.light, cmd);
+    }  else if (key === 'CERCLE_3_UP') {
+        if (getKeyRepeat(key) > 1) {
+            call(urls.LIGHT_KITCHEN_ON);
+        }
+    } else if (key === 'CERCLE_3_DOWN') {
+        if (getKeyRepeat(key) > 1) {
+            call(urls.LIGHT_KITCHEN_OFF);
+        }
+    } else if (key === 'CERCLE_3_MILDDLE') {
+        call(urls.LIGHT_KITCHEN_OFF);
     }  else if (key === 'CERCLE_4_UP') {
         if (getKeyRepeat(key) > 1) {
             advanceActions.brightness(
