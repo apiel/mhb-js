@@ -32,4 +32,5 @@ module.exports = {
     LIGHT_KITCHEN_ON: { url: 'http://192.168.0.94/on', limitCall: 2000 },
     LIGHT_UNDER_TOGGLE: { url: 'http://192.168.0.178/toggle', limitCall: 2000 },
     LIGHT_UNDER_OFF: { url: 'http://192.168.0.178/off', limitCall: 2000 },
+    LIGHT_UNDER_ON: { url: 'http://192.168.0.178/on', limitCall: 2000 },
 }

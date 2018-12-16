@@ -108,6 +108,7 @@ module.exports = async(key) => {
         }
     }  else if (key === 'CERCLE_6_UP') {
         if (getKeyRepeat(key) > 1) {
+            call(urls.LIGHT_UNDER_ON);
             advanceActions.brightness(
                 zigbee.devices.IKEA_E27_BULB_SOFA.addr,
                 30,
@@ -121,6 +122,7 @@ module.exports = async(key) => {
             );
         }
     } else if (key === 'CERCLE_6_MILDDLE') {
+        call(urls.LIGHT_UNDER_OFF);
         sendAction(
             zigbee.devices.IKEA_E27_BULB_SOFA.addr,
             zigbee.actions.onOff('off'),
