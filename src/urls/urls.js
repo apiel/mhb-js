@@ -22,11 +22,11 @@ function call(options) {
 module.exports = {
     call,
     LIGHT_BATH_TOGGLE: { url: 'http://192.168.0.192/relay/1/toggle', limitCall: 2000 },
-    LIGHT_BATH_TIMER: { url: 'http://192.168.0.192/relay/1/timer', limitCall: 1000 },
     LIGHT_BATH_ON: { url: 'http://192.168.0.192/relay/1/on', limitCall: 1000 },
     LIGHT_BATH_OFF: { url: 'http://192.168.0.192/relay/1/off', limitCall: 1000 },
     LIGHT_WALL_ENTRANCE_TOGGLE: { url: 'http://192.168.0.192/relay/2/toggle', limitCall: 2000 },
     LIGHT_WALL_ENTRANCE_ON: { url: 'http://192.168.0.192/relay/2/on', limitCall: 2000 },
     LIGHT_WALL_ENTRANCE_OFF: { url: 'http://192.168.0.192/relay/2/off', limitCall: 2000 },
     LIGHT_KITCHEN_TOGGLE: { url: 'http://192.168.0.94/toggle', limitCall: 2000 },
+    LIGHT_KITCHEN_OFF: { url: 'http://192.168.0.94/off', limitCall: 2000 },
 }
