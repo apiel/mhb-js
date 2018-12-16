@@ -28,10 +28,6 @@ const { call } = urls;
                 );
             }
         }
-        // else if (addr === devices.XIAOMI.addr) {
-        //     // genMultistateInput
-        //     console.log('xiaomi btn', data);
-        // }
     }
 }
 

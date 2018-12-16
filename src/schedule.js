@@ -24,17 +24,17 @@ function now() {
     return moment().toDate();
 }
 
+const oneMinute = 60 * 1000;
 const scheduleDone = {};
 function shouldTrigger(id, value, time) {
     if (scheduleDone[id] && scheduleDone[id] === value) {
         return false;
     }
     scheduleDone[id] = value;
-    if (time && (new Date) + 0 > time + 5* 60 * 1000) { // let s make schedule timeout of 5min
+    if (time && moment().diff(moment(time), 'm') > 5) {
         console.log('Schedule timeout:', id);
         return false;
     }
-    console.log('Schedule:', id);
     return true;
 }
 
@@ -49,7 +49,7 @@ setInterval(() => {
     if (_now > next && shouldTrigger('entrance OFF evening', _now.getDate(), next)) {
         call(urls.LIGHT_WALL_ENTRANCE_OFF);
     }
-}, 60 * 1000); // every min
+}, oneMinute); // every min
 
 module.exports = {
     time,
