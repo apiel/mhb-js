@@ -1,6 +1,8 @@
 const { devices, actions } = require('./settings');
 const advanceActions = require('./utils/advanceActions');
 const { sendAction } = require('./utils/zigbee');
+const urls = require('../urls/urls');
+const { call } = urls;
 
 // Succeed to configure TRADFRI wireless dimmer 0x000b57fffe150865
 // onAfIncomingMsg 0x000b57fffe150865 <Buffer 11 01 07>
@@ -49,9 +51,9 @@ function onIndMessage({ ieeeAddr }, payload, cmdId) {
             if (action === 'hold') {
                 allOff();
             } else if (click === 'single') {
-                // kitchen toggle
+                call(urls.LIGHT_KITCHEN_TOGGLE);
             } else if (click === 'double') {
-                console.log('no action for double click');
+                call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
         }
     }
