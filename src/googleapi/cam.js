@@ -8,13 +8,12 @@ const TOKEN_PATH = `${__dirname}/data/token.json`;
 
 let counter = 0;
 
-function cam() {
+function saveCamToDrive() {
     const imgFileName = `cam${counter++%10}.jpeg`;
     // console.log('imgFileName', imgFileName);
     execSync(`wget -O ${__dirname}/data/${imgFileName} http://admin:admin@192.168.0.108/snapshot.cgi`);
     startUploadToDrive(imgFileName);
 }
-cam();
 
 function startUploadToDrive(imgFileName) {
     fs.readFile(`${__dirname}/data/credentials.json`, (err, content) => {
@@ -87,3 +86,7 @@ function upFileToDrive(imgFileName) {
         });
     };
 }
+
+module.exports = {
+    saveCamToDrive,
+};
