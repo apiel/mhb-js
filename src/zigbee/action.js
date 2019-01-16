@@ -52,6 +52,16 @@ function onIndMessage({ ieeeAddr }, payload, cmdId) {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
         }
+    } else if (ieeeAddr === devices.XIAOMI_BTN_BATHROOM.addr) { // hold not working
+        console.log('XIAOMI_BTN_BATHROOM payload', payload, cmdId);
+        if (cmdId === 'genOnOff') {
+            const { click, action } = payload;
+            if (click === 'single') {
+                // call(urls.LIGHT_KITCHEN_TOGGLE);
+            } else if (click === 'double') {
+                call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+            }
+        }
     }
 }
 

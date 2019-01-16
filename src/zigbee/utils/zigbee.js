@@ -47,14 +47,14 @@ const sendActionMany = (devices, action) => {
 const sendAction = (addr, action, type = 'set') => {
     const { device, mappedModel, epId } = getMappedModel(addr);
     Object.keys(action).forEach((key) => {
-        const converter = mappedModel.toZigbee.find((c) => c.key === key);
+        const converter = mappedModel.toZigbee.find((c) => c.key.includes(key));
         if (!converter) {
-            console.log(`No converter available for '${key}' (${action[key]})`);
+            console.log(`No converter available for '${key}' (${action[key]})`, mappedModel.toZigbee);
             return;
         }
 
         // console.log('convertetrtrtetertrte', action[key], action, type);
-        const message = converter.convert(action[key], action, type);
+        const message = converter.convert(key, action[key], action, type); // we might have to handle null as message
         if (!message) {
             console.log('no message');
             return;
