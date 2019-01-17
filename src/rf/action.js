@@ -155,10 +155,10 @@ module.exports = async(key) => {
     } else if (key === 'SWITCH_3_BTN_ROOM_MIDDLE') {
         // milight.bridgeToggle();
     } else if (key === 'PIR_BATH') {
-        if (now() > time('6:30') && now() < time('23:30')) { // only switch one between 6:30 and 23:30
-                call(urls.LIGHT_BATH_ON);
-                timer('BATH', () => call(urls.LIGHT_BATH_OFF), 5*60);
-        }
+        // if (now() > time('6:30') && now() < time('23:30')) { // only switch one between 6:30 and 23:30
+        //     call(urls.LIGHT_BATH_ON);
+        // }
+        timer('BATH', () => call(urls.LIGHT_BATH_OFF), 5*60);
     } else if (key === 'DOOR') {
         saveCamToDrive();
         setTimeout(saveCamToDrive, 2000);

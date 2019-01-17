@@ -3,6 +3,7 @@ const advanceActions = require('./utils/advanceActions');
 const { sendAction } = require('./utils/zigbee');
 const urls = require('../urls/urls');
 const { call } = urls;
+const { timer } = require('../utils');
 
 // Succeed to configure TRADFRI wireless dimmer 0x000b57fffe150865
 // onAfIncomingMsg 0x000b57fffe150865 <Buffer 11 01 07>
@@ -57,7 +58,8 @@ function onIndMessage({ ieeeAddr }, payload, cmdId) {
         if (cmdId === 'genOnOff') {
             const { click, action } = payload;
             if (click === 'single') {
-                // call(urls.LIGHT_KITCHEN_TOGGLE);
+                call(urls.LIGHT_BATH_TOGGLE);
+                timer('BATH', () => call(urls.LIGHT_BATH_OFF), 5*60);
             } else if (click === 'double') {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }

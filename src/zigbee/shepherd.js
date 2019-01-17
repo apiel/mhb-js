@@ -5,4 +5,9 @@ const shepherd = new ZShepherd('/dev/ttyUSB0', {
     dbPath: './zigbee.db',
 });
 
+shepherd.on('ZNP:CLOSE', () => {
+    console.log('ZNP:CLOSE need to restart app!');
+    process.exit();
+});
+
 module.exports = shepherd;
