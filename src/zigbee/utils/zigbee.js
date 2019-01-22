@@ -59,8 +59,15 @@ const sendAction = (addr, action, type = 'set') => {
             console.log('no message');
             return;
         }
-        // console.log('message', message);
-        sendMessage(device, epId, message);
+        try {
+            // console.log('message', message);
+            sendMessage(device, epId, message);
+        } catch (error) {
+            if (error.message === 'Error: ccznp has not been initialized yet') {
+                process.exit();
+            }
+            throw error;
+        }
     });
 }
 
