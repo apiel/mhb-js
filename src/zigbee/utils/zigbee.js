@@ -63,7 +63,9 @@ const sendAction = (addr, action, type = 'set') => {
             // console.log('message', message);
             sendMessage(device, epId, message);
         } catch (error) {
-            if (error.message === 'Error: ccznp has not been initialized yet') {
+            // console.error('TRY to fix', 'Error: ccznp has not been initialized yet', error.message);
+            if (error.message === 'ccznp has not been initialized yet') {
+                console.error('Exit because ccznp has been deactivated.');
                 process.exit();
             }
             throw error;
