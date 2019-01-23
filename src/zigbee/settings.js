@@ -14,6 +14,7 @@ module.exports = {
         IKEA_DIMMER_SOFA: { addr: '0x000b57fffe150865', name: 'dimmer sofa', type: types.remote.name },
         XIAOMI_BTN_KITCHEN: { addr: '0x00158d0002016173', name: 'kitchen button', type: types.remote.name },
         XIAOMI_BTN_BATHROOM: { addr: '0x00158d0002131199', name: 'bathroom button', type: types.remote.name },
+        XIAOMI_CUBE: { addr: '0x00158d0002781c40', name: 'cube', type: types.remote.name },
     },
     actions: {
         onOff: (state = 'on') => ({ state }),
