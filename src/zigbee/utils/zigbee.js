@@ -32,10 +32,22 @@ const getMappedModel = (addr) => {
     return { device, mappedModel, epId };
 }
 
-const getState = (addr, { cId, attrId }) => {
-    const { device, epId } = getEndPoint(addr);
-    const ep = shepherd.find(addr, epId);
-    return ep.read(cId, attrId);
+function handleError(error) {
+    if (error.message === 'ccznp has not been initialized yet') {
+        console.error('Exit because ccznp has been deactivated.');
+        process.exit();
+    }
+    throw error;
+}
+
+const getState = async (addr, { cId, attrId }) => {
+    try {
+        const { device, epId } = getEndPoint(addr);
+        const ep = shepherd.find(addr, epId);
+        return await ep.read(cId, attrId);
+    } catch (error) {
+        handleError(error);
+    }
 }
 
 const sendActionMany = (devices, action) => {
@@ -63,12 +75,7 @@ const sendAction = (addr, action, type = 'set') => {
             // console.log('message', message);
             sendMessage(device, epId, message);
         } catch (error) {
-            // console.error('TRY to fix', 'Error: ccznp has not been initialized yet', error.message);
-            if (error.message === 'ccznp has not been initialized yet') {
-                console.error('Exit because ccznp has been deactivated.');
-                process.exit();
-            }
-            throw error;
+            handleError(error);
         }
     });
 }
