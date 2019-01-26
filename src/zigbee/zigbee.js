@@ -12,8 +12,10 @@ const shepherdConfig = {
 const { device, zigbee } = init(shepherdConfig);
 
 zigbee.on(eventType.indMessage, (payload) => {
-    // onIndMessage();
     console.log('onIndMessage', payload);
+    // onIndMessage { data: { action: 'flip90', from_side: 4, to_side: 0 },
+    // cmd: 'genMultistateInput' }
+    onIndMessage(payload.addr, payload.data, payload.cmd);
 });
 zigbee.on(eventType.devIncoming, (payload) => {
     console.log('devIncoming, new device', payload);

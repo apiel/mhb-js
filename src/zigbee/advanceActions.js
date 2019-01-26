@@ -2,7 +2,7 @@ const settings = require('./settings');
 const {
     sendAction,
     getState,
-} = require('./zigbee.js');
+} = require('./zigbee');
 
 const lastToggle = {};
 
@@ -17,6 +17,7 @@ module.exports = {
         const now  = new Date();
         if ( !lastToggle[addr] || now - lastToggle[addr] > 3000 ) { // toggle if last change is more than 2 sec
             lastToggle[addr] = now;
+            console.log('getState', getState);
             const state = await getState(addr, settings.read.onOff);
             const onOff = state === 1 ? 'off' : 'on';
             console.log('toggle new state', addr, state, onOff);

@@ -41,7 +41,7 @@ function allOff() {
 }
 
 let cubeSide = null;
-function onIndMessage({ ieeeAddr }, payload, cmdId) {
+function onIndMessage(ieeeAddr, payload, cmdId) {
     console.log('# onIndMessage', ieeeAddr, payload, cmdId);
     if (ieeeAddr === devices.XIAOMI_BTN_KITCHEN.addr) {
         if (cmdId === 'genMultistateInput') {
