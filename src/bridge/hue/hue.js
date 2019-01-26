@@ -61,6 +61,7 @@ function setLightState(req, res) {
     });
     if (bri) {
         // to fix
+        console.log('uniqueid', uniqueid);
         zigbeeService.device.sendAction({
             addr: uniqueid,
             action: zigbee.actions.brightness(bri),

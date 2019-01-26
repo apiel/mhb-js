@@ -6,6 +6,9 @@ const { onAfIncomingMsg, onIndMessage } = require('./action');
 
 zigbeeService.device.on('error', (payload) => {
     console.error('DEVICE ERROR', payload);
+    if (payload === 'ccznp exit') {
+        process.exit();
+    }
 });
 
 zigbeeService.zigbee.on(eventType.indMessage, (payload) => {
