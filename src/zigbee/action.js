@@ -1,6 +1,6 @@
 const { devices, actions } = require('./settings');
-const advanceActions = require('./advanceActions');
-const { sendAction } = require('./zigbee');
+const zigbeeService = require('./zigbeeService');
+const { brightness, toggle } = require('./advanceActions');
 const urls = require('../urls/urls');
 const { call } = urls;
 const { timer } = require('../utils');
@@ -17,25 +17,25 @@ const { timer } = require('../utils');
             if (data.cmdId === 'moveWithOnOff' || data.cmdId === 'move') {
                 const { movemode } = data.payload;
                 const direction = movemode ? -1 : 1;
-                advanceActions.brightness(
+                brightness(
                     devices.IKEA_E27_BULB_SOFA.addr,
                     30 * direction,
                 );
             } else if (data.cmdId === 'moveToLevelWithOnOff') {
                 const { level } = data.payload;
-                sendAction(
-                    devices.IKEA_E27_BULB_SOFA.addr,
-                    actions.onOff(level ? 'on' : 'off'),
-                );
+                zigbeeService.device.sendAction({
+                    addr: devices.IKEA_E27_BULB_SOFA.addr,
+                    action: actions.onOff(level ? 'on' : 'off'),
+                });
             }
         }
     }
 }
 
 function allOff() {
-    sendAction(devices.IKEA_E27_BULB_SOFA.addr, actions.onOff('off'));
-    sendAction(devices.IKEA_OUTLET_TABLE.addr, actions.onOff('off'));
-    sendAction(devices.INNR_E14_BULB.addr, actions.onOff('off'));
+    zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_SOFA.addr, action: actions.onOff('off') });
+    zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_TABLE.addr, action: actions.onOff('off') });
+    zigbeeService.device.sendAction({ addr: devices.INNR_E14_BULB.addr, action: actions.onOff('off') });
     call(urls.LIGHT_KITCHEN_OFF);
     call(urls.LIGHT_UNDER_OFF);
 }
@@ -71,16 +71,16 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
         if (action === 'flip90') {
             cubeSide = to_side;
             if ((from_side === 0 && to_side === 4) || (from_side === 1 && to_side === 3)) {
-                advanceActions.toggle(
+                toggle(
                     devices.IKEA_OUTLET_TABLE.addr,
                 );
             } else if ((from_side === 0 && to_side === 1) || (from_side === 4 && to_side === 3)) {
-                advanceActions.toggle(
+                toggle(
                     devices.INNR_E14_BULB.addr,
                 );
             // } else if ((from_side === 0 && to_side === 2) || (from_side === 3 && to_side === 2)) {
             } else if (to_side === 2) {
-                advanceActions.toggle(
+                toggle(
                     devices.IKEA_E27_BULB_SOFA.addr,
                 );
             // } else if (from_side === 0 && to_side === 5) {
@@ -95,12 +95,12 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
             const direction = (action === 'rotate_right' ? 1 : -1);
             console.log('rotate', cubeSide, direction);
             if (cubeSide === 1) {
-                advanceActions.brightness(
+                brightness(
                     devices.INNR_E14_BULB.addr,
                     direction * 20,
                 );
             } else if (cubeSide === 2) {
-                advanceActions.brightness(
+                brightness(
                     devices.IKEA_E27_BULB_SOFA.addr,
                     direction * 20,
                 );

@@ -1,6 +1,6 @@
 const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/advanceActions');
-const { sendAction, sendActionMany } = require('../zigbee/zigbee');
+const { device } = require('../zigbee/zigbee');
 const milight = require('../milight/milight');
 const { saveCamToDrive } = require('../googleapi/cam');
 const { timer } = require('../utils');
@@ -25,17 +25,17 @@ module.exports = async(key) => {
         );
     } else if (key === 'CERCLE_1_UP') {
         if (getKeyRepeat(key) > 1) {
-            sendAction(
-                zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                zigbee.actions.onOff('on'),
-            );
+            device.sendAction({
+                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+                action: zigbee.actions.onOff('on'),
+            });
         }
     } else if (key === 'CERCLE_1_DOWN') {
         if (getKeyRepeat(key) > 1) {
-            sendAction(
-                zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                zigbee.actions.onOff('off'),
-            );
+            device.sendAction({
+                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+                action: zigbee.actions.onOff('off'),
+            });
         }
     } else if (key === 'CERCLE_2_UP') {
         if (getKeyRepeat(key) > 1) {
@@ -52,10 +52,10 @@ module.exports = async(key) => {
             );
         }
     } else if (key === 'CERCLE_2_MILDDLE') {
-        sendAction(
-            zigbee.devices.INNR_E14_BULB.addr,
-            zigbee.actions.onOff('off'),
-        );
+        device.sendAction({
+            addr: zigbee.devices.INNR_E14_BULB.addr,
+            action: zigbee.actions.onOff('off'),
+        });
     }  else if (key === 'CERCLE_3_UP') {
         if (getKeyRepeat(key) > 1) {
             call(urls.LIGHT_KITCHEN_ON);
@@ -81,31 +81,31 @@ module.exports = async(key) => {
             );
         }
     } else if (key === 'CERCLE_4_MILDDLE') {
-        sendAction(
-            zigbee.devices.IKEA_E27_BULB_TRIANGLE.addr,
-            zigbee.actions.onOff('off'),
-        );
+        device.sendAction({
+            addr: zigbee.devices.IKEA_E27_BULB_TRIANGLE.addr,
+            action: zigbee.actions.onOff('off'),
+        });
     }  else if (key === 'CERCLE_5_UP') {
         if (getKeyRepeat(key) > 1) {
-            sendAction(
-                zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                zigbee.actions.onOff('on'),
-            );
-            sendAction(
-                zigbee.devices.INNR_E14_BULB.addr,
-                zigbee.actions.onOff('on'),
-            );
+            device.sendAction({
+                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+                action: zigbee.actions.onOff('on'),
+            });
+            device.sendAction({
+                addr: zigbee.devices.INNR_E14_BULB.addr,
+                action: zigbee.actions.onOff('on'),
+            });
         }
     } else if (key === 'CERCLE_5_DOWN') {
         if (getKeyRepeat(key) > 1) {
-            sendAction(
-                zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                zigbee.actions.onOff('off'),
-            );
-            sendAction(
-                zigbee.devices.INNR_E14_BULB.addr,
-                zigbee.actions.onOff('off'),
-            );
+            device.sendAction({
+                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+                action: zigbee.actions.onOff('off'),
+            });
+            device.sendAction({
+                addr: zigbee.devices.INNR_E14_BULB.addr,
+                action: zigbee.actions.onOff('off'),
+            });
         }
     }  else if (key === 'CERCLE_6_UP') {
         if (getKeyRepeat(key) > 1) {
@@ -124,25 +124,25 @@ module.exports = async(key) => {
         }
     } else if (key === 'CERCLE_6_MILDDLE') {
         call(urls.LIGHT_UNDER_OFF);
-        sendAction(
-            zigbee.devices.IKEA_E27_BULB_SOFA.addr,
-            zigbee.actions.onOff('off'),
-        );
+        device.sendAction({
+            addr: zigbee.devices.IKEA_E27_BULB_SOFA.addr,
+            action: zigbee.actions.onOff('off'),
+        });
     } else if (key === 'CERCLE_ALL_MILDDLE' || key === 'CERCLE_1_MILDDLE' || key === 'CERCLE_5_MILDDLE') {
-        sendActionMany(
+        advanceActions.sendActionMany(
             zigbee.devices,
             zigbee.actions.onOff('off'),
         );
     } else if (key === 'CERCLE_ALL_DOWN') {
         if (getKeyRepeat(key) > 1) {
-            sendActionMany(
+            advanceActions.sendActionMany(
                 zigbee.devices,
                 zigbee.actions.onOff('off'),
             );
         }
     } else if (key === 'CERCLE_ALL_UP') {
         if (getKeyRepeat(key) > 1) {
-            sendActionMany(
+            advanceActions.sendActionMany(
                 zigbee.devices,
                 zigbee.actions.onOff('on'),
             );

@@ -1,32 +1,37 @@
+const zigbeeService = require('./zigbeeService');
 const settings = require('./settings');
-const {
-    sendAction,
-    getState,
-} = require('./zigbee');
 
 const lastToggle = {};
 
 module.exports = {
     brightness: async (addr, value) => {
-        const bri = await getState(addr, settings.read.brightness);
-        const brightness = Math.min(Math.max(bri + value, 0), 255);
-        sendAction(addr, settings.actions.brightness(brightness));
-    },
-    toggle: async (addr) => {
-        // console.log('toggle', addr);
-        const now  = new Date();
-        if ( !lastToggle[addr] || now - lastToggle[addr] > 3000 ) { // toggle if last change is more than 2 sec
-            lastToggle[addr] = now;
-            console.log('getState', getState);
-            const state = await getState(addr, settings.read.onOff);
-            const onOff = state === 1 ? 'off' : 'on';
-            console.log('toggle new state', addr, state, onOff);
-            sendAction(addr, settings.actions.onOff(onOff));
+        try {
+            const { cId, attrId } = settings.read.brightness;
+            const bri = await zigbeeService.device.getState(addr, cId, attrId);
+            const brightness = Math.min(Math.max(bri + value, 0), 255);
+            zigbeeService.device.sendAction({ addr, action: settings.actions.brightness(brightness) });
+        } catch (error) {
+            console.error('NEED TO HANDLE ERROR', error);
         }
     },
-    sendActionMany: (devices, action) => {
-        Object.values(devices).forEach(device => {
-            sendAction(device.addr, action);
+    toggle: async (addr) => {
+        try {
+            const now  = new Date();
+            if ( !lastToggle[addr] || now - lastToggle[addr] > 3000 ) { // toggle if last change is more than 2 sec
+                lastToggle[addr] = now;
+                const { cId, attrId } = settings.read.onOff;
+                const state = await zigbeeService.device.getState(addr, cId, attrId);
+                const onOff = state === 1 ? 'off' : 'on';
+                console.log('toggle new state', addr, state, onOff);
+                zigbeeService.device.sendAction({ addr, action: settings.actions.onOff(onOff) });
+            }
+        } catch (error) {
+            console.error('NEED TO HANDLE ERROR', error);
+        }
+    },
+    sendActionMany: (items, action) => {
+        Object.values(items).forEach(item => {
+            zigbeeService.device.sendAction({ addr: item.addr, action });
         });
     }
 }

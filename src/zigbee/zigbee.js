@@ -1,31 +1,24 @@
-const { init, eventType } = require('zigbee-service');
+const { ZigbeeAndDevice, eventType } = require('zigbee-service');
 
-const advanceActions = require('./advanceActions');
 const settings = require('./settings');
+const zigbeeService = require('./zigbeeService');
 const { onAfIncomingMsg, onIndMessage } = require('./action');
 
-const shepherdConfig = {
-    DB_PATH: './zigbee.db',
-    SERIAL_PATH: '/dev/ttyUSB0',
-    ZIGBEE_PERMIT_JOIN: 255,
-};
-const { device, zigbee } = init(shepherdConfig);
+zigbeeService.device.on('error', (payload) => {
+    console.error('DEVICE ERROR', payload);
+});
 
-zigbee.on(eventType.indMessage, (payload) => {
-    console.log('onIndMessage', payload);
-    // onIndMessage { data: { action: 'flip90', from_side: 4, to_side: 0 },
-    // cmd: 'genMultistateInput' }
+zigbeeService.zigbee.on(eventType.indMessage, (payload) => {
     onIndMessage(payload.addr, payload.data, payload.cmd);
 });
-zigbee.on(eventType.devIncoming, (payload) => {
+zigbeeService.zigbee.on(eventType.devIncoming, (payload) => {
     console.log('devIncoming, new device', payload);
 });
-zigbee.on(eventType.afIncomingMsg, (payload) => {
+zigbeeService.zigbee.on(eventType.afIncomingMsg, (payload) => {
     onAfIncomingMsg(payload);
 });
 
 module.exports = {
     ...settings,
-    ...device,
-    ...advanceActions,
+    ...zigbeeService,
 }
