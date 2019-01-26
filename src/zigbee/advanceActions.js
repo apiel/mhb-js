@@ -1,4 +1,4 @@
-const settings = require('../settings');
+const settings = require('./settings');
 const {
     sendAction,
     getState,
@@ -23,4 +23,9 @@ module.exports = {
             sendAction(addr, settings.actions.onOff(onOff));
         }
     },
+    sendActionMany: (devices, action) => {
+        Object.values(devices).forEach(device => {
+            sendAction(device.addr, action);
+        });
+    }
 }

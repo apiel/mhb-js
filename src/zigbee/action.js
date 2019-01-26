@@ -1,6 +1,6 @@
 const { devices, actions } = require('./settings');
-const advanceActions = require('./utils/advanceActions');
-const { sendAction } = require('./utils/zigbee');
+const advanceActions = require('./advanceActions');
+const { sendAction } = require('./zigbee');
 const urls = require('../urls/urls');
 const { call } = urls;
 const { timer } = require('../utils');
@@ -8,7 +8,7 @@ const { timer } = require('../utils');
 // Succeed to configure TRADFRI wireless dimmer 0x000b57fffe150865
 // onAfIncomingMsg 0x000b57fffe150865 <Buffer 11 01 07>
 
- function onAfIncomingMsg (addr, data) {
+ function onAfIncomingMsg ({ addr, data }) {
     // console.log('onAfIncomingMsg zcl', addr, JSON.stringify(data));
     if (data.cmdId) {
         console.log('# onAfIncomingMsg zcl', addr, data.cmdId, data.payload);

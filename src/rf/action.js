@@ -1,6 +1,6 @@
 const zigbee = require('../zigbee/settings');
-const advanceActions = require('../zigbee/utils/advanceActions');
-const { sendAction, sendActionMany } = require('../zigbee/utils/zigbee');
+const advanceActions = require('../zigbee/advanceActions');
+const { sendAction, sendActionMany } = require('../zigbee/zigbee');
 const milight = require('../milight/milight');
 const { saveCamToDrive } = require('../googleapi/cam');
 const { timer } = require('../utils');

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 const setupXML = require('./setup.xml');
 const zigbee = require('../../zigbee/settings');
-const { sendAction, getState } = require('../../zigbee/utils/zigbee');
+const { sendAction, getState } = require('../../zigbee/zigbee');
 
 const app = express();
 app.use(bodyParser.json({
