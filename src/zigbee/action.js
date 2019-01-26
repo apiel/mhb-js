@@ -85,7 +85,7 @@ function onIndMessage({ ieeeAddr }, payload, cmdId) {
                 );
             // } else if (from_side === 0 && to_side === 5) {
             } else if (to_side === 5) {
-                call(urls.LIGHT_KITCHEN_ON);
+                call(urls.LIGHT_KITCHEN_TOGGLE);
             }
         } else if (action === 'shake') {
             allOff();
