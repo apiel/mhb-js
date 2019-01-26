@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 const setupXML = require('./setup.xml');
 const zigbee = require('../../zigbee/settings');
-const { sendAction, getState } = require('../../zigbee/zigbee');
+const { zigbeeService } = require('../../zigbee/zigbee');
 
 const devicesByPort = {};
 const startPort = 8081;
@@ -40,15 +40,16 @@ function setState(req, device) {
     if (binaryState) {
         const [match, state] = binaryState;
         console.log('wemo new state', state);
-        sendAction(
-            device.addr,
-            zigbee.actions.onOff(state === '1' ? 'on' : 'off'),
-        );
+        zigbeeService.device.sendAction({
+            addr: device.addr,
+            action: zigbee.actions.onOff(state === '1' ? 'on' : 'off'),
+        });
     }
 }
 
 async function genericResponse(res, device) {
-    const state = await getState(device.addr, zigbee.read.onOff);
+    const { cId, attrId } = zigbee.read.onOff;
+    const state = await zigbeeService.device.getState(device.addr, cId, attrId);
     res.send(`
         <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <s:Body>

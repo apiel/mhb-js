@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 const setupXML = require('./setup.xml');
 const zigbee = require('../../zigbee/settings');
-const { sendAction, getState } = require('../../zigbee/zigbee');
+const zigbeeService = require('../../zigbee/zigbee');
 
 const app = express();
 app.use(bodyParser.json({
@@ -55,15 +55,16 @@ function setLightState(req, res) {
     const { uniqueid } = req.params;
     const { on, bri } = req.body;
 
-    sendAction(
-        uniqueid,
-        zigbee.actions.onOff(on ? 'on' : 'off'),
-    );
+    zigbeeService.device.sendAction({
+        addr: uniqueid,
+        action: zigbee.actions.onOff(on ? 'on' : 'off'),
+    });
     if (bri) {
-        sendAction(
-            uniqueid,
-            zigbee.actions.brightness(bri),
-        );
+        // to fix
+        zigbeeService.device.sendAction({
+            addr: uniqueid,
+            action: zigbee.actions.brightness(bri),
+        });
     }
 
     console.log('setLightState', req.params, req.body, on, bri);
@@ -91,8 +92,11 @@ async function getLight({ addr, name }) {
     let onOff = 0;
     let bri = 255;
     try {
-        onOff = await getState(addr, zigbee.read.onOff);
-        bri = await getState(addr, zigbee.read.brightness);
+        let props = zigbee.read.onOff;
+        onOff = await zigbeeService.device.getState(addr, props.cId, props.attrId);
+
+        props = zigbee.read.brightness;
+        bri = await zigbeeService.device.getState(addr, props.cId, props.attrId);
     } catch (error) {
         console.error('Cant reach device', addr);
     }

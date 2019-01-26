@@ -21,4 +21,5 @@ zigbeeService.zigbee.on(eventType.afIncomingMsg, (payload) => {
 module.exports = {
     ...settings,
     ...zigbeeService,
+    zigbeeService,
 }
