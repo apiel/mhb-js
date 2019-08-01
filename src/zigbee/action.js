@@ -9,7 +9,7 @@ const { timer } = require('../utils');
 // onAfIncomingMsg 0x000b57fffe150865 <Buffer 11 01 07>
 
  function onAfIncomingMsg ({ addr, data }) {
-    // console.log('onAfIncomingMsg zcl', addr, JSON.stringify(data));
+    console.log('onAfIncomingMsg zcl', addr, JSON.stringify(data));
     if (data.cmdId) {
         console.log('# onAfIncomingMsg zcl', addr, data.cmdId, data.payload);
 
@@ -40,6 +40,15 @@ function allOff() {
     call(urls.LIGHT_UNDER_OFF);
 }
 
+function onInd(ieeeAddr, type) {
+    console.log('# onInd', ieeeAddr, type);
+    if (ieeeAddr === devices.IKEA_ONOFF.addr) {
+        if (type === 'cmdMove') {
+            call(urls.LIGHT_KITCHEN_TOGGLE);
+        }
+    }
+}
+
 let cubeSide = null;
 function onIndMessage(ieeeAddr, payload, cmdId) {
     console.log('# onIndMessage', ieeeAddr, payload, cmdId);
@@ -55,13 +64,12 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
         }
-    } else if (ieeeAddr === devices.XIAOMI_BTN_BATHROOM.addr) { // hold not working
-        console.log('XIAOMI_BTN_BATHROOM payload', payload, cmdId);
+    } else if (ieeeAddr === devices.XIAOMI_BTN_ROOM.addr) { // hold not working
+        console.log('XIAOMI_BTN_ROOM payload', payload, cmdId);
         if (cmdId === 'genOnOff') {
             const { click, action } = payload;
             if (click === 'single') {
-                call(urls.LIGHT_BATH_TOGGLE);
-                timer('BATH', () => call(urls.LIGHT_BATH_OFF), 5*60);
+                call(urls.LIGHT_UNDER_TOGGLE);
             } else if (click === 'double') {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
@@ -112,4 +120,5 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
 module.exports = {
     onAfIncomingMsg,
     onIndMessage,
+    onInd,
 };

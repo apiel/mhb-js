@@ -13,8 +13,9 @@ module.exports = {
         IKEA_E27_BULB_TRIANGLE: { addr: '0x000b57fffe3046b8', name: 'triangle light', type: types.light.name },
         IKEA_DIMMER_SOFA: { addr: '0x000b57fffe150865', name: 'dimmer sofa', type: types.remote.name },
         XIAOMI_BTN_KITCHEN: { addr: '0x00158d0002016173', name: 'kitchen button', type: types.remote.name },
-        XIAOMI_BTN_BATHROOM: { addr: '0x00158d0002131199', name: 'bathroom button', type: types.remote.name },
+        XIAOMI_BTN_ROOM: { addr: '0x00158d0002131199', name: 'room button', type: types.remote.name },
         XIAOMI_CUBE: { addr: '0x00158d0002781c40', name: 'cube', type: types.remote.name },
+	    IKEA_ONOFF: { addr: '0xd0cf5efffed6f665', name: 'ikea on/off', type: types.remote.name },
     },
     actions: {
         onOff: (state = 'on') => ({ state }),

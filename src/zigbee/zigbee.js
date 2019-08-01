@@ -1,13 +1,22 @@
 const { ZigbeeAndDevice, eventType } = require('zigbee-service');
+const { get } = require('lodash');
 
 const settings = require('./settings');
 const zigbeeService = require('./zigbeeService');
-const { onAfIncomingMsg, onIndMessage } = require('./action');
+const { onAfIncomingMsg, onIndMessage, onInd } = require('./action');
 
 zigbeeService.device.on('error', (payload) => {
     console.error('DEVICE ERROR', payload);
     if (payload === 'ccznp exit') {
         process.exit();
+    }
+});
+
+zigbeeService.zigbee.on(eventType.ind, (payload) => {
+    const device = get(payload, 'endpoints[0].device');
+    if (device) {
+        // console.log('onInd', payload);
+        onInd(device.ieeeAddr, payload.type);
     }
 });
 
