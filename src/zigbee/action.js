@@ -40,13 +40,23 @@ function allOff() {
     call(urls.LIGHT_UNDER_OFF);
 }
 
+const { IkeaOnOffDouble, IkeaOnOffLong } = require('./devices/ikeaOnOff');
+// const btnDouble = new IkeaOnOffDouble(devices.IKEA_ONOFF.addr);
+const btnLong = new IkeaOnOffLong(devices.IKEA_ONOFF.addr);
+
 function onInd(ieeeAddr, type) {
     console.log('# onInd', ieeeAddr, type);
-    if (ieeeAddr === devices.IKEA_ONOFF.addr) {
-        if (type === 'cmdMove') {
-            call(urls.LIGHT_KITCHEN_TOGGLE);
-        }
-    }
+    // if (ieeeAddr === devices.IKEA_ONOFF.addr) {
+    //     if (type === 'cmdMove') {
+    //         call(urls.LIGHT_KITCHEN_TOGGLE);
+    //     }
+    // }
+    // btnDouble.onInd(ieeeAddr, type, (_type, _lastDevice) => {
+    //     console.log('ikea btn (double)', _type, _lastDevice);
+    // });
+    btnLong.onInd(ieeeAddr, type, (_type, _lastDevice) => {
+        console.log('ikea btn (long)', _type, _lastDevice);
+    });
 }
 
 let cubeSide = null;
