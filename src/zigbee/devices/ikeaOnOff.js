@@ -47,10 +47,10 @@ class IkeaOnOffLong {
             this.timer = setInterval(() => {
                 callback(type, this.lastDevice);
             }, 300);
-        } else {
+        } else if (type === 'cmdStopWithOnOff') {
             clearInterval(this.timer);
-            callback(type, this.lastDevice);
         }
+        callback(type, this.lastDevice);
     }
 }
 

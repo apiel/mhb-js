@@ -35,14 +35,14 @@ const { timer } = require('../utils');
 function allOff() {
     zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_SOFA.addr, action: actions.onOff('off') });
     zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_TABLE.addr, action: actions.onOff('off') });
-    zigbeeService.device.sendAction({ addr: devices.INNR_E14_BULB.addr, action: actions.onOff('off') });
+    zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_TRIANGLE.addr, action: actions.onOff('off') });
     call(urls.LIGHT_KITCHEN_OFF);
-    call(urls.LIGHT_UNDER_OFF);
 }
 
 const { IkeaOnOffDouble, IkeaOnOffLong } = require('./devices/ikeaOnOff');
 // const btnDouble = new IkeaOnOffDouble(devices.IKEA_ONOFF.addr);
 const btnLong = new IkeaOnOffLong(devices.IKEA_ONOFF.addr);
+const btn2Long = new IkeaOnOffLong(devices.IKEA_ONOFF2.addr);
 
 function onInd(ieeeAddr, type) {
     console.log('# onInd', ieeeAddr, type);
@@ -54,9 +54,20 @@ function onInd(ieeeAddr, type) {
     // btnDouble.onInd(ieeeAddr, type, (_type, _lastDevice) => {
     //     console.log('ikea btn (double)', _type, _lastDevice);
     // });
-    btnLong.onInd(ieeeAddr, type, (_type, _lastDevice) => {
+    [btnLong, btn2Long].forEach((btn) => btn.onInd(ieeeAddr, type, (_type, _lastDevice) => {
         console.log('ikea btn (long)', _type, _lastDevice);
-    });
+        if (_type === 'cmdMove') {
+            if (_lastDevice) brightness(_lastDevice, 20);
+        } else if (_type === 'cmdMoveWithOnOff') {
+            if (_lastDevice) brightness(_lastDevice, -20);
+        } else if (_type === 'cmdOff') {
+            btnLong.setLastDevice(devices.IKEA_E27_BULB_TRIANGLE.addr);
+            toggle(devices.IKEA_E27_BULB_TRIANGLE.addr);
+        } else if (_type === 'cmdOn') {
+            btnLong.setLastDevice(devices.IKEA_E27_BULB_SOFA.addr);
+            toggle(devices.IKEA_E27_BULB_SOFA.addr);
+        }
+    }));
 }
 
 let cubeSide = null;

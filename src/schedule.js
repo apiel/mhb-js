@@ -42,7 +42,7 @@ console.log('Start schedule, every 1 min check');
 setInterval(() => {
     const _now = now();
     const times = sunCalc.getTimes(_now, 48.230388, 16.370070); // Vienna 1200
-    if (_now > times.sunsetStart && shouldTrigger('sunsetStart', _now.getDate(), times.sunsetStart)) {
+    if (_now > times.goldenHour && shouldTrigger('goldenHour', _now.getDate(), times.goldenHour)) {
         call(urls.LIGHT_WALL_ENTRANCE_ON);
     }
     let next = time('23:30');
