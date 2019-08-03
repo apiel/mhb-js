@@ -1,0 +1,199 @@
+npm WARN npm npm does not support Node.js v10.15.2
+npm WARN npm You should probably upgrade to a newer version of node as we
+npm WARN npm can't make any promises that npm will work with this version.
+npm WARN npm Supported releases of Node.js are the latest release of 4, 6, 7, 8, 9.
+npm WARN npm You can find the latest version at https://nodejs.org/
+
+> mhb-js@1.0.0 start /home/pi/mhb-js
+> DEBUG=zigbee-service* node src/index.js
+
+Start schedule, every 1 min check
+2019-08-03T21:20:19.193Z zigbee-service:log Start zigbee
+2019-08-03T21:20:19.235Z zigbee-service:log Zigbee devices: [
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe6f87e4",
+        "nwkAddr": 62222,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe3046b8",
+        "nwkAddr": 8614,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x000b57fffe150865",
+        "nwkAddr": 30419,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI wireless dimmer",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x00158d00020a3941",
+        "nwkAddr": 30499,
+        "manufId": 4454,
+        "manufName": "innr",
+        "powerSource": "Mains (single phase)",
+        "modelId": "RB 145",
+        "epList": [
+            1,
+            2
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe2d9756",
+        "nwkAddr": 7291,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002016173",
+        "nwkAddr": 51585,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.remote.b1acn01\u0000\u0000\u0000\u0000\u0000\u0000",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe3070a1",
+        "nwkAddr": 12827,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002131199",
+        "nwkAddr": 24250,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.sensor_switch.aq2",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002781c40",
+        "nwkAddr": 49821,
+        "manufId": 4151,
+        "epList": [
+            1,
+            2,
+            3
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffed6f665",
+        "nwkAddr": 46489,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffece4941",
+        "nwkAddr": 65301,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    }
+]
+2019-08-03T21:20:19.349Z zigbee-service:log Server is ready.
+2019-08-03T21:20:19.378Z zigbee-service:log Waiting for device
+2019-08-03T21:20:24.842Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+2019-08-03T21:20:24.913Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+call url done http://192.168.0.227/toggle
+2019-08-03T21:20:28.348Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-03T21:21:09.618Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe6f87e4
+2019-08-03T21:21:09.648Z zigbee-service:log Failed to configure TRADFRI wireless dimmer 0x000b57fffe150865
+2019-08-03T21:21:09.652Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe3070a1
+2019-08-03T21:21:09.660Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffed6f665
+2019-08-03T21:21:09.671Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffece4941
+Schedule timeout: goldenHour
