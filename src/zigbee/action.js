@@ -69,7 +69,7 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
         if (cmdId === 'genOnOff') {
             const { click, action } = payload;
             if (click === 'single') {
-                call(urls.LIGHT_UNDER_TOGGLE);
+                call(urls.SWITCH_TOGGLE);
             } else if (click === 'double') {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
