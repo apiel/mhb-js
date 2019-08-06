@@ -18,10 +18,12 @@ const urls = {
 };
 
 // call every 5 seconds url to keep awake connection
+/*
 const uniqOriginUrls = [...new Set(Object.values(urls).map(({ url }) => (new URL(url)).origin))];
 setInterval(() => {
     uniqOriginUrls.forEach(url => axios({ url }).catch(() => {}));
 }, 60000);
+*/
 
 function call(options) {
     if (options.limitCall && !timeLimitIsOver(options.url, options.limitCall)) {

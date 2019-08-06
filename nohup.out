@@ -197,3 +197,3143 @@ call url done http://192.168.0.227/toggle
 2019-08-03T21:21:09.660Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffed6f665
 2019-08-03T21:21:09.671Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffece4941
 Schedule timeout: goldenHour
+2019-08-03T21:26:02.190Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { action: 'hold' } genMultistateInput
+Call url: http://192.168.0.94/off
+2019-08-03T21:26:02.313Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-03T21:26:02.873Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { action: 'release' } genMultistateInput
+2019-08-03T21:26:02.877Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+(node:1026) UnhandledPromiseRejectionWarning: Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.
+    at Controller.<anonymous> (/home/pi/mhb-js/node_modules/zigbee-shepherd/lib/components/af.js:94:37)
+    at Object.onceWrapper (events.js:277:13)
+    at Controller.emit (events.js:189:13)
+    at dispatchIncomingMsg (/home/pi/mhb-js/node_modules/zigbee-shepherd/lib/components/af.js:692:23)
+    at Controller.dataConfirmHandler (/home/pi/mhb-js/node_modules/zigbee-shepherd/lib/components/af.js:717:12)
+    at Controller.emit (events.js:189:13)
+    at Object.bridge._areqEventBridge (/home/pi/mhb-js/node_modules/zigbee-shepherd/lib/components/event_bridge.js:15:16)
+    at CcZnp.<anonymous> (/home/pi/mhb-js/node_modules/zigbee-shepherd/lib/components/controller.js:105:16)
+    at CcZnp.emit (events.js:189:13)
+    at CcZnp._mtIncomingDataHdlr (/home/pi/mhb-js/node_modules/cc-znp/lib/ccznp.js:370:14)
+(node:1026) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 21)
+(node:1026) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+2019-08-03T21:26:03.116Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe3046b8 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+call url done http://192.168.0.94/off
+2019-08-03T21:26:04.179Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+Call url: http://192.168.0.102/off
+call url done http://192.168.0.102/off
+2019-08-03T21:43:27.498Z zigbee-service:error Cannot get the Node Descriptor of the Device: 0xd0cf5efffed6f665 (Error: Timed out after 10000 ms)
+2019-08-03T21:43:47.528Z zigbee-service:error Cannot get the Node Descriptor of the Device: 0xd0cf5efffed6f665 (Error: Timed out after 10000 ms)
+2019-08-03T22:10:44.516Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-03T22:10:44.525Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-03T22:16:14.258Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-03T22:16:14.262Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-03T23:00:55.568Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-03T23:00:55.572Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-03T23:06:21.801Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-03T23:06:21.804Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-03T23:51:06.102Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-03T23:51:06.107Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-03T23:56:29.616Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-03T23:56:29.620Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T00:41:17.805Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-04T00:41:17.809Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T00:46:35.338Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T00:46:35.342Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T01:31:26.787Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-04T01:31:26.803Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T01:36:42.681Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T01:36:42.685Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T02:21:38.691Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T02:21:38.695Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T02:26:50.214Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T02:26:50.218Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T03:11:48.537Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-04T03:11:48.542Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T03:16:56.636Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T03:16:56.640Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T04:02:00.719Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-04T04:02:00.725Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T04:07:02.274Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T04:07:02.278Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T04:52:12.576Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T04:52:12.580Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T04:57:08.206Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T04:57:08.211Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T05:42:24.937Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T05:42:24.941Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T05:47:14.973Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T05:47:14.977Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T06:32:35.246Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T06:32:35.250Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T06:37:23.147Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T06:37:23.151Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T07:22:46.857Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T07:22:46.861Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T07:27:29.656Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T07:27:29.660Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T08:12:01.731Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T08:12:05.867Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T08:12:13.790Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T08:17:38.178Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T08:17:38.183Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T08:21:11.654Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+2019-08-04T08:21:14.493Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T08:21:44.106Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+2019-08-04T08:21:47.192Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T08:22:01.954Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T08:41:05.106Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T08:42:41.209Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-04T08:47:32.564Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-04T08:52:32.081Z zigbee-service:log > ind: cmdOff
+# onInd 0xd0cf5efffece4941 cmdOff
+ikea btn (long) cmdOff null
+ikea btn (long) cmdOff null
+toggle new state 0x000b57fffe3046b8 0 on
+2019-08-04T08:52:33.237Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe3046b8 devChange
+ikea btn (long) devChange 0x000b57fffe3046b8
+ikea btn (long) devChange null
+2019-08-04T08:52:34.483Z zigbee-service:log > ind: cmdOff
+# onInd 0xd0cf5efffece4941 cmdOff
+ikea btn (long) cmdOff 0x000b57fffe3046b8
+ikea btn (long) cmdOff null
+2019-08-04T08:52:37.609Z zigbee-service:log > ind: cmdOff
+# onInd 0xd0cf5efffece4941 cmdOff
+ikea btn (long) cmdOff 0x000b57fffe3046b8
+ikea btn (long) cmdOff null
+toggle new state 0x000b57fffe3046b8 1 off
+2019-08-04T08:52:38.394Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe3046b8 devChange
+ikea btn (long) devChange 0x000b57fffe3046b8
+ikea btn (long) devChange null
+2019-08-04T08:52:39.911Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe3046b8
+ikea btn (long) cmdOn null
+toggle new state 0x000b57fffe2d9756 0 on
+2019-08-04T08:52:41.839Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T08:52:43.388Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe2d9756
+ikea btn (long) cmdOn null
+toggle new state 0x000b57fffe2d9756 1 off
+2019-08-04T08:52:44.169Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T09:07:44.240Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T09:07:44.244Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T09:14:46.668Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T09:14:56.138Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T09:39:56.189Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-04T09:57:54.049Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T09:57:54.053Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T10:08:30.961Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-04T10:48:03.019Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T10:48:03.023Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T10:58:46.861Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T10:58:46.865Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T11:38:10.960Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T11:38:10.964Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T11:48:59.250Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T11:48:59.254Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T12:21:02.267Z zigbee-service:log > ind: attReport
+# onInd 0xd0cf5efffed6f665 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0xd0cf5efffed6f665 { battery: 60 } genPowerCfg
+2019-08-04T12:21:02.272Z zigbee-service:log > ind: devChange
+# onInd 0xd0cf5efffed6f665 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T12:28:17.216Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T12:28:17.220Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T12:39:09.905Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T12:39:09.909Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T13:07:39.568Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-04T13:18:23.510Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T13:18:23.514Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T13:20:23.398Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-04T13:20:25.548Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+call url done http://192.168.0.227/toggle
+2019-08-04T14:08:29.538Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T14:08:29.542Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T14:10:43.591Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T14:10:43.595Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T14:54:19.827Z zigbee-service:log > ind: attReport
+# onInd 0xd0cf5efffece4941 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0xd0cf5efffece4941 { battery: 87 } genPowerCfg
+2019-08-04T14:54:19.830Z zigbee-service:log > ind: devChange
+# onInd 0xd0cf5efffece4941 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T14:58:37.066Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T14:58:37.070Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T15:00:56.777Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3035 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3035 } genBasic
+2019-08-04T15:00:56.781Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T15:44:27.486Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:31.612Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:35.750Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:37.808Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:39.882Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:41.967Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:46.102Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:48.183Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:54.411Z zigbee-service:log > ind: devInterview
+2019-08-04T15:44:58.541Z zigbee-service:log > ind: devInterview
+2019-08-04T15:45:00.604Z zigbee-service:log > ind: devInterview
+2019-08-04T15:45:00.636Z zigbee-service:log > ind: devIncoming
+# onInd 0xd0cf5efffece4941 devIncoming
+ikea btn (long) devIncoming 0x000b57fffe2d9756
+ikea btn (long) devIncoming null
+2019-08-04T15:45:00.638Z zigbee-service:log devIncoming, new device 0xd0cf5efffece4941
+devIncoming, new device { addr: '0xd0cf5efffece4941' }
+2019-08-04T15:45:00.670Z zigbee-service:log > ind: devStatus
+# onInd 0xd0cf5efffece4941 devStatus
+ikea btn (long) devStatus 0x000b57fffe2d9756
+ikea btn (long) devStatus null
+2019-08-04T15:45:06.822Z zigbee-service:log Succeed to configure TRADFRI ON/OFF switch 0xd0cf5efffece4941
+2019-08-04T15:48:45.028Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T15:48:45.032Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T15:51:07.431Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T15:51:07.435Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T16:05:18.038Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T16:05:39.582Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T16:38:53.402Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T16:38:53.405Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T16:38:57.158Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { click: 'single' } genOnOff
+XIAOMI_BTN_ROOM payload { click: 'single' } genOnOff
+Call url: http://192.168.0.227/toggle
+{ Error: connect EHOSTUNREACH 192.168.0.227:80
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1104:14)
+  errno: 'EHOSTUNREACH',
+  code: 'EHOSTUNREACH',
+  syscall: 'connect',
+  address: '192.168.0.227',
+  port: 80,
+  config:
+   { adapter: [Function: httpAdapter],
+     transformRequest: { '0': [Function: transformRequest] },
+     transformResponse: { '0': [Function: transformResponse] },
+     timeout: 0,
+     xsrfCookieName: 'XSRF-TOKEN',
+     xsrfHeaderName: 'X-XSRF-TOKEN',
+     maxContentLength: -1,
+     validateStatus: [Function: validateStatus],
+     headers:
+      { Accept: 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.1' },
+     method: 'get',
+     url: 'http://192.168.0.227/toggle',
+     limitCall: 2000,
+     data: undefined },
+  request:
+   Writable {
+     _writableState:
+      WritableState {
+        objectMode: false,
+        highWaterMark: 16384,
+        finalCalled: false,
+        needDrain: false,
+        ending: false,
+        ended: false,
+        finished: false,
+        destroyed: false,
+        decodeStrings: true,
+        defaultEncoding: 'utf8',
+        length: 0,
+        writing: false,
+        corked: 0,
+        sync: true,
+        bufferProcessing: false,
+        onwrite: [Function: bound onwrite],
+        writecb: null,
+        writelen: 0,
+        bufferedRequest: null,
+        lastBufferedRequest: null,
+        pendingcb: 0,
+        prefinished: false,
+        errorEmitted: false,
+        emitClose: true,
+        bufferedRequestCount: 0,
+        corkedRequestsFree: [Object] },
+     writable: true,
+     _events:
+      [Object: null prototype] {
+        response: [Function: handleResponse],
+        error: [Function: handleRequestError] },
+     _eventsCount: 2,
+     _maxListeners: undefined,
+     _options:
+      { protocol: 'http:',
+        maxRedirects: 21,
+        maxBodyLength: 10485760,
+        path: '/toggle',
+        method: 'get',
+        headers: [Object],
+        agent: undefined,
+        auth: undefined,
+        hostname: '192.168.0.227',
+        port: null,
+        nativeProtocols: [Object],
+        pathname: '/toggle' },
+     _redirectCount: 0,
+     _redirects: [],
+     _requestBodyLength: 0,
+     _requestBodyBuffers: [],
+     _onNativeResponse: [Function],
+     _currentRequest:
+      ClientRequest {
+        _events: [Object],
+        _eventsCount: 6,
+        _maxListeners: undefined,
+        output: [],
+        outputEncodings: [],
+        outputCallbacks: [],
+        outputSize: 0,
+        writable: true,
+        _last: true,
+        chunkedEncoding: false,
+        shouldKeepAlive: false,
+        useChunkedEncodingByDefault: false,
+        sendDate: false,
+        _removedConnection: false,
+        _removedContLen: false,
+        _removedTE: false,
+        _contentLength: 0,
+        _hasBody: true,
+        _trailer: '',
+        finished: true,
+        _headerSent: true,
+        socket: [Socket],
+        connection: [Socket],
+        _header:
+         'GET /toggle HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: axios/0.18.1\r\nHost: 192.168.0.227\r\nConnection: close\r\n\r\n',
+        _onPendingData: [Function: noopPendingOutput],
+        agent: [Agent],
+        socketPath: undefined,
+        timeout: undefined,
+        method: 'GET',
+        path: '/toggle',
+        _ended: false,
+        res: null,
+        aborted: undefined,
+        timeoutCb: null,
+        upgradeOrConnect: false,
+        parser: null,
+        maxHeadersCount: null,
+        _redirectable: [Circular],
+        [Symbol(isCorked)]: false,
+        [Symbol(outHeadersKey)]: [Object] },
+     _currentUrl: 'http://192.168.0.227/toggle' },
+  response: undefined }
+2019-08-04T17:28:59.196Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T17:28:59.200Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T17:29:14.693Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T17:29:14.697Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+Call url: http://192.168.0.102/on
+call url done http://192.168.0.102/on
+2019-08-04T18:03:36.714Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe2d9756
+ikea btn (long) cmdOn null
+toggle new state 0x000b57fffe2d9756 0 on
+2019-08-04T18:03:37.732Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T18:03:38.791Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe2d9756
+ikea btn (long) cmdOn null
+2019-08-04T18:03:40.465Z zigbee-service:log > ind: attReport
+# onInd 0xd0cf5efffece4941 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0xd0cf5efffece4941 { battery: 100 } genPowerCfg
+2019-08-04T18:03:40.468Z zigbee-service:log > ind: devChange
+# onInd 0xd0cf5efffece4941 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T18:03:40.751Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe2d9756
+ikea btn (long) cmdOn null
+toggle new state 0x000b57fffe2d9756 1 off
+2019-08-04T18:03:41.501Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T18:03:42.626Z zigbee-service:log > ind: attReport
+# onInd 0xd0cf5efffece4941 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0xd0cf5efffece4941 { battery: 87 } genPowerCfg
+2019-08-04T18:03:42.639Z zigbee-service:log > ind: devChange
+# onInd 0xd0cf5efffece4941 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T18:03:42.877Z zigbee-service:log > ind: cmdOff
+# onInd 0xd0cf5efffece4941 cmdOff
+ikea btn (long) cmdOff 0x000b57fffe2d9756
+ikea btn (long) cmdOff null
+toggle new state 0x000b57fffe3046b8 0 on
+2019-08-04T18:03:44.817Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe3046b8 devChange
+ikea btn (long) devChange 0x000b57fffe3046b8
+ikea btn (long) devChange null
+2019-08-04T18:03:48.984Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe3046b8
+ikea btn (long) cmdOn null
+toggle new state 0x000b57fffe2d9756 0 on
+2019-08-04T18:03:49.722Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-04T18:03:52.907Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe2d9756
+ikea btn (long) cmdOn null
+toggle new state 0x000b57fffe2d9756 1 off
+2019-08-04T18:03:53.658Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! mhb-js@1.0.0 start: `DEBUG=zigbee-service* node src/index.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the mhb-js@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/pi/.npm/_logs/2019-08-04T18_11_37_190Z-debug.log
+npm WARN npm npm does not support Node.js v10.15.2
+npm WARN npm You should probably upgrade to a newer version of node as we
+npm WARN npm can't make any promises that npm will work with this version.
+npm WARN npm Supported releases of Node.js are the latest release of 4, 6, 7, 8, 9.
+npm WARN npm You can find the latest version at https://nodejs.org/
+
+> mhb-js@1.0.0 start /home/pi/mhb-js
+> DEBUG=zigbee-service* node src/index.js
+
+Start schedule, every 1 min check
+2019-08-04T18:12:31.890Z zigbee-service:log Start zigbee
+2019-08-04T18:12:31.949Z zigbee-service:log Zigbee devices: [
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe6f87e4",
+        "nwkAddr": 62222,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe3046b8",
+        "nwkAddr": 8614,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x000b57fffe150865",
+        "nwkAddr": 30419,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI wireless dimmer",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x00158d00020a3941",
+        "nwkAddr": 30499,
+        "manufId": 4454,
+        "manufName": "innr",
+        "powerSource": "Mains (single phase)",
+        "modelId": "RB 145",
+        "epList": [
+            1,
+            2
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe2d9756",
+        "nwkAddr": 7291,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002016173",
+        "nwkAddr": 51585,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.remote.b1acn01\u0000\u0000\u0000\u0000\u0000\u0000",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe3070a1",
+        "nwkAddr": 12827,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002131199",
+        "nwkAddr": 24250,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.sensor_switch.aq2",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002781c40",
+        "nwkAddr": 49821,
+        "manufId": 4151,
+        "epList": [
+            1,
+            2,
+            3
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffed6f665",
+        "nwkAddr": 46489,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffece4941",
+        "nwkAddr": 65301,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    }
+]
+2019-08-04T18:12:32.066Z zigbee-service:log Server is ready.
+2019-08-04T18:12:32.096Z zigbee-service:log Waiting for device
+2019-08-04T18:13:22.339Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe6f87e4
+2019-08-04T18:13:22.348Z zigbee-service:log Failed to configure TRADFRI wireless dimmer 0x000b57fffe150865
+2019-08-04T18:13:22.349Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe3070a1
+2019-08-04T18:13:22.378Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffed6f665
+2019-08-04T18:13:22.389Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffece4941
+Schedule timeout: goldenHour
+npm WARN npm npm does not support Node.js v10.15.2
+npm WARN npm You should probably upgrade to a newer version of node as we
+npm WARN npm can't make any promises that npm will work with this version.
+npm WARN npm Supported releases of Node.js are the latest release of 4, 6, 7, 8, 9.
+npm WARN npm You can find the latest version at https://nodejs.org/
+
+> mhb-js@1.0.0 start /home/pi/mhb-js
+> DEBUG=zigbee-service* node src/index.js
+
+Terminated
+Terminated
+npmnpm  ERR!ERR!  codecode ELIFECYCLE
+ ELIFECYCLE
+npmnpm ERR!  errnoERR! 143
+ errno 143
+npmnpm  ERR!ERR! mhb-js@1.0.0 start: `DEBUG=zigbee-service* node src/index.js`
+ mhb-js@1.0.0 start: `DEBUG=zigbee-service* node src/index.js`
+npmnpm  ERR!ERR! Exit status 143
+ Exit status 143
+npmnpm  ERR!ERR! 
+ 
+npmnpm  ERR!ERR! Failed at the mhb-js@1.0.0 start script.
+ Failed at the mhb-js@1.0.0 start script.
+npmnpm  ERR!ERR! This is probably not a problem with npm. There is likely additional logging output above.
+ This is probably not a problem with npm. There is likely additional logging output above.
+
+
+npmnpm  ERR!ERR! A complete log of this run can be found in:
+ A complete log of this run can be found in:
+npmnpm  ERR!ERR!     /home/pi/.npm/_logs/2019-08-04T18_14_16_237Z-debug.log
+     /home/pi/.npm/_logs/2019-08-04T18_14_16_237Z-debug.log
+npm WARN npm npm does not support Node.js v10.15.2
+npm WARN npm You should probably upgrade to a newer version of node as we
+npm WARN npm can't make any promises that npm will work with this version.
+npm WARN npm Supported releases of Node.js are the latest release of 4, 6, 7, 8, 9.
+npm WARN npm You can find the latest version at https://nodejs.org/
+
+> mhb-js@1.0.0 start /home/pi/mhb-js
+> DEBUG=zigbee-service* node src/index.js
+
+Start schedule, every 1 min check
+2019-08-04T18:14:42.337Z zigbee-service:log Start zigbee
+2019-08-04T18:14:42.380Z zigbee-service:log Zigbee devices: [
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe6f87e4",
+        "nwkAddr": 62222,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe3046b8",
+        "nwkAddr": 8614,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x000b57fffe150865",
+        "nwkAddr": 30419,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI wireless dimmer",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x00158d00020a3941",
+        "nwkAddr": 30499,
+        "manufId": 4454,
+        "manufName": "innr",
+        "powerSource": "Mains (single phase)",
+        "modelId": "RB 145",
+        "epList": [
+            1,
+            2
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe2d9756",
+        "nwkAddr": 7291,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002016173",
+        "nwkAddr": 51585,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.remote.b1acn01\u0000\u0000\u0000\u0000\u0000\u0000",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe3070a1",
+        "nwkAddr": 12827,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002131199",
+        "nwkAddr": 24250,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.sensor_switch.aq2",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002781c40",
+        "nwkAddr": 49821,
+        "manufId": 4151,
+        "epList": [
+            1,
+            2,
+            3
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffed6f665",
+        "nwkAddr": 46489,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffece4941",
+        "nwkAddr": 65301,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    }
+]
+2019-08-04T18:14:42.498Z zigbee-service:log Server is ready.
+2019-08-04T18:14:42.528Z zigbee-service:log Waiting for device
+2019-08-04T18:15:23.001Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffece4941
+2019-08-04T18:15:32.788Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe6f87e4
+2019-08-04T18:15:32.825Z zigbee-service:log Failed to configure TRADFRI wireless dimmer 0x000b57fffe150865
+2019-08-04T18:15:32.831Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe3070a1
+2019-08-04T18:15:32.838Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffed6f665
+Schedule timeout: goldenHour
+2019-08-04T18:19:07.494Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T18:19:07.554Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T18:19:27.376Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T18:19:27.383Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002131199 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-04T18:42:41.388Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { click: 'single' } genMultistateInput
+Call url: http://192.168.0.94/toggle
+2019-08-04T18:42:41.404Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+call url done http://192.168.0.94/toggle
+2019-08-04T19:09:39.514Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002131199 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002131199 { battery: 100, voltage: 3045 } genBasic
+XIAOMI_BTN_ROOM payload { battery: 100, voltage: 3045 } genBasic
+2019-08-04T19:32:49.746Z zigbee-service:log > ind: attReport
+# onInd 0x00158d0002016173 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0x00158d0002016173 { battery: 100, voltage: 3025 } genBasic
+2019-08-04T19:32:49.751Z zigbee-service:log > ind: devChange
+# onInd 0x00158d0002016173 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+npm WARN npm npm does not support Node.js v10.15.2
+npm WARN npm You should probably upgrade to a newer version of node as we
+npm WARN npm can't make any promises that npm will work with this version.
+npm WARN npm Supported releases of Node.js are the latest release of 4, 6, 7, 8, 9.
+npm WARN npm You can find the latest version at https://nodejs.org/
+
+> mhb-js@1.0.0 start /home/pi/mhb-js
+> DEBUG=zigbee-service* node src/index.js
+
+Start schedule, every 1 min check
+2019-08-06T18:33:04.875Z zigbee-service:log Start zigbee
+2019-08-06T18:33:04.935Z zigbee-service:log Zigbee devices: [
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe6f87e4",
+        "nwkAddr": 62222,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe3046b8",
+        "nwkAddr": 8614,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x000b57fffe150865",
+        "nwkAddr": 30419,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI wireless dimmer",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x00158d00020a3941",
+        "nwkAddr": 30499,
+        "manufId": 4454,
+        "manufName": "innr",
+        "powerSource": "Mains (single phase)",
+        "modelId": "RB 145",
+        "epList": [
+            1,
+            2
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0x000b57fffe2d9756",
+        "nwkAddr": 7291,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI bulb E27 opal 1000lm",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002016173",
+        "nwkAddr": 51585,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.remote.b1acn01\u0000\u0000\u0000\u0000\u0000\u0000",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "Router",
+        "ieeeAddr": "0xd0cf5efffe3070a1",
+        "nwkAddr": 12827,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Mains (single phase)",
+        "modelId": "TRADFRI control outlet",
+        "epList": [
+            1,
+            2,
+            242
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002131199",
+        "nwkAddr": 24250,
+        "manufId": 4151,
+        "manufName": "LUMI",
+        "powerSource": "Battery",
+        "modelId": "lumi.sensor_switch.aq2",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0x00158d0002781c40",
+        "nwkAddr": 49821,
+        "manufId": 4151,
+        "epList": [
+            1,
+            2,
+            3
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffed6f665",
+        "nwkAddr": 46489,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    },
+    {
+        "type": "EndDevice",
+        "ieeeAddr": "0xd0cf5efffece4941",
+        "nwkAddr": 65301,
+        "manufId": 4476,
+        "manufName": "IKEA of Sweden",
+        "powerSource": "Battery",
+        "modelId": "TRADFRI on/off switch",
+        "epList": [
+            1
+        ],
+        "status": "offline",
+        "joinTime": null
+    }
+]
+2019-08-06T18:33:05.053Z zigbee-service:log Server is ready.
+2019-08-06T18:33:05.084Z zigbee-service:log Waiting for device
+2019-08-06T18:33:07.638Z zigbee-service:log > ind: attReport
+# onInd 0xd0cf5efffece4941 attReport
+ikea btn (long) attReport null
+ikea btn (long) attReport null
+# onIndMessage 0xd0cf5efffece4941 { battery: 100 } genPowerCfg
+2019-08-06T18:33:07.702Z zigbee-service:log > ind: devChange
+# onInd 0xd0cf5efffece4941 devChange
+ikea btn (long) devChange null
+ikea btn (long) devChange null
+2019-08-06T18:33:07.820Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn null
+ikea btn (long) cmdOn null
+2019-08-06T18:33:08.123Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+toggle new state 0x000b57fffe2d9756 0 on
+2019-08-06T18:33:08.837Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-06T18:33:14.882Z zigbee-service:log Succeed to configure TRADFRI ON/OFF switch 0xd0cf5efffece4941
+2019-08-06T18:33:19.170Z zigbee-service:log > ind: attReport
+# onInd 0xd0cf5efffece4941 attReport
+ikea btn (long) attReport 0x000b57fffe2d9756
+ikea btn (long) attReport null
+# onIndMessage 0xd0cf5efffece4941 { battery: 87 } genPowerCfg
+2019-08-06T18:33:19.177Z zigbee-service:log > ind: devChange
+# onInd 0xd0cf5efffece4941 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-06T18:33:19.383Z zigbee-service:log > ind: cmdOn
+# onInd 0xd0cf5efffece4941 cmdOn
+ikea btn (long) cmdOn 0x000b57fffe2d9756
+ikea btn (long) cmdOn null
+toggle new state 0x000b57fffe2d9756 1 off
+2019-08-06T18:33:20.214Z zigbee-service:log > ind: devChange
+# onInd 0x000b57fffe2d9756 devChange
+ikea btn (long) devChange 0x000b57fffe2d9756
+ikea btn (long) devChange null
+2019-08-06T18:33:55.316Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe6f87e4
+2019-08-06T18:33:55.327Z zigbee-service:log Failed to configure TRADFRI wireless dimmer 0x000b57fffe150865
+2019-08-06T18:33:55.353Z zigbee-service:log Failed to configure TRADFRI control outlet 0xd0cf5efffe3070a1
+2019-08-06T18:33:55.357Z zigbee-service:log Failed to configure TRADFRI ON/OFF switch 0xd0cf5efffed6f665
+Schedule timeout: goldenHour
