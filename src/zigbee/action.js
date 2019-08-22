@@ -34,7 +34,7 @@ const { timer } = require('../utils');
 
 function allOff() {
     zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_SOFA.addr, action: actions.onOff('off') });
-    zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_TABLE.addr, action: actions.onOff('off') });
+    // zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_TABLE.addr, action: actions.onOff('off') });
     zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_TRIANGLE.addr, action: actions.onOff('off') });
     call(urls.LIGHT_KITCHEN_OFF);
 }
@@ -95,46 +95,46 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
         }
-    } else if (ieeeAddr === devices.XIAOMI_CUBE.addr) {
-        const { action, side, from_side, to_side, angle } = payload;
-        if (action === 'flip90') {
-            cubeSide = to_side;
-            if ((from_side === 0 && to_side === 4) || (from_side === 1 && to_side === 3)) {
-                toggle(
-                    devices.IKEA_OUTLET_TABLE.addr,
-                );
-            } else if ((from_side === 0 && to_side === 1) || (from_side === 4 && to_side === 3)) {
-                toggle(
-                    devices.INNR_E14_BULB.addr,
-                );
-            // } else if ((from_side === 0 && to_side === 2) || (from_side === 3 && to_side === 2)) {
-            } else if (to_side === 2) {
-                toggle(
-                    devices.IKEA_E27_BULB_SOFA.addr,
-                );
-            // } else if (from_side === 0 && to_side === 5) {
-            } else if (to_side === 5) {
-                call(urls.LIGHT_KITCHEN_ON);
-            }
-        } else if (action === 'shake') {
-            allOff();
-        } else if (action === 'slide') {
-            cubeSide = side;
-        } else if (action === 'rotate_right' || action === 'rotate_left') {
-            const direction = (action === 'rotate_right' ? 1 : -1);
-            console.log('rotate', cubeSide, direction);
-            if (cubeSide === 1) {
-                brightness(
-                    devices.INNR_E14_BULB.addr,
-                    direction * 20,
-                );
-            } else if (cubeSide === 2) {
-                brightness(
-                    devices.IKEA_E27_BULB_SOFA.addr,
-                    direction * 20,
-                );
-            }
-        }
+    // } else if (ieeeAddr === devices.XIAOMI_CUBE.addr) {
+    //     const { action, side, from_side, to_side, angle } = payload;
+    //     if (action === 'flip90') {
+    //         cubeSide = to_side;
+    //         if ((from_side === 0 && to_side === 4) || (from_side === 1 && to_side === 3)) {
+    //             toggle(
+    //                 devices.IKEA_OUTLET_TABLE.addr,
+    //             );
+    //         } else if ((from_side === 0 && to_side === 1) || (from_side === 4 && to_side === 3)) {
+    //             toggle(
+    //                 devices.INNR_E14_BULB.addr,
+    //             );
+    //         // } else if ((from_side === 0 && to_side === 2) || (from_side === 3 && to_side === 2)) {
+    //         } else if (to_side === 2) {
+    //             toggle(
+    //                 devices.IKEA_E27_BULB_SOFA.addr,
+    //             );
+    //         // } else if (from_side === 0 && to_side === 5) {
+    //         } else if (to_side === 5) {
+    //             call(urls.LIGHT_KITCHEN_ON);
+    //         }
+    //     } else if (action === 'shake') {
+    //         allOff();
+    //     } else if (action === 'slide') {
+    //         cubeSide = side;
+    //     } else if (action === 'rotate_right' || action === 'rotate_left') {
+    //         const direction = (action === 'rotate_right' ? 1 : -1);
+    //         console.log('rotate', cubeSide, direction);
+    //         if (cubeSide === 1) {
+    //             brightness(
+    //                 devices.INNR_E14_BULB.addr,
+    //                 direction * 20,
+    //             );
+    //         } else if (cubeSide === 2) {
+    //             brightness(
+    //                 devices.IKEA_E27_BULB_SOFA.addr,
+    //                 direction * 20,
+    //             );
+    //         }
+    //     }
     }
 }
 

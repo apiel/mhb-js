@@ -1,3 +1,6 @@
+
+# copy this file to /lib/systemd/system/
+
 [Unit]
 Description=mhb-js
 After=network.target

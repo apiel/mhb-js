@@ -12,50 +12,50 @@ let lastKey = '';
 let countKeyRepeat = 0;
 module.exports = async(key) => {
     if (key === 'SWITCH_3_BTN_RIGHT') {
-        advanceActions.toggle(
-            zigbee.devices.INNR_E14_BULB.addr,
-        );
+        // advanceActions.toggle(
+        //     zigbee.devices.INNR_E14_BULB.addr,
+        // );
     } else if (key === 'SWITCH_3_BTN_MIDDLE') {
         advanceActions.toggle(
             zigbee.devices.IKEA_E27_BULB_SOFA.addr,
         );
     } else if (key === 'SWITCH_3_BTN_LEFT') {
-        advanceActions.toggle(
-            zigbee.devices.IKEA_OUTLET_TABLE.addr,
-        );
+        // advanceActions.toggle(
+        //     zigbee.devices.IKEA_OUTLET_TABLE.addr,
+        // );
     } else if (key === 'CERCLE_1_UP') {
-        if (getKeyRepeat(key) > 1) {
-            device.sendAction({
-                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                action: zigbee.actions.onOff('on'),
-            });
-        }
+        // if (getKeyRepeat(key) > 1) {
+        //     device.sendAction({
+        //         addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+        //         action: zigbee.actions.onOff('on'),
+        //     });
+        // }
     } else if (key === 'CERCLE_1_DOWN') {
-        if (getKeyRepeat(key) > 1) {
-            device.sendAction({
-                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                action: zigbee.actions.onOff('off'),
-            });
-        }
+        // if (getKeyRepeat(key) > 1) {
+        //     device.sendAction({
+        //         addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+        //         action: zigbee.actions.onOff('off'),
+        //     });
+        // }
     } else if (key === 'CERCLE_2_UP') {
         if (getKeyRepeat(key) > 1) {
-            advanceActions.brightness(
-                zigbee.devices.INNR_E14_BULB.addr,
-                20,
-            );
+            // advanceActions.brightness(
+            //     zigbee.devices.INNR_E14_BULB.addr,
+            //     20,
+            // );
         }
     } else if (key === 'CERCLE_2_DOWN') {
         if (getKeyRepeat(key) > 1) {
-            advanceActions.brightness(
-                zigbee.devices.INNR_E14_BULB.addr,
-                -20,
-            );
+            // advanceActions.brightness(
+            //     zigbee.devices.INNR_E14_BULB.addr,
+            //     -20,
+            // );
         }
     } else if (key === 'CERCLE_2_MILDDLE') {
-        device.sendAction({
-            addr: zigbee.devices.INNR_E14_BULB.addr,
-            action: zigbee.actions.onOff('off'),
-        });
+        // device.sendAction({
+        //     addr: zigbee.devices.INNR_E14_BULB.addr,
+        //     action: zigbee.actions.onOff('off'),
+        // });
     }  else if (key === 'CERCLE_3_UP') {
         if (getKeyRepeat(key) > 1) {
             call(urls.LIGHT_KITCHEN_ON);
@@ -87,25 +87,25 @@ module.exports = async(key) => {
         });
     }  else if (key === 'CERCLE_5_UP') {
         if (getKeyRepeat(key) > 1) {
-            device.sendAction({
-                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                action: zigbee.actions.onOff('on'),
-            });
-            device.sendAction({
-                addr: zigbee.devices.INNR_E14_BULB.addr,
-                action: zigbee.actions.onOff('on'),
-            });
+            // device.sendAction({
+            //     addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+            //     action: zigbee.actions.onOff('on'),
+            // });
+            // device.sendAction({
+            //     addr: zigbee.devices.INNR_E14_BULB.addr,
+            //     action: zigbee.actions.onOff('on'),
+            // });
         }
     } else if (key === 'CERCLE_5_DOWN') {
         if (getKeyRepeat(key) > 1) {
-            device.sendAction({
-                addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
-                action: zigbee.actions.onOff('off'),
-            });
-            device.sendAction({
-                addr: zigbee.devices.INNR_E14_BULB.addr,
-                action: zigbee.actions.onOff('off'),
-            });
+            // device.sendAction({
+            //     addr: zigbee.devices.IKEA_OUTLET_TABLE.addr,
+            //     action: zigbee.actions.onOff('off'),
+            // });
+            // device.sendAction({
+            //     addr: zigbee.devices.INNR_E14_BULB.addr,
+            //     action: zigbee.actions.onOff('off'),
+            // });
         }
     }  else if (key === 'CERCLE_6_UP') {
         if (getKeyRepeat(key) > 1) {
