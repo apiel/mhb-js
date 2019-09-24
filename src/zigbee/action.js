@@ -37,6 +37,7 @@ function allOff() {
     // zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_TABLE.addr, action: actions.onOff('off') });
     zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_TRIANGLE.addr, action: actions.onOff('off') });
     call(urls.LIGHT_KITCHEN_OFF);
+    call(urls.LIGHT_LIVING_ROOM_OFF);
 }
 
 const { IkeaOnOffDouble, IkeaOnOffLong } = require('./devices/ikeaOnOff');
@@ -142,4 +143,5 @@ module.exports = {
     onAfIncomingMsg,
     onIndMessage,
     onInd,
+    allOff,
 };

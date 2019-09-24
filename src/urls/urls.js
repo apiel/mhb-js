@@ -15,6 +15,9 @@ const urls = {
     SWITCH_TOGGLE: { url: 'http://192.168.0.227/toggle', limitCall: 2000 },
     SWITCH_ON: { url: 'http://192.168.0.227/on', limitCall: 2000 },
     SWITCH_OFF: { url: 'http://192.168.0.227/off', limitCall: 2000 },
+    LIGHT_LIVING_ROOM_TOGGLE: { url: 'http://192.168.0.192/toggle', limitCall: 2000 },
+    LIGHT_LIVING_ROOM_OFF: { url: 'http://192.168.0.192/off', limitCall: 2000 },
+    LIGHT_LIVING_ROOM_ON: { url: 'http://192.168.0.192/on', limitCall: 2000 },
 };
 
 // call every 5 seconds url to keep awake connection

@@ -1,5 +1,6 @@
 const express = require('express');
 // const bodyParser = require('body-parser');
+const { handleEspButton } = require('./action');
 
 const app = express();
 
@@ -14,12 +15,5 @@ app.use((req, res, next) => {
     console.log('No route for ', req.originalUrl, req.method);
     res.status(404).send('Sorry cant find that!');
 });
-
-function handleEspButton(req, res) {
-    const { params, body, query }  = req;
-    console.log('>> handleEspButton', { params, body, query });
-
-    res.json([{ success: true }]);
-}
 
 app.listen(3000, () => console.log('Httpd listen on port 3000'));
