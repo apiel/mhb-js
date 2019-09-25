@@ -1,4 +1,4 @@
-const zigbeeService = require('./zigbeeService');
+const zigbeeService = require('../zigbee/zigbeeService');
 const urls = require('../urls/urls');
 const { call } = urls;
 
