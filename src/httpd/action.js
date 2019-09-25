@@ -2,7 +2,7 @@ const urls = require('../urls/urls');
 const { call } = urls;
 const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/advanceActions');
-const { allOff } = require('../zigbee/action');
+const { allLivingRoomOff } = require('../scene/all');
 
 const devices = {
     LIVING_ROOM_LIGHT: { mac: 'cd-56-98-7f-cf-5c' },
@@ -27,7 +27,7 @@ function handleEspButton(req, res) {
                 zigbee.devices.IKEA_E27_BULB_SOFA.addr,
             );
         } else if (query.btn1 === '-1' || query.btn2 === '-1') {
-            allOff();
+            allLivingRoomOff();
         }
     }
 

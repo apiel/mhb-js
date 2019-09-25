@@ -4,6 +4,7 @@ const { brightness, toggle } = require('./advanceActions');
 const urls = require('../urls/urls');
 const { call } = urls;
 const { timer } = require('../utils');
+const { allFlatOff } = require('../scene/all');
 
 // Succeed to configure TRADFRI wireless dimmer 0x000b57fffe150865
 // onAfIncomingMsg 0x000b57fffe150865 <Buffer 11 01 07>
@@ -30,14 +31,6 @@ const { timer } = require('../utils');
             }
         }
     }
-}
-
-function allOff() {
-    zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_SOFA.addr, action: actions.onOff('off') });
-    // zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_TABLE.addr, action: actions.onOff('off') });
-    zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_TRIANGLE.addr, action: actions.onOff('off') });
-    call(urls.LIGHT_KITCHEN_OFF);
-    call(urls.LIGHT_LIVING_ROOM_OFF);
 }
 
 const { IkeaOnOffDouble, IkeaOnOffLong } = require('./devices/ikeaOnOff');
@@ -74,16 +67,16 @@ function onInd(ieeeAddr, type) {
 let cubeSide = null;
 function onIndMessage(ieeeAddr, payload, cmdId) {
     console.log('# onIndMessage', ieeeAddr, payload, cmdId);
-    if (ieeeAddr === devices.XIAOMI_BTN_KITCHEN.addr) {
+    if (ieeeAddr === devices.XIAOMI_BTN_ENTRANCE.addr) {
         if (cmdId === 'genMultistateInput') {
-            // console.log('XIAOMI_BTN_KITCHEN payload', payload);
+            // console.log('XIAOMI_BTN_ENTRANCE payload', payload);
             const { click, action } = payload;
             if (action === 'hold') {
-                allOff();
+                allFlatOff();
             } else if (click === 'single') {
-                call(urls.LIGHT_KITCHEN_TOGGLE);
-            } else if (click === 'double') {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+            } else if (click === 'double') {
+                toggle(devices.IKEA_E27_BULB_TRIANGLE.addr);
             }
         }
     } else if (ieeeAddr === devices.XIAOMI_BTN_ROOM.addr) { // hold not working
@@ -118,7 +111,7 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
     //             call(urls.LIGHT_KITCHEN_ON);
     //         }
     //     } else if (action === 'shake') {
-    //         allOff();
+    //         allLivingRoomOff();
     //     } else if (action === 'slide') {
     //         cubeSide = side;
     //     } else if (action === 'rotate_right' || action === 'rotate_left') {
@@ -143,5 +136,4 @@ module.exports = {
     onAfIncomingMsg,
     onIndMessage,
     onInd,
-    allOff,
 };
