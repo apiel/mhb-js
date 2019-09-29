@@ -26,7 +26,7 @@ Object.keys(zigbee.devices).forEach(key => {
             btn(`/ui/action?device=${key}&type=zigbeeCountdown&value=10`, '&gt; 10'),
             btn(`/ui/action?device=${key}&type=zigbeeCountdown&value=1`, '&gt; 1'),
         ];
-        addRow(buttons, device.name);
+        addLongRow(buttons, device.name);
     }
 });
 
@@ -35,10 +35,17 @@ addRow([
     btn('/ui/action?type=livingRoomOff', 'Living room off'),
 ], '');
 
-const ui = `<div>${rows.join('<br />')}</div>`;
+const ui = `
+<meta name=viewport content='width=500'>
+<div>${rows.join('<br />')}</div>
+`;
 
 function addRow(buttons, name) {
     rows.push(`<div style="margin: 5px;">${buttons.join(' ')} ${name}</div>`);
+}
+
+function addLongRow(buttons, name) {
+    rows.push(`<div style="margin: 5px;">${name}<br/><br/>${buttons.join(' ')}</div>`);
 }
 
 function btn(href, action) {
