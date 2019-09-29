@@ -1,6 +1,7 @@
 const express = require('express');
 // const bodyParser = require('body-parser');
 const { handleEspButton } = require('./action');
+const { handleUi, handleUiAction } = require('./ui');
 
 const app = express();
 
@@ -10,6 +11,8 @@ const app = express();
 // app.use(bodyParser.text());
 
 app.all('/esp/button', handleEspButton);
+app.all('/', handleUi);
+app.all('/ui/action', handleUiAction);
 
 app.use((req, res, next) => {
     console.log('No route for ', req.originalUrl, req.method);

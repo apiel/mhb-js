@@ -20,6 +20,29 @@ const urls = {
     LIGHT_LIVING_ROOM_ON: { url: 'http://192.168.0.192/on', limitCall: 2000 },
 };
 
+const devices = {
+    LIGHT_LIVING_ROOM: {
+        actions: ['ON', 'OFF'],
+        name: 'light living room',
+    },
+    LIGHT_KITCHEN: {
+        actions: ['ON', 'OFF'],
+        name: 'light kitchen',
+    },
+    LIGHT_WALL_ENTRANCE: {
+        actions: ['ON', 'OFF'],
+        name: 'light entrance',
+    },
+    LIGHT_UNDER: {
+        actions: ['ON', 'OFF'],
+        name: 'small light room??',
+    },
+    SWITCH: {
+        actions: ['ON', 'OFF'],
+        name: 'small light room',
+    },
+}
+
 // call every 5 seconds url to keep awake connection
 const uniqOriginUrls = [...new Set(Object.values(urls).map(({ url }) => (new URL(url)).origin))];
 setInterval(() => {
@@ -40,5 +63,6 @@ function call(options) {
 
 module.exports = {
     call,
+    devices,
     ...urls,
 }
