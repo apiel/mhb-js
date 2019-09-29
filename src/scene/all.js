@@ -1,4 +1,5 @@
 const zigbeeService = require('../zigbee/zigbeeService');
+const { devices, actions } = require('../zigbee/settings');
 const urls = require('../urls/urls');
 const { call } = urls;
 
