@@ -4,12 +4,14 @@ const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/advanceActions');
 const { allLivingRoomOff, allFlatOff } = require('../scene/all');
 
-let rows = Object.keys(urls.devices).map(key => {
-    const actions = urls.devices[key].actions.map(action => {
+const rows = [];
+
+Object.keys(urls.devices).forEach(key => {
+    const buttons = urls.devices[key].actions.map(action => {
         const href = `/ui/action?device=${key}_${action}&type=call`;
         return btn(href, action);
-    }).join(' ');
-    return `<div>${actions} ${urls.devices[key].name}</div>`;
+    });
+    addRow(buttons, urls.devices[key].name);
 });
 
 Object.keys(zigbee.devices).forEach(key => {
@@ -19,14 +21,25 @@ Object.keys(zigbee.devices).forEach(key => {
             btn(`/ui/action?device=${key}&type=zigbeeMenos`, '-'),
             btn(`/ui/action?device=${key}&type=zigbeeToggle`, 'toggle'),
             btn(`/ui/action?device=${key}&type=zigbeePlus`, '+'),
-        ].join(' ');
-        rows.push(`<div>${buttons} ${device.name}</div>`);
+            btn(`/ui/action?device=${key}&type=zigbeeCountdown&value=60`, '&gt; 60'),
+            btn(`/ui/action?device=${key}&type=zigbeeCountdown&value=30`, '&gt; 30'),
+            btn(`/ui/action?device=${key}&type=zigbeeCountdown&value=10`, '&gt; 10'),
+            btn(`/ui/action?device=${key}&type=zigbeeCountdown&value=1`, '&gt; 1'),
+        ];
+        addRow(buttons, device.name);
     }
 });
 
-rows.push(`<div>${btn('/ui/action?type=allOff', 'Flat off')} ${btn('/ui/action?type=livingRoomOff', 'Living room off')}</div>`);
+addRow([
+    btn('/ui/action?type=allOff', 'Flat off'),
+    btn('/ui/action?type=livingRoomOff', 'Living room off'),
+], '');
 
 const ui = `<div>${rows.join('<br />')}</div>`;
+
+function addRow(buttons, name) {
+    rows.push(`<div style="margin: 5px;">${buttons.join(' ')} ${name}</div>`);
+}
 
 function btn(href, action) {
     return `<a href="${href}" style="padding: 7px; border: solid 1px #1e92ae; margin: 5px; text-decoration: none; border-radius: 5px;">${action}</a>`;
@@ -61,6 +74,11 @@ function handleUiAction(req, res) {
         advanceActions.brightness(
             zigbee.devices[query.device].addr,
             30,
+        );
+    } else if (query.type === 'zigbeeCountdown') {
+        advanceActions.countdown(
+            zigbee.devices[query.device].addr,
+            parseInt(query.value, 10),
         );
     }
 
