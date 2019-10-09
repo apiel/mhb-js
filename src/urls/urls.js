@@ -44,7 +44,7 @@ const devices = {
 }
 
 // call every 5 seconds url to keep awake connection
-const uniqOriginUrls = [...new Set(Object.values(urls).map(({ url }) => (new URL(url)).origin))];
+const uniqOriginUrls = [...new Set(Object.values(urls).map(({ url }) => `${(new URL(url)).origin}/ping`))];
 setInterval(() => {
     uniqOriginUrls.forEach(url => axios({ url }).catch(() => {}));
 }, 60000);

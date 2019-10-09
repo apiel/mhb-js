@@ -5,7 +5,7 @@ const advanceActions = require('../zigbee/advanceActions');
 const { allLivingRoomOff } = require('../scene/all');
 
 const devices = {
-    LIVING_ROOM_LIGHT: { mac: 'cd-56-98-7f-cf-5c' },
+    LIVING_ROOM_LIGHT: { mac: '5C:CF:7F:98:56:CD' },
 };
 
 function handleEspButton(req, res) {
