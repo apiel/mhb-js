@@ -15,7 +15,6 @@ zigbeeService.device.on('error', (payload) => {
 zigbeeService.zigbee.on(eventType.ind, (payload) => {
     const device = get(payload, 'endpoints[0].device');
     if (device) {
-        // console.log('onInd', payload);
         onInd(device.ieeeAddr, payload.type);
     }
 });

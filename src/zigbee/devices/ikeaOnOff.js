@@ -36,6 +36,7 @@ class IkeaOnOffLong {
         this.addr = addr;
         this.lastDevice = null;
         this.timer = null;
+        this.repeat = 0;
     }
 
     setLastDevice(addr) {
@@ -43,14 +44,20 @@ class IkeaOnOffLong {
     }
 
     onInd(addr, type, callback) {
-        if (type === 'cmdMove' || type === 'cmdMoveWithOnOff') {
-            this.timer = setInterval(() => {
-                callback(type, this.lastDevice);
-            }, 300);
-        } else if (type === 'cmdStopWithOnOff') {
-            clearInterval(this.timer);
+        if (this.addr === addr) {
+            if (type === 'cmdMove' || type === 'cmdMoveWithOnOff') {
+                this.repeat = 0;
+                this.timer = setInterval(() => {
+                    callback(type, this.lastDevice);
+                    if (this.repeat++ > 20) {
+                        clearInterval(this.timer);
+                    }
+                }, 300);
+            } else {
+                clearInterval(this.timer);
+            }
+            callback(type, this.lastDevice);
         }
-        callback(type, this.lastDevice);
     }
 }
 
