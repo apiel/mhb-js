@@ -2,6 +2,7 @@ const urls = require('../urls/urls');
 const { call } = urls;
 const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/advanceActions');
+const zigbeeService = require('../zigbee/zigbeeService');
 const { allLivingRoomOff } = require('../scene/all');
 
 const devices = {
@@ -35,12 +36,26 @@ function handleEspButton(req, res) {
     if (query.mac === devices.ROOM_LIGHT.mac) {
         console.log('>> btn ROOM_LIGHT');
         if (query.btn2 === '-1') {
-            advanceActions.brightness(zigbee.devices.INNR_E14_BULB, 255);
+            console.log('Long press, make light strong brightness');
+            zigbeeService.device.sendAction({
+                addr: zigbee.devices.INNR_E14_BULB.addr,
+                action: zigbee.actions.brightness(255),
+            });
+
         } else if (query.btn2 === '2') {
-            advanceActions.brightness(zigbee.devices.INNR_E14_BULB, 10);
+            console.log('Double press, make light low brightness');
+            zigbeeService.device.sendAction({
+                addr: zigbee.devices.INNR_E14_BULB.addr,
+                action: zigbee.actions.brightness(10),
+            });
         } else if (query.btn2 === '3') {
-            advanceActions.brightness(zigbee.devices.INNR_E14_BULB, 80);
+            console.log('Tripple press, make light middle brightness');
+            zigbeeService.device.sendAction({
+                addr: zigbee.devices.INNR_E14_BULB.addr,
+                action: zigbee.actions.brightness(120),
+            });
         } else if (query.btn2 === '4') {
+            console.log('4 press, toggle entrance');
             call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
         }
     }
