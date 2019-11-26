@@ -3,11 +3,15 @@ const settings = require('./settings');
 
 const lastToggle = {};
 
+const getBrightness = (addr) => {
+    const { cId, attrId } = settings.read.brightness;
+    return zigbeeService.device.getState(addr, cId, attrId);
+}
+
 const brightness = async (addr, value, min = 0) => {
     let bri = -1;
     try {
-        const { cId, attrId } = settings.read.brightness;
-        bri = await zigbeeService.device.getState(addr, cId, attrId);
+        bri = await getBrightness(addr);
         const brightness = Math.min(Math.max(bri + value, min), 255);
         zigbeeService.device.sendAction({ addr, action: settings.actions.brightness(brightness) });
         bri = brightness;
@@ -36,6 +40,7 @@ function clearCountdown(addr) {
 module.exports = {
     countdown,
     brightness,
+    getBrightness,
     toggle: async (addr) => {
         try {
             const now  = new Date();

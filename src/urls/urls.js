@@ -18,6 +18,9 @@ const urls = {
     LIGHT_LIVING_ROOM_TOGGLE: { url: 'http://192.168.0.192/toggle', limitCall: 2000 },
     LIGHT_LIVING_ROOM_OFF: { url: 'http://192.168.0.192/off', limitCall: 2000 },
     LIGHT_LIVING_ROOM_ON: { url: 'http://192.168.0.192/on', limitCall: 2000 },
+    LIGHT_ROOM_TOGGLE: { url: 'http://192.168.0.101/toggle', limitCall: 2000 },
+    LIGHT_ROOM_OFF: { url: 'http://192.168.0.101/off', limitCall: 2000 },
+    LIGHT_ROOM_ON: { url: 'http://192.168.0.101/on', limitCall: 2000 },
 };
 
 const devices = {

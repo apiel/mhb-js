@@ -84,7 +84,7 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
         if (cmdId === 'genOnOff') {
             const { click, action } = payload;
             if (click === 'single') {
-                call(urls.SWITCH_TOGGLE);
+                call(urls.LIGHT_ROOM_TOGGLE);
             } else if (click === 'double') {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
