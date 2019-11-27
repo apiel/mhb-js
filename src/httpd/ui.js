@@ -40,6 +40,10 @@ const ui = `
 <head>
     <meta name=viewport content='width=500'>
     <style>
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
