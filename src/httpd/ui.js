@@ -43,6 +43,7 @@ const ui = `
         }
         a {
             text-decoration: none;
+            color: #687e88;
         }
         .btn {
             padding: 7px;
@@ -51,6 +52,7 @@ const ui = `
             text-decoration: none;
             border-radius: 5px;
             font-size: 12px;
+            font-weight: bold;
         }
         .row {
             margin: 5px;
@@ -99,6 +101,7 @@ const ui = `
             height: 50px;
             width: 49px;
             float: left;
+            font-weight: normal;
         }
 
         .dropdown {
@@ -133,8 +136,8 @@ const ui = `
 <body>
     <div>::ZigbeeLightRows::</div>
     <div>${sonoffRows.join('')}</div>
-    <div style="clear:both; margin-bottom: 10px"></div>
-    <div>${rows.join('<br />')}</div>
+    <div style="clear:both;"></div>
+    <div style="margin-top: 10px;">${rows.join('<br />')}</div>
 </body>
 </html>
 `;
