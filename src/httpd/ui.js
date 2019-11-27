@@ -137,7 +137,7 @@ const ui = `
     <div>::ZigbeeLightRows::</div>
     <div>${sonoffRows.join('')}</div>
     <div style="clear:both;"></div>
-    <div style="margin-top: 10px;">${rows.join('<br />')}</div>
+    <div style="padding-top: 15px;">${rows.join('<br />')}</div>
 </body>
 </html>
 `;
