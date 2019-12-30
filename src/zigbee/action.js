@@ -4,7 +4,7 @@ const { brightness, toggle } = require('./advanceActions');
 const urls = require('../urls/urls');
 const { call } = urls;
 const { timer } = require('../utils');
-const { allFlatOff } = require('../scene/all');
+const { allFlatOff, allLivingRoomOff } = require('../scene/all');
 
 // Succeed to configure TRADFRI wireless dimmer 0x000b57fffe150865
 // onAfIncomingMsg 0x000b57fffe150865 <Buffer 11 01 07>
@@ -51,9 +51,11 @@ function onInd(ieeeAddr, type) {
     [btnLong, btn2Long].forEach((btn) => btn.onInd(ieeeAddr, type, (_type, _lastDevice) => {
         console.log('ikea btn (long)', _type, _lastDevice);
         if (_type === 'cmdMove') {
-            if (_lastDevice) brightness(_lastDevice, 20);
+            // if (_lastDevice) brightness(_lastDevice, 20);
+            allLivingRoomOff();
         } else if (_type === 'cmdMoveWithOnOff') {
-            if (_lastDevice) brightness(_lastDevice, -20);
+            // if (_lastDevice) brightness(_lastDevice, -20);
+            call(urls.LIGHT_KITCHEN_TOGGLE);
         } else if (_type === 'cmdOff') {
             btnLong.setLastDevice(devices.IKEA_E27_BULB_TRIANGLE.addr);
             toggle(devices.IKEA_E27_BULB_TRIANGLE.addr);
@@ -72,11 +74,14 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
             // console.log('XIAOMI_BTN_ENTRANCE payload', payload);
             const { click, action } = payload;
             if (action === 'hold') {
-                allFlatOff();
+                zigbeeService.device.sendAction({
+                    addr: devices.INNR_E14_BULB.addr,
+                    action: actions.brightness(1),
+                });
             } else if (click === 'single') {
-                call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+                call(urls.LIGHT_ROOM_TOGGLE);
             } else if (click === 'double') {
-                toggle(devices.IKEA_E27_BULB_TRIANGLE.addr);
+                call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
             }
         }
     } else if (ieeeAddr === devices.XIAOMI_BTN_ROOM.addr) { // hold not working
@@ -84,9 +89,9 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
         if (cmdId === 'genOnOff') {
             const { click, action } = payload;
             if (click === 'single') {
-                call(urls.LIGHT_ROOM_TOGGLE);
-            } else if (click === 'double') {
                 call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+            } else if (click === 'double') {
+                allFlatOff();
             }
         }
     // } else if (ieeeAddr === devices.XIAOMI_CUBE.addr) {

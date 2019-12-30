@@ -43,20 +43,14 @@ function handleEspButton(req, res) {
             });
 
         } else if (query.btn2 === '2') {
+            console.log('4 press, toggle entrance');
+            call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+        } else if (query.btn2 === '3') {
             console.log('Double press, make light low brightness');
             zigbeeService.device.sendAction({
                 addr: zigbee.devices.INNR_E14_BULB.addr,
-                action: zigbee.actions.brightness(10),
+                action: zigbee.actions.brightness(1),
             });
-        } else if (query.btn2 === '3') {
-            console.log('Tripple press, make light middle brightness');
-            zigbeeService.device.sendAction({
-                addr: zigbee.devices.INNR_E14_BULB.addr,
-                action: zigbee.actions.brightness(120),
-            });
-        } else if (query.btn2 === '4') {
-            console.log('4 press, toggle entrance');
-            call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
         }
     }
 
