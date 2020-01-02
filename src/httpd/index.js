@@ -1,6 +1,6 @@
 const express = require('express');
 // const bodyParser = require('body-parser');
-const { handleEspButton } = require('./action');
+const { handleEspButton, handleEspPir } = require('./action');
 const { handleUi, handleUiAction } = require('./ui');
 
 const app = express();
@@ -11,6 +11,7 @@ const app = express();
 // app.use(bodyParser.text());
 
 app.all('/esp/button', handleEspButton);
+app.all('/esp/pir', handleEspPir);
 app.all('/', handleUi);
 app.all('/ui/action', handleUiAction);
 
