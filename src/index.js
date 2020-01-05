@@ -4,3 +4,4 @@ require('./zigbee/zigbee');
 require('./bridge/bridge');
 require('./schedule');
 require('./httpd');
+require('./thermostat');

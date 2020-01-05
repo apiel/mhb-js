@@ -37,29 +37,54 @@ function clearCountdown(addr) {
     }
 }
 
+const toggle = async (addr) => {
+    try {
+        const now = new Date();
+        if (!lastToggle[addr] || now - lastToggle[addr] > 1000) { // toggle if last change is more than 2 sec
+            clearCountdown(addr);
+            lastToggle[addr] = now;
+            const { cId, attrId } = settings.read.onOff;
+            const state = await zigbeeService.device.getState(addr, cId, attrId);
+            const onOff = state === 1 ? 'off' : 'on';
+            console.log('toggle new state', addr, state, onOff);
+            zigbeeService.device.sendAction({ addr, action: settings.actions.onOff(onOff) });
+        }
+    } catch (error) {
+        console.error('NEED TO HANDLE ERROR', error);
+    }
+};
+
+const sendActionMany = (items, action) => {
+    Object.values(items).forEach(item => {
+        zigbeeService.device.sendAction({ addr: item.addr, action });
+    });
+};
+
+const hasActiveDevices = async () => {
+    const addrs = Object.values(settings.devices)
+        .filter(({ type }) => type === settings.types.light.name)
+        .map(({ addr }) => addr);
+
+    const { cId, attrId } = settings.read.onOff;
+    for (addr of addrs) {
+        try {
+            console.log('call', { addr, cId, attrId });
+            const state = await zigbeeService.device.getState(addr, cId, attrId);
+            console.log('state', { state, addr });
+            const onOff = state === 1 ? 'off' : 'on';
+            if (state !== 1) {
+                return true;
+            }
+        } catch (e) {}
+    }
+    return false;
+};
+
 module.exports = {
     countdown,
     brightness,
     getBrightness,
-    toggle: async (addr) => {
-        try {
-            const now  = new Date();
-            if ( !lastToggle[addr] || now - lastToggle[addr] > 1000 ) { // toggle if last change is more than 2 sec
-                clearCountdown(addr);
-                lastToggle[addr] = now;
-                const { cId, attrId } = settings.read.onOff;
-                const state = await zigbeeService.device.getState(addr, cId, attrId);
-                const onOff = state === 1 ? 'off' : 'on';
-                console.log('toggle new state', addr, state, onOff);
-                zigbeeService.device.sendAction({ addr, action: settings.actions.onOff(onOff) });
-            }
-        } catch (error) {
-            console.error('NEED TO HANDLE ERROR', error);
-        }
-    },
-    sendActionMany: (items, action) => {
-        Object.values(items).forEach(item => {
-            zigbeeService.device.sendAction({ addr: item.addr, action });
-        });
-    }
+    toggle,
+    sendActionMany,
+    hasActiveDevices,
 }

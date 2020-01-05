@@ -46,10 +46,11 @@ const devices = {
     },
 }
 
-// call every 5 seconds url to keep awake connection
-const uniqOriginUrls = [...new Set(Object.values(urls).map(({ url }) => `${(new URL(url)).origin}/ping`))];
+const uniqOriginUrls = [...new Set(Object.values(urls).map(({ url }) => new URL(url).origin))];
+// call every minute url to keep awake connection
+const pingUrls = uniqOriginUrls.map(({ url }) => `${url}/ping`);
 setInterval(() => {
-    uniqOriginUrls.forEach(url => axios({ url }).catch(() => {}));
+    pingUrls.forEach(url => axios({ url }).catch(() => {}));
 }, 60000);
 
 function call(options) {
@@ -64,7 +65,22 @@ function call(options) {
         .catch(console.error);
 }
 
+async function hasActiveDevices() {
+    const skip = ['http://192.168.0.220']; // entrance
+    const urls = uniqOriginUrls.filter(url => !skip.includes(url));
+    for(url of urls) {
+        try {
+            const { data } = await axios({ url });
+            if (data.includes('relay status: ON')) {
+                return true;
+            }
+        } catch (e) {}
+    }
+    return false;
+}
+
 module.exports = {
+    hasActiveDevices,
     call,
     devices,
     ...urls,
