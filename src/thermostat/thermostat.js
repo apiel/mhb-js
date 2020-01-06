@@ -21,12 +21,18 @@ function parseResult(result) {
         const data = JSON.parse(results[9]);
         // console.log('getThermostatData', data);
         writeFile('thermostat-temp.txt', data.thermostat_temp, () => { });
+        writeFile('thermostat-data.json', results[9], () => { });
         return data;
     }
 }
 
 function getLogTemperature() {
     return promisify(readFile)('thermostat-temp.txt');
+}
+
+async function getLogThermostat() {
+    const data = await promisify(readFile)('thermostat-data.json');
+    return JSON.parse(data);
 }
 
 function getThermostatData() {
@@ -38,12 +44,14 @@ function executeThermostatSchedules(schedules) {
     const cmd = `${baseCmd} --schedule='${JSON.stringify(schedules)}'`;
     const result = execSync(cmd, { encoding: 'utf8' });
     console.log('executeThermostatSchedules', result);
+    return parseResult(result);
 }
 
 function executeThermostatPower(power = 'off') {
     const cmd = `${baseCmd} --power='${power}'`;
     const result = execSync(cmd, { encoding: 'utf8' });
     console.log('executeThermostatPower', result);
+    return parseResult(result);
 }
 
 function setNextSchedule(currentTime, duration = 30, temp = warmTemp) {
@@ -118,5 +126,6 @@ module.exports = {
     thermostatActivate,
     executeThermostatPower,
     getLogTemperature,
+    getLogThermostat,
     config,
 }

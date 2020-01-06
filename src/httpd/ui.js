@@ -4,7 +4,8 @@ const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/advanceActions');
 const zigbeeService = require('../zigbee/zigbeeService');
 const { allLivingRoomOff, allFlatOff } = require('../scene/all');
-const { executeThermostatPower, thermostatActivate, getLogTemperature } = require('../thermostat/thermostat');
+const { executeThermostatPower, getLogThermostat } = require('../thermostat/thermostat');
+const { activateHeating } = require('../thermostat');
 
 const rows = [];
 const sonoffRows = [];
@@ -152,7 +153,7 @@ function addThermostat() {
     return `
     <div class="card card-thermostat">
         <div>
-            <span>::Temperature::°C</span>
+            <span>::RoomTemperature::°C</span>
         </div>
         <div class="btns">
             <a href="/ui/action?type=heatingOn" class="btn">
@@ -163,6 +164,9 @@ function addThermostat() {
             </a>
             <a href="/ui/action?type=heatingBoost" class="btn">
                 BOOST
+            </a>
+            <a class="btn">
+                ::ThermostatTemperature::°C
             </a>
         </div>
     </div>
@@ -239,10 +243,11 @@ async function handleUi(req, res) {
         return html.replace('125', bri);
     }));
     const zigbeeLightRowsContent = items.join(''); // <br />
-    const temperature = await getLogTemperature();
+    const { thermostat_temp, room_temp } = await getLogThermostat();
     res.send(
         ui.replace('::ZigbeeLightRows::', zigbeeLightRowsContent)
-            .replace('::Temperature::', temperature),
+            .replace('::RoomTemperature::', room_temp)
+            .replace('::ThermostatTemperature::', thermostat_temp),
     );
 }
 
@@ -270,7 +275,7 @@ function handleUiAction(req, res) {
     } else if (query.type === 'heatingBoost') {
         const duration = 15;
         const temp = 22;
-        thermostatActivate(duration, temp);
+        activateHeating('UI', temp, duration);
     } else if (query.type === 'heatingOn') {
         executeThermostatPower('on');
     } else if (query.type === 'heatingOff') {

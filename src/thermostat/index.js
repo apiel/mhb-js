@@ -9,26 +9,30 @@ const { now, sunTime } = require('../schedule');
 const CHECK_INTERVAL = 5 * 60 * 1000; // every 5 min
 const HEATING_DURATION = 30; // 30 min
 const PAUSE_DURATION = 15; // 15 min
-const NEXT_CHECK = (HEATING_DURATION + PAUSE_DURATION) * 60 * 1000;
 
 let interval = setInterval(check, CHECK_INTERVAL);
 let activated = false;
 
 function log(type) {
-    appendFile('thermostat.txt', `${Date().toString()} ${type}\n`, () => {});
+    appendFile('thermostat.txt', `${Date().toString()} ${type}\n`, () => { });
 }
 
-function activate(type) {
+function activateHeating(type, temp = config.start.temp, duration = HEATING_DURATION) {
+    clearInterval(interval);
+    activated = true;
+    const nextCheck = (duration + PAUSE_DURATION) * 60 * 1000;
+    interval = setTimeout(() => {
+        setInterval(check, CHECK_INTERVAL);
+        activated = false;
+    }, nextCheck);
+    console.log('Start thermostat', { duration });
+    thermostatActivate(duration, temp);
+    log(type);
+}
+
+function tryToActivateHeating(type) {
     if (!activated) {
-        clearInterval(interval);
-        activated = true;
-        interval = setTimeout(() => {
-            setInterval(check, CHECK_INTERVAL);
-            activated = false;
-        }, NEXT_CHECK);
-        console.log('Start thermostat', { HEATING_DURATION });
-        thermostatActivate(HEATING_DURATION);
-        log(type);
+        activateHeating(type);
     }
 }
 
@@ -36,7 +40,7 @@ async function check() {
     const someDevicesAreActive = await hasActiveDevices() || await hasActiveZigbeeDevices();
     console.log('Check for active device', { someDevicesAreActive });
     if (someDevicesAreActive) {
-        activate('DEVICE');
+        tryToActivateHeating('DEVICE');
     }
 }
 
@@ -51,11 +55,12 @@ function pir() {
         pirLog = pirLog.slice(-MIN_COUNT_MOVEMENT);
         if (pirLog.length === MIN_COUNT_MOVEMENT && moment(_now).diff(pirLog[0], 'minutes') < MOVEMENT_DURATION) {
             console.log('PIR move...');
-            activate('PIR');
+            tryToActivateHeating('PIR');
         }
     }
 }
 
 module.exports = {
     pir,
+    activateHeating,
 }
