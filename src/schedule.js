@@ -4,6 +4,8 @@ const moment = require('moment');
 const urls = require('./urls/urls');
 const { call } = urls;
 
+const sunTime = () => sunCalc.getTimes(now(), 48.230388, 16.370070); // Vienna 1200
+
 // console.log('format', moment().format());
 // const eg = sunCalc.getTimes(new Date(), 48.230388, 16.370070); // Vienna 1200
 // console.log('example', moment(eg.sunsetStart).format());
@@ -38,11 +40,11 @@ function shouldTrigger(id, value, time) {
     return true;
 }
 
+
 console.log('Start schedule, every 1 min check');
 setInterval(() => {
     const _now = now();
-    const times = sunCalc.getTimes(_now, 48.230388, 16.370070); // Vienna 1200
-    if (_now > times.goldenHour && shouldTrigger('goldenHour', _now.getDate(), times.goldenHour)) {
+    if (_now > sunTime().goldenHour && shouldTrigger('goldenHour', _now.getDate(), sunTime().goldenHour)) {
         call(urls.LIGHT_WALL_ENTRANCE_ON);
     }
     let next = time('23:30');
@@ -52,6 +54,7 @@ setInterval(() => {
 }, oneMinute); // every min
 
 module.exports = {
+    sunTime,
     time,
     now,
 }

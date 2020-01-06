@@ -4,7 +4,7 @@ const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/advanceActions');
 const zigbeeService = require('../zigbee/zigbeeService');
 const { allLivingRoomOff, allFlatOff } = require('../scene/all');
-const { executeThermostatPower, thermostatActivate } = require('../thermostat/thermostat');
+const { executeThermostatPower, thermostatActivate, getLogTemperature } = require('../thermostat/thermostat');
 
 const rows = [];
 const sonoffRows = [];
@@ -28,9 +28,6 @@ Object.keys(zigbee.devices).forEach(key => {
 addRow([
     btn('/ui/action?type=allOff', 'Flat off'),
     btn('/ui/action?type=livingRoomOff', 'Living room off'),
-    btn('/ui/action?type=heatingBoost', 'Boost heating'),
-    btn('/ui/action?type=heatingOn', 'Heating on'),
-    btn('/ui/action?type=heatingOff', 'Heating off'),
 ], '');
 
 const ui = `
@@ -108,6 +105,10 @@ const ui = `
             font-weight: normal;
         }
 
+        .card.card-thermostat .btn {
+            height: auto;
+        }
+
         .dropdown {
             position: absolute;
             margin-left: 135px;
@@ -140,11 +141,33 @@ const ui = `
 <body>
     <div>::ZigbeeLightRows::</div>
     <div>${sonoffRows.join('')}</div>
+    <div>${addThermostat()}</div>
     <div style="clear:both;"></div>
     <div style="padding-top: 15px;">${rows.join('<br />')}</div>
 </body>
 </html>
 `;
+
+function addThermostat() {
+    return `
+    <div class="card card-thermostat">
+        <div>
+            <span>::Temperature::°C</span>
+        </div>
+        <div class="btns">
+            <a href="/ui/action?type=heatingOn" class="btn">
+                ON
+            </a>
+            <a href="/ui/action?type=heatingOff" class="btn">
+                OFF
+            </a>
+            <a href="/ui/action?type=heatingBoost" class="btn">
+                BOOST
+            </a>
+        </div>
+    </div>
+`;
+}
 
 function addRow(buttons, name) {
     rows.push(`<div class="row">${buttons.join(' ')} ${name}</div>`);
@@ -215,9 +238,11 @@ async function handleUi(req, res) {
         const bri = await PromiseTimeout(advanceActions.getBrightness(zigbee.devices[key].addr), 125);
         return html.replace('125', bri);
     }));
-    const content = items.join(''); // <br />
+    const zigbeeLightRowsContent = items.join(''); // <br />
+    const temperature = await getLogTemperature();
     res.send(
-        ui.replace('::ZigbeeLightRows::', content)
+        ui.replace('::ZigbeeLightRows::', zigbeeLightRowsContent)
+            .replace('::Temperature::', temperature),
     );
 }
 

@@ -5,6 +5,7 @@ const advanceActions = require('../zigbee/advanceActions');
 const zigbeeService = require('../zigbee/zigbeeService');
 const { allLivingRoomOff } = require('../scene/all');
 const { appendFile } = require('fs');
+const { pir } = require('../thermostat');
 
 const devices = {
     LIVING_ROOM_LIGHT: { mac: '5C:CF:7F:98:56:CD' },
@@ -60,10 +61,11 @@ function handleEspButton(req, res) {
 
 function handleEspPir(req, res) {
     console.log('Handle PIR!');
-    appendFile('pir.txt', `${Date().toString()}\n`, function (err) {
-        if (err) console.log('ERR PIR', err);
-        console.log('Saved!');
-    });
+    // appendFile('pir.txt', `${Date().toString()}\n`, function (err) {
+    //     if (err) console.log('ERR PIR', err);
+    //     console.log('Saved!');
+    // });
+    pir();
     res.json([{ success: true }]);
 }
 

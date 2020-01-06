@@ -1,4 +1,5 @@
-const fs = require('fs');
+const { writeFile, readFile } = require('fs');
+const { promisify } = require('util');
 const moment = require('moment');
 const {
     execSync,
@@ -13,15 +14,24 @@ const config = {
 };
 
 const baseCmd = 'cd ../broadlink-thermostat-cli/ && ./broadlink-thermostat-cli.py';
-function getThermostatData() {
-    const result = execSync(baseCmd, { encoding: 'utf8' });
-    const results = result.split("\n")
 
+function parseResult(result) {
+    const results = result.split("\n");
     if (results.length === 12) {
         const data = JSON.parse(results[9]);
         // console.log('getThermostatData', data);
+        writeFile('thermostat-temp.txt', data.thermostat_temp, () => { });
         return data;
     }
+}
+
+function getLogTemperature() {
+    return promisify(readFile)('thermostat-temp.txt');
+}
+
+function getThermostatData() {
+    const result = execSync(baseCmd, { encoding: 'utf8' });
+    return parseResult(result);
 }
 
 function executeThermostatSchedules(schedules) {
@@ -107,4 +117,6 @@ function thermostatActivate(duration = 30, temp = warmTemp) {
 module.exports = {
     thermostatActivate,
     executeThermostatPower,
+    getLogTemperature,
+    config,
 }
