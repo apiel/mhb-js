@@ -21,7 +21,7 @@ function parseResult(result) {
         const data = JSON.parse(results[9]);
         // console.log('getThermostatData', data);
         writeFile('thermostat-temp.txt', data.thermostat_temp, () => { });
-        writeFile('thermostat-data.json', results[9], () => { });
+        writeFile('thermostat-data.json', JSON.stringify(data, null, 4), () => { });
         return data;
     }
 }
@@ -35,6 +35,7 @@ async function getLogThermostat() {
     return JSON.parse(data);
 }
 
+// should use exec instead of execSync... for PIR and UI call
 function getThermostatData() {
     const result = execSync(baseCmd, { encoding: 'utf8' });
     return parseResult(result);

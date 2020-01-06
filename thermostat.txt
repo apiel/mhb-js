@@ -15,3 +15,12 @@ Mon Jan 06 2020 15:34:30 GMT+0100 (Central European Standard Time) UI
 Mon Jan 06 2020 15:35:11 GMT+0100 (Central European Standard Time) UI
 Mon Jan 06 2020 15:58:48 GMT+0100 (Central European Standard Time) DEVICE
 Mon Jan 06 2020 16:28:11 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 16:36:58 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:01:15 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:07:20 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:13:27 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:19:33 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:25:34 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:31:34 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:41:02 GMT+0100 (Central European Standard Time) DEVICE
+Mon Jan 06 2020 17:47:04 GMT+0100 (Central European Standard Time) DEVICE

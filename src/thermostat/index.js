@@ -3,13 +3,15 @@ const { appendFile } = require('fs');
 
 const { hasActiveDevices } = require('../urls/urls');
 const { hasActiveDevices: hasActiveZigbeeDevices } = require('../zigbee/advanceActions');
-const { thermostatActivate, config } = require('./thermostat');
+const { thermostatActivate, config, getThermostatData } = require('./thermostat');
 const { now, sunTime } = require('../schedule');
 
 const CHECK_INTERVAL = 5 * 60 * 1000; // every 5 min
 const HEATING_DURATION = 30; // 30 min
 const PAUSE_DURATION = 15; // 15 min
 
+const getThermostatDataFn = () => getThermostatData().then(() => {}).catch(() => {});
+setInterval(getThermostatDataFn, 10 * 60 * 1000); // get thermostat state for UI every 10min
 let interval = setInterval(check, CHECK_INTERVAL);
 let activated = false;
 
@@ -28,6 +30,7 @@ function activateHeating(type, temp = config.start.temp, duration = HEATING_DURA
     console.log('Start thermostat', { duration });
     thermostatActivate(duration, temp);
     log(type);
+    setTimeout(getThermostatDataFn, 30 * 1000); // get thermostat state for UI in next 30 sec the time thermostat update
 }
 
 function tryToActivateHeating(type) {
