@@ -4,6 +4,7 @@ const zigbee = require('../zigbee/settings');
 const advanceActions = require('../zigbee/advanceActions');
 const zigbeeService = require('../zigbee/zigbeeService');
 const { allLivingRoomOff, allFlatOff } = require('../scene/all');
+const { executeThermostatPower, thermostatActivate } = require('../thermostat/thermostat');
 
 const rows = [];
 const sonoffRows = [];
@@ -27,6 +28,9 @@ Object.keys(zigbee.devices).forEach(key => {
 addRow([
     btn('/ui/action?type=allOff', 'Flat off'),
     btn('/ui/action?type=livingRoomOff', 'Living room off'),
+    btn('/ui/action?type=heatingBoost', 'Boost heating'),
+    btn('/ui/action?type=heatingOn', 'Heating on'),
+    btn('/ui/action?type=heatingOff', 'Heating off'),
 ], '');
 
 const ui = `
@@ -238,6 +242,14 @@ function handleUiAction(req, res) {
         allFlatOff();
     } else if (query.type === 'livingRoomOff') {
         allLivingRoomOff();
+    } else if (query.type === 'heatingBoost') {
+        const duration = 15;
+        const temp = 22;
+        thermostatActivate(duration, temp);
+    } else if (query.type === 'heatingOn') {
+        executeThermostatPower('on');
+    } else if (query.type === 'heatingOff') {
+        executeThermostatPower('off');
     } else if (query.type === 'zigbeeToggle') {
         advanceActions.toggle(
             zigbee.devices[query.device].addr,
