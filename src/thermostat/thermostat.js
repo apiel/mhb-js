@@ -128,5 +128,6 @@ module.exports = {
     executeThermostatPower,
     getLogTemperature,
     getLogThermostat,
+    getThermostatData,
     config,
 }

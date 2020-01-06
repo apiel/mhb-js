@@ -10,27 +10,27 @@ const CHECK_INTERVAL = 5 * 60 * 1000; // every 5 min
 const HEATING_DURATION = 30; // 30 min
 const PAUSE_DURATION = 15; // 15 min
 
-const getThermostatDataFn = () => getThermostatData().then(() => {}).catch(() => {});
-setInterval(getThermostatDataFn, 10 * 60 * 1000); // get thermostat state for UI every 10min
+// const getThermostatDataFn = () => getThermostatData().then(() => {}).catch(() => {});
+setInterval(getThermostatData, 10 * 60 * 1000); // get thermostat state for UI every 10min
 let interval = setInterval(check, CHECK_INTERVAL);
 let activated = false;
 
-function log(type) {
-    appendFile('thermostat.txt', `${Date().toString()} ${type}\n`, () => { });
+function log(type, duration) {
+    appendFile('thermostat.txt', `${Date().toString()} ${type} ${duration}\n`, () => { });
 }
 
 function activateHeating(type, temp = config.start.temp, duration = HEATING_DURATION) {
     clearInterval(interval);
     activated = true;
     const nextCheck = (duration + PAUSE_DURATION) * 60 * 1000;
-    interval = setTimeout(() => {
-        setInterval(check, CHECK_INTERVAL);
+    setTimeout(() => {
+        interval = setInterval(check, CHECK_INTERVAL);
         activated = false;
     }, nextCheck);
     console.log('Start thermostat', { duration });
     thermostatActivate(duration, temp);
-    log(type);
-    setTimeout(getThermostatDataFn, 30 * 1000); // get thermostat state for UI in next 30 sec the time thermostat update
+    log(type, duration);
+    setTimeout(getThermostatData, 30 * 1000); // get thermostat state for UI in next 30 sec the time thermostat update
 }
 
 function tryToActivateHeating(type) {
