@@ -1,15 +1,15 @@
 {
-    "dayofweek": 1,
+    "dayofweek": 2,
     "remote_lock": 0,
     "osv": 42,
-    "sec": 20,
+    "sec": 48,
     "external_temp": 0,
     "fre": 0,
-    "min": 45,
+    "min": 16,
     "unknown": 0,
     "sensor": 0,
     "loop_mode": 1,
-    "room_temp": 21.5,
+    "room_temp": 20.5,
     "power": 1,
     "thermostat_temp": 21,
     "temp_manual": 1,
@@ -20,12 +20,12 @@
         {
             "start_hour": 18,
             "temp": 21,
-            "start_minute": 46
+            "start_minute": 17
         },
         {
-            "start_hour": 19,
+            "start_hour": 18,
             "temp": 18,
-            "start_minute": 16
+            "start_minute": 47
         }
     ],
     "auto_mode": 1,
@@ -57,12 +57,12 @@
         {
             "start_hour": 18,
             "temp": 21,
-            "start_minute": 46
+            "start_minute": 17
         },
         {
-            "start_hour": 19,
+            "start_hour": 18,
             "temp": 18,
-            "start_minute": 16
+            "start_minute": 47
         }
     ]
 }

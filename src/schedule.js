@@ -4,7 +4,7 @@ const moment = require('moment');
 const urls = require('./urls/urls');
 const { call } = urls;
 
-const sunTime = () => sunCalc.getTimes(now(), 48.230388, 16.370070); // Vienna 1200
+const sunTime = () => sunCalc.getTimes(moment().toDate(), 48.230388, 16.370070); // Vienna 1200
 
 // console.log('format', moment().format());
 // const eg = sunCalc.getTimes(new Date(), 48.230388, 16.370070); // Vienna 1200
@@ -20,10 +20,6 @@ function time(str) {
     const m = moment(str, 'HH:mm');
     m.subtract(1, 'hours'); // since we give time in utc+1 we have to remove 1 because new Date is utc 0
     return m.toDate();
-}
-
-function now() {
-    return moment().toDate();
 }
 
 const oneMinute = 60 * 1000;
@@ -43,12 +39,12 @@ function shouldTrigger(id, value, time) {
 
 console.log('Start schedule, every 1 min check');
 setInterval(() => {
-    const _now = now();
-    if (_now > sunTime().goldenHour && shouldTrigger('goldenHour', _now.getDate(), sunTime().goldenHour)) {
+    const now = moment().toDate();
+    if (now > sunTime().goldenHour && shouldTrigger('goldenHour', now.getDate(), sunTime().goldenHour)) {
         call(urls.LIGHT_WALL_ENTRANCE_ON);
     }
     let next = time('23:30');
-    if (_now > next && shouldTrigger('entrance OFF evening', _now.getDate(), next)) {
+    if (now > next && shouldTrigger('entrance OFF evening', now.getDate(), next)) {
         call(urls.LIGHT_WALL_ENTRANCE_OFF);
     }
 }, oneMinute); // every min
@@ -56,5 +52,4 @@ setInterval(() => {
 module.exports = {
     sunTime,
     time,
-    now,
 }

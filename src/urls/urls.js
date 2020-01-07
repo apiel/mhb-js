@@ -72,11 +72,10 @@ async function hasActiveDevices() {
         try {
             const { data } = await axios({ url });
             if (data.includes('relay status: ON')) {
-                return true;
+                return url;
             }
         } catch (e) {}
     }
-    return false;
 }
 
 module.exports = {

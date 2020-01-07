@@ -4,7 +4,7 @@ const { appendFile } = require('fs');
 const { hasActiveDevices } = require('../urls/urls');
 const { hasActiveDevices: hasActiveZigbeeDevices } = require('../zigbee/advanceActions');
 const { thermostatActivate, config, getThermostatData } = require('./thermostat');
-const { now, sunTime } = require('../schedule');
+const { sunTime } = require('../schedule');
 
 const CHECK_INTERVAL = 5 * 60 * 1000; // every 5 min
 const HEATING_DURATION = 30; // 30 min
@@ -40,23 +40,30 @@ function tryToActivateHeating(type) {
 }
 
 async function check() {
-    const someDevicesAreActive = await hasActiveDevices() || await hasActiveZigbeeDevices();
-    console.log('Check for active device', { someDevicesAreActive });
-    if (someDevicesAreActive) {
-        tryToActivateHeating('DEVICE');
+    let device;
+    if (device = await hasActiveDevices()) {
+        console.log('There is some active relay, we might need to start heating', { device });
+        tryToActivateHeating(`RELAY::${device}`);
+    } else if (device = await hasActiveZigbeeDevices()) {
+        console.log('There is some active zigbee, we might need to start heating', { device });
+        tryToActivateHeating(`ZIGBEE::${device}`);
+    } else {
+        console.log('There is no active device, leave heating in peace.');
     }
 }
+
+// setTimeout(check, 10000); // just for test purpose
 
 const MIN_COUNT_MOVEMENT = 3;
 const MOVEMENT_DURATION = 15;
 let pirLog = [];
-const morningTime = moment({ hour: config.end.start_hour, minute: config.end.start_minute });
 function pir() {
-    const _now = now();
-    if (_now < sunTime().goldenHour && _now > morningTime) {
-        pirLog.push(moment(_now));
+    const now = moment();
+    const morningTime = moment({ hour: config.end.start_hour, minute: config.end.start_minute });
+    if (now.isBetween(morningTime, sunTime().goldenHour)) {
+        pirLog.push(now);
         pirLog = pirLog.slice(-MIN_COUNT_MOVEMENT);
-        if (pirLog.length === MIN_COUNT_MOVEMENT && moment(_now).diff(pirLog[0], 'minutes') < MOVEMENT_DURATION) {
+        if (pirLog.length === MIN_COUNT_MOVEMENT && now.diff(pirLog[0], 'minutes') < MOVEMENT_DURATION) {
             console.log('PIR move...');
             tryToActivateHeating('PIR');
         }

@@ -31,8 +31,12 @@ function getLogTemperature() {
 }
 
 async function getLogThermostat() {
-    const data = await promisify(readFile)('thermostat-data.json');
-    return JSON.parse(data);
+    try {
+        const data = await promisify(readFile)('thermostat-data.json');
+        return JSON.parse(data);
+    } catch (error) {
+        return {};
+    }
 }
 
 // should use exec instead of execSync... for PIR and UI call

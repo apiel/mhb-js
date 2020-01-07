@@ -68,16 +68,14 @@ const hasActiveDevices = async () => {
     const { cId, attrId } = settings.read.onOff;
     for (addr of addrs) {
         try {
-            console.log('call', { addr, cId, attrId });
+            // console.log('call', { addr, cId, attrId });
             const state = await zigbeeService.device.getState(addr, cId, attrId);
-            console.log('state', { state, addr });
-            const onOff = state === 1 ? 'off' : 'on';
-            if (state !== 1) {
-                return true;
+            // console.log('state', { state, addr });
+            if (state === 1) {
+                return addr;
             }
         } catch (e) {}
     }
-    return false;
 };
 
 module.exports = {
