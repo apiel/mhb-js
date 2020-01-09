@@ -145,6 +145,11 @@ const ui = `
     <div>${addThermostat()}</div>
     <div style="clear:both;"></div>
     <div style="padding-top: 15px;">${rows.join('<br />')}</div>
+    <div style="padding-top: 50px; font-size: 10px; text-align: center;">
+        <a href="http://192.168.0.122:3000/journal">journal</a>
+        -
+        <a href="http://192.168.0.122:3000/log">log</a>
+    </div>
 </body>
 </html>
 `;

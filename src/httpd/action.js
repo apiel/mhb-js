@@ -6,6 +6,9 @@ const zigbeeService = require('../zigbee/zigbeeService');
 const { allLivingRoomOff } = require('../scene/all');
 const { appendFile } = require('fs');
 const { pir } = require('../thermostat');
+const {
+    execSync,
+} = require('child_process');
 
 const devices = {
     LIVING_ROOM_LIGHT: { mac: '5C:CF:7F:98:56:CD' },
@@ -69,7 +72,15 @@ function handleEspPir(req, res) {
     res.json([{ success: true }]);
 }
 
+function handleJournal(req, res) {
+    console.log('Handle Journal!');
+    // might better use async?
+    const result = execSync('journalctl -u mhb-js.service -n 100 --no-pager', { encoding: 'utf8' });
+    res.send(`<pre>${result}</pre>`);
+}
+
 module.exports = {
     handleEspButton,
     handleEspPir,
+    handleJournal,
 }

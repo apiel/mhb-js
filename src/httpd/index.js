@@ -1,6 +1,7 @@
 const express = require('express');
+const serveIndex = require('serve-index');
 // const bodyParser = require('body-parser');
-const { handleEspButton, handleEspPir } = require('./action');
+const { handleEspButton, handleEspPir, handleJournal } = require('./action');
 const { handleUi, handleUiAction } = require('./ui');
 
 const app = express();
@@ -12,8 +13,11 @@ const app = express();
 
 app.all('/esp/button', handleEspButton);
 app.all('/esp/pir', handleEspPir);
+app.all('/journal', handleJournal);
 app.all('/', handleUi);
 app.all('/ui/action', handleUiAction);
+
+app.use('/log', express.static('log'), serveIndex('log', {'icons': true}));
 
 app.use((req, res, next) => {
     console.log('No route for ', req.originalUrl, req.method);

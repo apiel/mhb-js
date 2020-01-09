@@ -20,19 +20,19 @@ function parseResult(result) {
     if (results.length === 12) {
         const data = JSON.parse(results[9]);
         // console.log('getThermostatData', data);
-        writeFile('thermostat-temp.txt', data.thermostat_temp, () => { });
-        writeFile('thermostat-data.json', JSON.stringify(data, null, 4), () => { });
+        writeFile('log/thermostat-temp.txt', data.thermostat_temp, () => { });
+        writeFile('log/thermostat-data.json', JSON.stringify(data, null, 4), () => { });
         return data;
     }
 }
 
 function getLogTemperature() {
-    return promisify(readFile)('thermostat-temp.txt');
+    return promisify(readFile)('log/thermostat-temp.txt');
 }
 
 async function getLogThermostat() {
     try {
-        const data = await promisify(readFile)('thermostat-data.json');
+        const data = await promisify(readFile)('log/thermostat-data.json');
         return JSON.parse(data);
     } catch (error) {
         return {};

@@ -16,7 +16,7 @@ let interval = setInterval(check, CHECK_INTERVAL);
 let activated = false;
 
 function log(type, duration) {
-    appendFile('thermostat.txt', `${Date().toString()} ${type} ${duration}\n`, () => { });
+    appendFile('log/thermostat.txt', `${Date().toString()} ${type} ${duration}\n`, () => { });
 }
 
 function activateHeating(type, temp = config.start.temp, duration = HEATING_DURATION) {
