@@ -117,6 +117,7 @@ function thermostatActivate(duration = 30, temp = warmTemp) {
                 setNextSchedule(currentTime, duration, temp);
             }
             failedDeviceRetry = 0;
+            return true;
         } catch (error) {
             if (error === 'failed to get devices') {
                 onFailedToGetDevice();
@@ -125,6 +126,7 @@ function thermostatActivate(duration = 30, temp = warmTemp) {
             }
         }
     }
+    return false;
 }
 
 module.exports = {

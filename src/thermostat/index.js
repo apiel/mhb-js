@@ -20,17 +20,20 @@ function log(type, duration) {
 }
 
 function activateHeating(type, temp = config.start.temp, duration = HEATING_DURATION) {
-    clearInterval(interval);
-    activated = true;
-    const nextCheck = (duration + PAUSE_DURATION) * 60 * 1000;
-    setTimeout(() => {
-        interval = setInterval(check, CHECK_INTERVAL);
-        activated = false;
-    }, nextCheck);
-    console.log('Start thermostat', { duration });
-    thermostatActivate(duration, temp);
-    log(type, duration);
-    setTimeout(getThermostatData, 30 * 1000); // get thermostat state for UI in next 30 sec the time thermostat update
+    activated = thermostatActivate(duration, temp);
+    if (activated) {
+        clearInterval(interval);
+        const nextCheck = (duration + PAUSE_DURATION) * 60 * 1000;
+        setTimeout(() => {
+            interval = setInterval(check, CHECK_INTERVAL);
+            activated = false;
+        }, nextCheck);
+        console.log('Start thermostat', { duration });
+        log(type, duration);
+        setTimeout(getThermostatData, 30 * 1000); // get thermostat state for UI in next 30 sec the time thermostat update
+    } else {
+        log(`${type}_FAIL`, duration);
+    }
 }
 
 function tryToActivateHeating(type) {
