@@ -18,7 +18,7 @@ const sunTime = () => sunCalc.getTimes(moment().toDate(), 48.230388, 16.370070);
 
 function time(str) {
     const m = moment(str, 'HH:mm');
-    m.subtract(1, 'hours'); // since we give time in utc+1 we have to remove 1 because new Date is utc 0
+    // m.subtract(1, 'hours'); // since we give time in utc+1 we have to remove 1 because new Date is utc 0 // not true anymore
     return m.toDate();
 }
 
