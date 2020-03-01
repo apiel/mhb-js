@@ -5,7 +5,7 @@ const {
     execSync,
 } = require('child_process');
 
-const warmTemp = 21.0;
+const warmTemp = 22.0;
 const awayTemp = 18.0;
 
 const config = {
@@ -130,6 +130,7 @@ function thermostatActivate(duration = 30, temp = warmTemp) {
 }
 
 module.exports = {
+    warmTemp,
     thermostatActivate,
     executeThermostatPower,
     getLogTemperature,

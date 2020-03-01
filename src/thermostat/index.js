@@ -3,7 +3,7 @@ const { appendFile } = require('fs');
 
 const { hasActiveDevices } = require('../urls/urls');
 const { hasActiveDevices: hasActiveZigbeeDevices } = require('../zigbee/advanceActions');
-const { thermostatActivate, config, getThermostatData } = require('./thermostat');
+const { thermostatActivate, config, getThermostatData, warmTemp } = require('./thermostat');
 const { sunTime } = require('../schedule');
 
 const CHECK_INTERVAL = 5 * 60 * 1000; // every 5 min
@@ -57,7 +57,7 @@ async function check() {
 
 // setTimeout(check, 10000); // just for test purpose
 
-const MIN_COUNT_MOVEMENT = 10;
+const MIN_COUNT_MOVEMENT = 6;
 const MOVEMENT_DURATION = 15;
 let pirLog = [];
 function pir() {
@@ -76,5 +76,6 @@ function pir() {
 
 module.exports = {
     pir,
+    warmTemp,
     activateHeating,
 }

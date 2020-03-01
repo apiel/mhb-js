@@ -1,6 +1,6 @@
 const { devices, actions } = require('./settings');
 const zigbeeService = require('./zigbeeService');
-const { brightness, toggle } = require('./advanceActions');
+const { brightness, toggle, getBrightness } = require('./advanceActions');
 const urls = require('../urls/urls');
 const { call } = urls;
 const { timer } = require('../utils');
@@ -74,9 +74,10 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
             // console.log('XIAOMI_BTN_ENTRANCE payload', payload);
             const { click, action } = payload;
             if (action === 'hold') {
+                const bri = getBrightness(devices.INNR_E14_BULB.addr);
                 zigbeeService.device.sendAction({
                     addr: devices.INNR_E14_BULB.addr,
-                    action: actions.brightness(255),
+                    action: actions.brightness(bri !== 255 ? 255 : 10),
                 });
             } else if (click === 'single') {
                 // call(urls.LIGHT_ROOM_TOGGLE);

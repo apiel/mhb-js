@@ -5,7 +5,7 @@ const advanceActions = require('../zigbee/advanceActions');
 const zigbeeService = require('../zigbee/zigbeeService');
 const { allLivingRoomOff, allFlatOff } = require('../scene/all');
 const { executeThermostatPower, getLogThermostat } = require('../thermostat/thermostat');
-const { activateHeating } = require('../thermostat');
+const { activateHeating, warmTemp } = require('../thermostat');
 
 const rows = [];
 const sonoffRows = [];
@@ -278,8 +278,8 @@ function handleUiAction(req, res) {
     } else if (query.type === 'livingRoomOff') {
         allLivingRoomOff();
     } else if (query.type === 'heatingBoost') {
-        const duration = 15;
-        const temp = 22;
+        const duration = 30;
+        const temp = warmTemp + 1;
         activateHeating('UI', temp, duration);
     } else if (query.type === 'heatingOn') {
         executeThermostatPower('on');
