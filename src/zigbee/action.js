@@ -52,10 +52,13 @@ function onInd(ieeeAddr, type) {
         console.log('ikea btn (long)', _type, _lastDevice);
         if (_type === 'cmdMove') {
             // if (_lastDevice) brightness(_lastDevice, 20);
-            allLivingRoomOff();
+            // allLivingRoomOff();
+            hold(devices.IKEA_E27_BULB_TRIANGLE.addr);
         } else if (_type === 'cmdMoveWithOnOff') {
             // if (_lastDevice) brightness(_lastDevice, -20);
-            call(urls.LIGHT_KITCHEN_TOGGLE);
+            // call(urls.LIGHT_KITCHEN_TOGGLE);
+            console.log('yoyoyoyoy', type);
+            hold(devices.IKEA_E27_BULB_SOFA.addr);
         } else if (_type === 'cmdOff') {
             btnLong.setLastDevice(devices.IKEA_E27_BULB_TRIANGLE.addr);
             toggle(devices.IKEA_E27_BULB_TRIANGLE.addr);
@@ -67,18 +70,14 @@ function onInd(ieeeAddr, type) {
 }
 
 let cubeSide = null;
-function onIndMessage(ieeeAddr, payload, cmdId) {
+async function onIndMessage(ieeeAddr, payload, cmdId) {
     console.log('# onIndMessage', ieeeAddr, payload, cmdId);
     if (ieeeAddr === devices.XIAOMI_BTN_ENTRANCE.addr) {
         if (cmdId === 'genMultistateInput') {
             // console.log('XIAOMI_BTN_ENTRANCE payload', payload);
             const { click, action } = payload;
             if (action === 'hold') {
-                const bri = getBrightness(devices.INNR_E14_BULB.addr);
-                zigbeeService.device.sendAction({
-                    addr: devices.INNR_E14_BULB.addr,
-                    action: actions.brightness(bri !== 255 ? 255 : 10),
-                });
+                await hold(devices.INNR_E14_BULB.addr);
             } else if (click === 'single') {
                 // call(urls.LIGHT_ROOM_TOGGLE);
                 toggle(devices.INNR_E14_BULB.addr);
@@ -148,6 +147,15 @@ function onIndMessage(ieeeAddr, payload, cmdId) {
             // }
         }
     }
+}
+
+async function hold(addr) {
+    const bri = await getBrightness(addr);
+    console.log('Long press', { bri });
+    zigbeeService.device.sendAction({
+        addr: addr,
+        action: actions.brightness(bri < 200 ? 255 : 10),
+    });
 }
 
 module.exports = {

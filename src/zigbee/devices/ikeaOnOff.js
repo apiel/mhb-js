@@ -34,6 +34,20 @@ class IkeaOnOffDouble {
 class IkeaOnOffLong {
     constructor(addr) {
         this.addr = addr;
+    }
+
+    setLastDevice(addr) {}
+
+    onInd(addr, type, callback) {
+        if (this.addr === addr) {
+            callback(type, this.addr);
+        }
+    }
+}
+
+class IkeaOnOffDim {
+    constructor(addr) {
+        this.addr = addr;
         this.lastDevice = null;
         this.timer = null;
         this.repeat = 0;
@@ -64,4 +78,5 @@ class IkeaOnOffLong {
 module.exports = {
     IkeaOnOffDouble,
     IkeaOnOffLong,
+    IkeaOnOffDim,
 };
