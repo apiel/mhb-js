@@ -82,7 +82,8 @@ async function onIndMessage(ieeeAddr, payload, cmdId) {
                 // call(urls.LIGHT_ROOM_TOGGLE);
                 toggle(devices.INNR_E14_BULB.addr);
             } else if (click === 'double') {
-                call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+                // call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+                toggle(devices.IKEA_OUTLET_HALLWAY.addr);
             }
         }
     } else if (ieeeAddr === devices.XIAOMI_BTN_ROOM.addr) { // hold not working
@@ -90,7 +91,8 @@ async function onIndMessage(ieeeAddr, payload, cmdId) {
         if (cmdId === 'genOnOff') {
             const { click, action } = payload;
             if (click === 'single') {
-                call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+                // call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+                toggle(devices.IKEA_OUTLET_HALLWAY.addr);
             } else if (click === 'double') {
                 allFlatOff();
             }
@@ -118,12 +120,14 @@ async function onIndMessage(ieeeAddr, payload, cmdId) {
             //     call(urls.LIGHT_KITCHEN_ON);
             // }
         } else if (action === 'flip180') {
-            call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+            // call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+            toggle(devices.IKEA_OUTLET_HALLWAY.addr);
         } else if (action === 'tap') {
-            call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
+            // call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
         } else if (action === 'shake') {
             // allLivingRoomOff();
-            call(urls.LIGHT_WALL_ENTRANCE_OFF);
+            // call(urls.LIGHT_WALL_ENTRANCE_OFF);
+            zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_HALLWAY.addr, action: actions.onOff('off') });
             zigbeeService.device.sendAction({ addr: devices.INNR_E14_BULB.addr, action: actions.onOff('off') });
         } else if (action === 'slide') {
             // cubeSide = side;

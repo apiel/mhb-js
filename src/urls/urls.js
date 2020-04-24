@@ -32,10 +32,10 @@ const devices = {
         actions: ['ON', 'OFF'],
         name: 'light kitchen',
     },
-    LIGHT_WALL_ENTRANCE: {
-        actions: ['ON', 'OFF'],
-        name: 'light entrance',
-    },
+    // LIGHT_WALL_ENTRANCE: {
+    //     actions: ['ON', 'OFF'],
+    //     name: 'light entrance',
+    // },
     LIGHT_UNDER: {
         actions: ['ON', 'OFF'],
         name: 'small light room??',

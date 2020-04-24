@@ -7,7 +7,8 @@ const types = {
 module.exports = {
     types,
     devices: {
-        // IKEA_OUTLET_TABLE: { addr: '0xd0cf5efffe6f87e4', name: 'table light', type: types.outlet.name }, // { state: 'on' }
+        // IKEA_OUTLET_TABLE: { addr: '0xd0cf5efffe6f87e4', name: 'yoyo', type: types.outlet.name }, // { state: 'on' }
+        IKEA_OUTLET_HALLWAY: { addr: '0xd0cf5efffe3070a1', name: 'hallway light', type: types.outlet.name },
         INNR_E14_BULB: { addr: '0x00158d00020a3941', name: 'room light', type: types.light.name }, // { brightness: 255, transition:1 };
         IKEA_E27_BULB_SOFA: { addr: '0x000b57fffe2d9756', name: 'sofa couch light', type: types.light.name },
         IKEA_E27_BULB_TRIANGLE: { addr: '0x000b57fffe3046b8', name: 'little light', type: types.light.name },
