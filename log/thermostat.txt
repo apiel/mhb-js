@@ -805,3 +805,5 @@ Fri Jul 03 2020 21:49:17 GMT+0200 (Central European Summer Time) RELAY::http://1
 Fri Jul 03 2020 22:01:58 GMT+0200 (Central European Summer Time) RELAY::http://192.168.0.192_FAIL 30
 Fri Jul 03 2020 22:31:46 GMT+0200 (Central European Summer Time) RELAY::http://192.168.0.192_FAIL 30
 Fri Jul 03 2020 22:37:00 GMT+0200 (Central European Summer Time) RELAY::http://192.168.0.192_FAIL 30
+Fri Jul 03 2020 23:06:44 GMT+0200 (Central European Summer Time) RELAY::http://192.168.0.192_FAIL 30
+Fri Jul 03 2020 23:11:44 GMT+0200 (Central European Summer Time) RELAY::http://192.168.0.192_FAIL 30

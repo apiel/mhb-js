@@ -13,6 +13,14 @@ async function getOnOff(addr) {
     emit(`${addr}/get`, {
         state: '',
     });
+    return new Promise((resolve, reject) => {
+        setTimeout(reject, 10000);
+        emitter.on('pub', ({ topic, payload }) => {
+            if (topic === addr && payload.state) {
+                resolve(payload.state);
+            }
+        });
+    });
 }
 
 function setBrightness(addr, brightness) {

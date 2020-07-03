@@ -39,6 +39,11 @@ module.exports = {
         name: 'cube',
         type: 'remote',
     },
+    AQARA_OPPLE: {
+        addr: '0x04cf8cdf3c797ff8',
+        name: 'opple',
+        type: 'remote',
+    },
     IKEA_ONOFF: {
         addr: '0xd0cf5efffed6f665',
         name: 'ikea on/off',

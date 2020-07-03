@@ -24,6 +24,15 @@ function action(addr, payload) {
         } else if (payload.click === 'off') {
             setOnOff(devices.IKEA_E27_BULB_SOFA.addr, 'toggle');
         }
+    } else if (addr === devices.AQARA_OPPLE.addr) {
+        if (payload.action === 'button_1_single') {
+            console.log('opple btn1 single');
+        } else if (payload.action === 'button_1_double') {
+            console.log('opple btn1 double');
+        } else if (payload.action === 'button_1_hold') {
+            console.log('opple btn1 hold');
+        }
+        // till 6
     }
 }
 
