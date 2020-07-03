@@ -1,0 +1,23 @@
+{
+    "0x00158d0002131199": {
+        "linkquality": 162,
+        "battery": 100,
+        "voltage": 3025
+    },
+    "0x04cf8cdf3c797ff8": {
+        "linkquality": 105,
+        "battery": 100,
+        "voltage": 3126
+    },
+    "0xd0cf5efffed6f665": {
+        "battery": 16,
+        "linkquality": 115,
+        "update_available": true
+    },
+    "0xd0cf5efffe3070a1": {
+        "update_available": true
+    },
+    "0x000b57fffe2d9756": {
+        "update_available": true
+    }
+}

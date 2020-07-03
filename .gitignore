@@ -1,3 +1,4 @@
 node_modules
 src/googleapi/data
 thermostat.txt
+src/zigbee/data/log
