@@ -1,6 +1,7 @@
 const urls = require('../urls/urls');
 const { call } = urls;
-const { devices, setBrightness, setOnOff } = require('../zigbee');
+const { setOnOff, setBrightness } = require('../zigbee/controller');
+const devices = require('../zigbee/devices');
 const { allLivingRoomOff } = require('../scene/all');
 const { appendFile } = require('fs');
 const { pir } = require('../thermostat');

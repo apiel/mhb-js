@@ -1,11 +1,11 @@
 const urls = require('../urls/urls');
 const { call } = urls;
 const {
-    devices,
+    setOnOff,
     getBrightness,
     setBrightness,
-    setOnOff,
-} = require('../zigbee');
+} = require('../zigbee/controller');
+const devices = require('../zigbee/devices');
 const { allLivingRoomOff, allFlatOff } = require('../scene/all');
 const {
     executeThermostatPower,
