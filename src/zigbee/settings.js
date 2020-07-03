@@ -18,6 +18,7 @@ module.exports = {
         XIAOMI_CUBE: { addr: '0x00158d0002781c40', name: 'cube', type: types.remote.name },
         IKEA_ONOFF: { addr: '0xd0cf5efffed6f665', name: 'ikea on/off', type: types.remote.name },
         IKEA_ONOFF2: { addr: '0xd0cf5efffece4941', name: 'ikea on/off (2)', type: types.remote.name },
+        AQARA_OPPLE: { addr: '0x04cf8cdf3c797ff8', name: '6 btns remotes', type: types.remote.name },
     },
     actions: {
         onOff: (state = 'on') => ({ state }),
