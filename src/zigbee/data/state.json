@@ -1,26 +1,34 @@
 {
     "0x00158d0002131199": {
-        "linkquality": 162,
+        "linkquality": 60,
         "battery": 100,
         "voltage": 3025
     },
     "0x04cf8cdf3c797ff8": {
-        "linkquality": 126,
+        "linkquality": 34,
         "battery": 100,
         "voltage": 3126
     },
     "0xd0cf5efffed6f665": {
         "battery": 16,
-        "linkquality": 89,
+        "linkquality": 18,
         "update_available": true
     },
     "0xd0cf5efffe3070a1": {
-        "update_available": true
+        "update_available": true,
+        "state": "OFF",
+        "linkquality": 31
     },
     "0x000b57fffe2d9756": {
         "update_available": true,
         "brightness": 10,
-        "linkquality": 115,
+        "linkquality": 18,
         "state": "ON"
+    },
+    "0x00158d0002781c40": {
+        "battery": 18,
+        "voltage": 2735,
+        "linkquality": 65,
+        "side": 1
     }
 }
