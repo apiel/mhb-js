@@ -1,12 +1,10 @@
-const zigbeeService = require('../zigbee/zigbeeService');
-const { devices, actions } = require('../zigbee/settings');
+const { devices, setOnOff } = require('../zigbee');
 const urls = require('../urls/urls');
 const { call } = urls;
 
 function allLivingRoomOff() {
-    zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_SOFA.addr, action: actions.onOff('off') });
-    // zigbeeService.device.sendAction({ addr: devices.IKEA_OUTLET_TABLE.addr, action: actions.onOff('off') });
-    zigbeeService.device.sendAction({ addr: devices.IKEA_E27_BULB_TRIANGLE.addr, action: actions.onOff('off') });
+    setOnOff(devices.IKEA_E27_BULB_SOFA.addr, 'off');
+    setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'off');
     call(urls.LIGHT_KITCHEN_OFF);
     call(urls.LIGHT_LIVING_ROOM_OFF);
 }

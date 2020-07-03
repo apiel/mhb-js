@@ -1,8 +1,11 @@
 const urls = require('../urls/urls');
 const { call } = urls;
-const zigbee = require('../zigbee/settings');
-const advanceActions = require('../zigbee/advanceActions');
-const zigbeeService = require('../zigbee/zigbeeService');
+const {
+    devices,
+    getBrightness,
+    setBrightness,
+    setOnOff,
+} = require('../zigbee');
 const { allLivingRoomOff, allFlatOff } = require('../scene/all');
 const {
     executeThermostatPower,
@@ -18,16 +21,16 @@ Object.keys(urls.devices).forEach((key) => {
     addSonOffRow(urls.devices[key].name, key);
 });
 
-Object.keys(zigbee.devices).forEach((key) => {
-    const device = zigbee.devices[key];
-    if (device.type === zigbee.types.outlet.name) {
+Object.keys(devices).forEach((key) => {
+    const device = devices[key];
+    if (device.type === 'outlet') {
         addZigbeeOnOffRow(device.name, key);
     }
 });
 
-Object.keys(zigbee.devices).forEach((key) => {
-    const device = zigbee.devices[key];
-    if (device.type === zigbee.types.light.name) {
+Object.keys(devices).forEach((key) => {
+    const device = devices[key];
+    if (device.type === 'light') {
         addZigbeeLightRow(device.name, key);
     }
 });
@@ -117,34 +120,6 @@ const ui = `
 
         .card.card-thermostat .btn {
             height: auto;
-        }
-
-        .dropdown {
-            position: absolute;
-            margin-left: 135px;
-            margin-top: -8px;
-            font-size: 16;
-            font-weight: bold;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            width: 150px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            margin-left: -135px;
-            font-size: 12;
-            font-weight: none;
-        }
-
-        .dropdown-content div {
-            margin: 10px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
         }
     </style>
 </head>
@@ -236,17 +211,6 @@ function addZigbeeLightRow(name, key) {
         key,
         html: `
             <div class="card">
-
-                <div class="dropdown">
-                    <span>+</span>
-                    <div class="dropdown-content">
-                        <div><b>Decrease brightness</b></div>
-                        <div><a href="/ui/action?device=${key}&type=zigbeeCountdown&value=1">Every 1 sec</a></div>
-                        <div><a href="/ui/action?device=${key}&type=zigbeeCountdown&value=10">Every 10 sec</a></div>
-                        <div><a href="/ui/action?device=${key}&type=zigbeeCountdown&value=30">Every 30 sec</a></div>
-                        <div><a href="/ui/action?device=${key}&type=zigbeeCountdown&value=60">Every 1 min</a></div>
-                    </div>
-                </div>
                 <div>
                     <span>${name}</span>
                 </div>
@@ -275,7 +239,7 @@ async function handleUi(req, res) {
     const items = await Promise.all(
         zigbeeLightRows.map(async ({ html, key }) => {
             const bri = await PromiseTimeout(
-                advanceActions.getBrightness(zigbee.devices[key].addr),
+                getBrightness(devices[key].addr),
                 125,
             );
             return html.replace('125', bri);
@@ -323,31 +287,13 @@ function handleUiAction(req, res) {
     } else if (query.type === 'heatingOff') {
         executeThermostatPower('off');
     } else if (query.type === 'zigbeeToggle') {
-        advanceActions.toggle(zigbee.devices[query.device].addr);
+        setOnOff(devices[query.device].addr, 'toggle');
     } else if (query.type === 'zigbeeON') {
-        zigbeeService.device.sendAction({
-            addr: zigbee.devices[query.device].addr,
-            action: zigbee.actions.onOff('on'),
-        });
+        setOnOff(devices[query.device].addr, 'on');
     } else if (query.type === 'zigbeeOFF') {
-        zigbeeService.device.sendAction({
-            addr: zigbee.devices[query.device].addr,
-            action: zigbee.actions.onOff('off'),
-        });
+        setOnOff(devices[query.device].addr, 'off');
     } else if (query.type === 'zigbeeBri') {
-        zigbeeService.device.sendAction({
-            addr: zigbee.devices[query.device].addr,
-            action: zigbee.actions.brightness(parseInt(query.bri, 10)),
-        });
-    } else if (query.type === 'zigbeeMenos') {
-        advanceActions.brightness(zigbee.devices[query.device].addr, -30);
-    } else if (query.type === 'zigbeePlus') {
-        advanceActions.brightness(zigbee.devices[query.device].addr, 30);
-    } else if (query.type === 'zigbeeCountdown') {
-        advanceActions.countdown(
-            zigbee.devices[query.device].addr,
-            parseInt(query.value, 10),
-        );
+        setBrightness(devices[query.device].addr, parseInt(query.bri, 10));
     }
 
     res.send(`<script>window.history.back();</script>`);

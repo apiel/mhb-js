@@ -1,8 +1,7 @@
 const sunCalc = require('suncalc');
 const moment = require('moment');
 
-const zigbee = require('./zigbee/settings');
-const zigbeeService = require('./zigbee/zigbeeService');
+const { setOnOff, devices } = require('./zigbee');
 
 const urls = require('./urls/urls');
 const { call } = urls;
@@ -44,25 +43,13 @@ console.log('Start schedule, every 1 min check');
 setInterval(() => {
     const now = moment().toDate();
     if (now > sunTime().goldenHour && shouldTrigger('goldenHour', now.getDate(), sunTime().goldenHour)) {
-        //call(urls.LIGHT_WALL_ENTRANCE_ON);
-        zigbeeService.device.sendAction({
-            addr: zigbee.devices.IKEA_OUTLET_HALLWAY.addr,
-            action: zigbee.actions.onOff('on'),
-        });
-    } else if (now > sunTime().sunriseEnd && shouldTrigger('sunriseEnd', now.getDate(), sunTime().sunriseEnd)) {
-        //call(urls.LIGHT_WALL_ENTRANCE_OFF);
-        zigbeeService.device.sendAction({
-            addr: zigbee.devices.IKEA_OUTLET_HALLWAY.addr,
-            action: zigbee.actions.onOff('off'),
-        });
+        setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'on');
+    } else if (now > sunTime().sunriseEnd && now < sunTime().goldenHour && shouldTrigger('sunriseEnd', now.getDate(), sunTime().sunriseEnd)) {
+        setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'off');
     }
     let next = time('23:30');
     if (now > next && shouldTrigger('entrance OFF evening', now.getDate(), next)) {
-        //call(urls.LIGHT_WALL_ENTRANCE_OFF);
-        zigbeeService.device.sendAction({
-            addr: zigbee.devices.IKEA_OUTLET_HALLWAY.addr,
-            action: zigbee.actions.onOff('off'),
-        });
+        setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'off');
     }
 }, oneMinute); // every min
 

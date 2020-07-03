@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const setupXML = require('./setup.xml');
-const zigbee = require('../../zigbee/settings');
-const { zigbeeService } = require('../../zigbee/zigbee');
+const { devices, setOnOff, getOnOff } = require('../../zigbee');
 
 const devicesByPort = {};
 const startPort = 8081;
@@ -35,26 +34,22 @@ function basicevent(req, res) {
 
 function setState(req, device) {
     // console.log('basicevent', req.method, req.body);
-    const binaryState = (/<BinaryState>([0-1])<\/BinaryState>/g).exec(req.body);
+    const binaryState = /<BinaryState>([0-1])<\/BinaryState>/g.exec(req.body);
 
     if (binaryState) {
         const [match, state] = binaryState;
         console.log('wemo new state', state);
-        zigbeeService.device.sendAction({
-            addr: device.addr,
-            action: zigbee.actions.onOff(state === '1' ? 'on' : 'off'),
-        });
+        setOnOff(device.addr, state === '1' ? 'on' : 'off');
     }
 }
 
 async function genericResponse(res, device) {
-    const { cId, attrId } = zigbee.read.onOff;
-    const state = await zigbeeService.device.getState(device.addr, cId, attrId);
+    const state = await getOnOff(device.addr);
     res.send(`
         <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <s:Body>
             <u:GetBinaryStateResponse xmlns:u="urn:Belkin:service:basicevent:1">
-                <BinaryState>${state}</BinaryState>
+                <BinaryState>${state === 'on' ? 1 : 0}</BinaryState>
             </u:GetBinaryStateResponse>
             </s:Body>
         </s:Envelope>
@@ -68,12 +63,13 @@ function getDevice(req) {
 }
 
 function start() {
-    const { devices, types } = zigbee;
     for (key in devices) {
         const device = devices[key];
-        if (device.type === types.outlet.name) {
+        if (device.type === 'outlet') {
             const port = currentPort++;
-            app.listen(port, () => console.log(`Bridge listen on port ${port} for ${device.name}`));
+            app.listen(port, () =>
+                console.log(`Bridge listen on port ${port} for ${device.name}`),
+            );
             devicesByPort[port] = devices[key];
         }
     }

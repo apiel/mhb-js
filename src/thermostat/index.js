@@ -2,7 +2,7 @@ const moment = require('moment');
 const { appendFile } = require('fs');
 
 const { hasActiveDevices } = require('../urls/urls');
-const { hasActiveDevices: hasActiveZigbeeDevices } = require('../zigbee/advanceActions');
+const { hasActiveDevices: hasActiveZigbeeDevices } = require('../zigbee');
 const { thermostatActivate, config, getThermostatData, warmTemp } = require('./thermostat');
 const { sunTime } = require('../schedule');
 
