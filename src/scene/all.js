@@ -1,8 +1,10 @@
-const { devices, setOnOff } = require('../zigbee');
+const { setOnOff } = require('../zigbee/controller');
+const devices = require('../zigbee/devices');
 const urls = require('../urls/urls');
 const { call } = urls;
 
 function allLivingRoomOff() {
+    console.log('devices', devices);
     setOnOff(devices.IKEA_E27_BULB_SOFA.addr, 'off');
     setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'off');
     call(urls.LIGHT_KITCHEN_OFF);

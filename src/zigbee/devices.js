@@ -25,12 +25,12 @@ module.exports = {
         type: 'remote',
     },
     XIAOMI_BTN_ENTRANCE: {
-        addr: '0x00158d0002016173',
+        addr: '0x00158d0002131199',
         name: 'entrance button',
         type: 'remote',
     },
     XIAOMI_BTN_ROOM: {
-        addr: '0x00158d0002131199',
+        addr: '0x00158d0002016173',
         name: 'room button',
         type: 'remote',
     },

@@ -22,3 +22,7 @@ devices:
     friendly_name: '0x00158d0002781c40'
   '0x00158d0002016173':
     friendly_name: '0x00158d0002016173'
+  '0xd0cf5efffece4941':
+    friendly_name: '0xd0cf5efffece4941'
+  '0x000b57fffe3046b8':
+    friendly_name: '0x000b57fffe3046b8'

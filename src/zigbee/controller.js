@@ -60,9 +60,24 @@ async function hasActiveDevices() {
     }
 }
 
+async function toggleBri(addr) {
+    const bri = await getBrightness(addr);
+    console.log('Long press', { bri });
+    setBrightness(addr, bri < 200 ? 255 : 10);
+}
+
+async function rotate(addr, angle) {
+    const bri = await getBrightness(addr);
+    const newBri = bri + angle;
+    console.log('Rotate', { bri, newBri, angle });
+    setBrightness(addr, newBri);
+}
+
 module.exports = {
     setOnOff,
     getOnOff,
+    toggleBri,
+    rotate,
     setBrightness,
     getBrightness,
     hasActiveDevices,
