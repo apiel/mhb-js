@@ -67,7 +67,7 @@ function action(addr, payload) {
     } else if (addr === devices.XIAOMI_BTN_ENTRANCE.addr) {
         if (payload.click === 'single') {
             setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
-        } else {
+        } else if (payload.click === 'double') {
             allFlatOff();
         }
     }
