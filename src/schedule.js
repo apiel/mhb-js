@@ -44,8 +44,8 @@ setInterval(() => {
     const now = moment().toDate();
     if (now > sunTime().goldenHour && shouldTrigger('goldenHour', now.getDate(), sunTime().goldenHour)) {
         setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'on');
-    } else if (now > sunTime().sunriseEnd && now < sunTime().goldenHour && shouldTrigger('sunriseEnd', now.getDate(), sunTime().sunriseEnd)) {
-        setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'off');
+//    } else if (now > sunTime().sunriseEnd && now < sunTime().goldenHour && shouldTrigger('sunriseEnd', now.getDate(), sunTime().sunriseEnd)) {
+//        setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'off');
     }
     let next = time('23:30');
     if (now > next && shouldTrigger('entrance OFF evening', now.getDate(), next)) {

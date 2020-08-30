@@ -1,3 +1,5 @@
+const { promises } = require('fs');
+
 const urls = require('../urls/urls');
 const { call } = urls;
 const {
@@ -12,10 +14,28 @@ const {
     getLogThermostat,
 } = require('../thermostat/thermostat');
 const { activateHeating, warmTemp } = require('../thermostat');
+// .js because of some weird bug
+const { stateFile } = require('../zigbee/config.js');
 
 const rows = [];
 const onoffRows = [];
 const zigbeeLightRows = [];
+
+async function stateList() {
+    const content = await promises.readFile(stateFile);
+    const states = JSON.parse(content);
+    let html = '<ul class="stateList">';
+    Object.keys(states).forEach((key) => {
+        const device = Object.values(devices).find(
+            (device) => device.addr === key,
+        );
+        if (device) {
+            html += `<li><b>${device.name}:</b> ${JSON.stringify(states[key])}</li>`;
+        }
+    });
+    html += '</ul>';
+    return html;
+}
 
 Object.keys(urls.devices).forEach((key) => {
     addSonOffRow(urls.devices[key].name, key);
@@ -121,6 +141,12 @@ const ui = `
         .card.card-thermostat .btn {
             height: auto;
         }
+
+        .stateList {
+            color: #687e88;
+            font-size: 12px;
+            padding-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +155,7 @@ const ui = `
     <div>${addThermostat()}</div>
     <div style="clear:both;"></div>
     <div style="padding-top: 15px;">${rows.join('<br />')}</div>
+    <div>::StateList::</div>
     <div style="padding-top: 50px; font-size: 10px; text-align: center;">
         <a href="http://192.168.0.122:3000/journal">journal</a>
         -
@@ -251,7 +278,8 @@ async function handleUi(req, res) {
         ui
             .replace('::ZigbeeLightRows::', zigbeeLightRowsContent)
             .replace('::RoomTemperature::', room_temp)
-            .replace('::ThermostatTemperature::', thermostat_temp),
+            .replace('::ThermostatTemperature::', thermostat_temp)
+            .replace('::StateList::', await stateList()),
     );
 }
 

@@ -1,12 +1,25 @@
 const { emit, emitter } = require('./emitter');
 const { devices } = require('./devices');
 
-function setOnOff(addr, state) {
+function setOnOff(addr, state, brightness = null) {
     // state: on or off or toggle
-    console.log('setOnOff', addr, state);
-    emit(`${addr}/set`, {
+    const msg = {
         state,
-    });
+        ...(brightness && { brightness }),
+    };
+    console.log('setOnOff', addr, msg);
+    emit(`${addr}/set`, msg);
+}
+
+// because brightness doesnt seem to work with setOnOff
+async function setOnOffBri(addr, brightness) {
+    const state = await getOnOff(addr);
+    console.log('state', state);
+    if (state === 'ON') {
+        setOnOff(addr, 'off');
+    } else {
+        setBrightness(addr, 10);
+    }
 }
 
 async function getOnOff(addr) {
@@ -75,6 +88,7 @@ async function rotate(addr, angle) {
 
 module.exports = {
     setOnOff,
+    setOnOffBri,
     getOnOff,
     toggleBri,
     rotate,

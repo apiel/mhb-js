@@ -1,11 +1,11 @@
 const mock = require('mock-require');
-const { join } = require('path');
 
 const devices = require('./devices');
 const { action } = require('./action');
 const { emitter } = require('./emitter');
+const { dataPath } = require('./config');
 
-process.env.ZIGBEE2MQTT_DATA = join(__dirname, 'data');
+process.env.ZIGBEE2MQTT_DATA = dataPath;
 
 const addresses = Object.values(devices).map((device) => device.addr);
 

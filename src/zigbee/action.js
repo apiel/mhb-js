@@ -1,6 +1,7 @@
 const devices = require('./devices');
 const {
     setOnOff,
+    setOnOffBri,
     setBrightness,
     getBrightness,
     toggleBri,
@@ -58,11 +59,13 @@ function action(addr, payload) {
         }
     } else if (addr === devices.XIAOMI_BTN_ROOM.addr) {
         if (payload.click === 'single') {
-            setOnOff(devices.INNR_E14_BULB.addr, 'toggle');
+            // setOnOff(devices.INNR_E14_BULB.addr, 'toggle', 10);
+            setOnOffBri(devices.INNR_E14_BULB.addr, 10);
         } else if (payload.click === 'double') {
             setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
         } else if (payload.action === 'hold') {
             toggleBri(devices.INNR_E14_BULB.addr);
+            // setBrightness(devices.INNR_E14_BULB.addr, 255);
         }
     } else if (addr === devices.XIAOMI_BTN_ENTRANCE.addr) {
         if (payload.click === 'single') {
