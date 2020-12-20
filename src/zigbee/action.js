@@ -67,9 +67,9 @@ function action(addr, payload) {
             toggleBri(devices.INNR_E14_BULB.addr);
             // setBrightness(devices.INNR_E14_BULB.addr, 255);
         }
-    } else if (addr === devices.XIAOMI_BTN_ENTRANCE.addr) {
+    } else if (addr === devices.XIAOMI_BTN_ROOM_REMOTE.addr) {
         if (payload.click === 'single') {
-            setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
+            setOnOff(devices.INNR_E14_BULB.addr, 'toggle');
         } else if (payload.click === 'double') {
             allFlatOff();
         }

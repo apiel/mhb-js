@@ -24,9 +24,9 @@ module.exports = {
         name: 'dimmer sofa',
         type: 'remote',
     },
-    XIAOMI_BTN_ENTRANCE: {
+    XIAOMI_BTN_ROOM_REMOTE: {
         addr: '0x00158d0002131199',
-        name: 'entrance button',
+        name: 'room remote button',
         type: 'remote',
     },
     XIAOMI_BTN_ROOM: {

@@ -12,7 +12,8 @@ const PAUSE_DURATION = 5; // 15 min
 
 // const getThermostatDataFn = () => getThermostatData().then(() => {}).catch(() => {});
 setInterval(getThermostatData, 10 * 60 * 1000); // get thermostat state for UI every 10min
-let interval = setInterval(check, CHECK_INTERVAL);
+// uncomment to activate thermostat
+// let interval = setInterval(check, CHECK_INTERVAL);
 let activated = false;
 
 function log(type, duration) {
