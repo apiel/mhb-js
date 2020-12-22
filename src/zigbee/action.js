@@ -71,8 +71,8 @@ function action(addr, payload) {
         if (payload.click === 'single') {
             setOnOff(devices.INNR_E14_BULB.addr, 'toggle');
         } else if (payload.click === 'double') {
-            allFlatOff();
-        }
+            setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
+	}
     }
 }
 

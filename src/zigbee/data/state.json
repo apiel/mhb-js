@@ -1,13 +1,13 @@
 {
     "0x00158d0002131199": {
-        "linkquality": 60,
+        "linkquality": 23,
         "battery": 86,
         "voltage": 2975
     },
     "0x04cf8cdf3c797ff8": {
-        "linkquality": 97,
+        "linkquality": 99,
         "battery": 100,
-        "voltage": 3079
+        "voltage": 3087
     },
     "0xd0cf5efffed6f665": {
         "battery": 16,
@@ -17,12 +17,12 @@
     "0xd0cf5efffe3070a1": {
         "update_available": true,
         "state": "ON",
-        "linkquality": 42
+        "linkquality": 44
     },
     "0x000b57fffe2d9756": {
         "update_available": true,
         "brightness": 0,
-        "linkquality": 21,
+        "linkquality": 23,
         "state": "OFF"
     },
     "0x00158d0002781c40": {
@@ -33,24 +33,24 @@
         "angle": 17.51
     },
     "0xd0cf5efffece4941": {
-        "linkquality": 15,
+        "linkquality": 18,
         "update_available": true,
         "battery": 34
     },
     "0x00158d00020a3941": {
         "brightness": 0,
-        "linkquality": 26,
-        "state": "OFF"
+        "linkquality": 49,
+        "state": "ON"
     },
     "0x000b57fffe3046b8": {
         "state": "ON",
         "brightness": 0,
-        "linkquality": 21,
+        "linkquality": 5,
         "update_available": true
     },
     "0x00158d0002016173": {
-        "battery": 74,
-        "voltage": 2955,
-        "linkquality": 113
+        "battery": 80,
+        "voltage": 2965,
+        "linkquality": 110
     }
 }
