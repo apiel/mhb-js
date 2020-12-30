@@ -6,12 +6,13 @@ Description=mhb-js
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/npm start
-WorkingDirectory=/home/pi/mhb-js
+Environment="DEBUG=zigbee-service*"
+ExecStart=/usr/bin/node src/index.js
+WorkingDirectory=/home/alex/dev/mhb-js
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User=pi
+User=root
 
 [Install]
 WantedBy=multi-user.target

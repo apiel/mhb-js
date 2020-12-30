@@ -5,7 +5,7 @@
         "voltage": 2975
     },
     "0x04cf8cdf3c797ff8": {
-        "linkquality": 99,
+        "linkquality": 86,
         "battery": 100,
         "voltage": 3087
     },
@@ -22,7 +22,7 @@
     "0x000b57fffe2d9756": {
         "update_available": true,
         "brightness": 0,
-        "linkquality": 23,
+        "linkquality": 52,
         "state": "OFF"
     },
     "0x00158d0002781c40": {
@@ -38,14 +38,14 @@
         "battery": 34
     },
     "0x00158d00020a3941": {
-        "brightness": 0,
-        "linkquality": 49,
+        "brightness": 10,
+        "linkquality": 31,
         "state": "ON"
     },
     "0x000b57fffe3046b8": {
         "state": "ON",
         "brightness": 0,
-        "linkquality": 5,
+        "linkquality": 86,
         "update_available": true
     },
     "0x00158d0002016173": {
