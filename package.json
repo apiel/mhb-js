@@ -15,7 +15,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "googleapis": "27",
+    "googleapis": "39",
     "lodash": "^4.17.11",
     "md5": "^2.2.1",
     "mock-require": "^3.0.3",
