@@ -28,22 +28,22 @@ const devices = {
         actions: ['ON', 'OFF'],
         name: 'light living room',
     },
-    LIGHT_KITCHEN: {
-        actions: ['ON', 'OFF'],
-        name: 'light kitchen',
-    },
+    // LIGHT_KITCHEN: {
+    //     actions: ['ON', 'OFF'],
+    //     name: 'light kitchen',
+    // },
     // LIGHT_WALL_ENTRANCE: {
     //     actions: ['ON', 'OFF'],
     //     name: 'light entrance',
     // },
-    LIGHT_UNDER: {
-        actions: ['ON', 'OFF'],
-        name: 'small light room??',
-    },
-    SWITCH: {
-        actions: ['ON', 'OFF'],
-        name: 'small light room',
-    },
+    // LIGHT_UNDER: {
+    //     actions: ['ON', 'OFF'],
+    //     name: 'small light room??',
+    // },
+    // SWITCH: {
+    //     actions: ['ON', 'OFF'],
+    //     name: 'small light room',
+    // },
 }
 
 const uniqOriginUrls = [...new Set(Object.values(urls).map(({ url }) => new URL(url).origin))];

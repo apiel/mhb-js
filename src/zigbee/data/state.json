@@ -45,7 +45,7 @@
     "0x000b57fffe3046b8": {
         "state": "ON",
         "brightness": 178,
-        "linkquality": 23,
+        "linkquality": 120,
         "update_available": true
     },
     "0x00158d0002016173": {
@@ -54,8 +54,8 @@
         "linkquality": 26
     },
     "0x90fd9ffffe196ef9": {
-        "brightness": 0,
-        "linkquality": 28,
+        "brightness": 186,
+        "linkquality": 120,
         "state": "OFF"
     },
     "0x588e81fffe2b3c5b": {
@@ -63,5 +63,8 @@
     },
     "0x5c0272fffe44eefd": {
         "linkquality": 2
+    },
+    "0x588e81fffe233cf8": {
+        "linkquality": 120
     }
 }

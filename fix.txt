@@ -1,0 +1,19 @@
+in node_modules/zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices.js line 10625
+
+    // ZBT-OnOffPlug-D0011
+    {
+        zigbeeModel: ['ZBT-OnOffPlug-D0011', 'ZBT-OnOffPlug-D0001'],
+        model: 'ZS190000118',
+        vendor: 'Linkind',
+        description: 'Control outlet',
+        supports: 'on/off',
+        fromZigbee: [
+            fz.on_off, fz.ignore_basic_report,fz.power_on_behavior,
+        ],
+        toZigbee: [tz.on_off, tz.power_on_behavior],
+        configure: async (device, coordinatorEndpoint) => {
+            const endpoint = device.getEndpoint(1);
+            await bind(endpoint, coordinatorEndpoint, ['genOnOff']);
+            await configureReporting.onOff(endpoint);
+        },
+    },
