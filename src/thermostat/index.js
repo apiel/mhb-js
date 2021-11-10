@@ -10,10 +10,15 @@ const CHECK_INTERVAL = 5 * 60 * 1000; // every 5 min
 const HEATING_DURATION = 30; // 30 min
 const PAUSE_DURATION = 5; // 15 min
 
-// const getThermostatDataFn = () => getThermostatData().then(() => {}).catch(() => {});
-setInterval(getThermostatData, 10 * 60 * 1000); // get thermostat state for UI every 10min
-// uncomment to activate thermostat
-// let interval = setInterval(check, CHECK_INTERVAL);
+let interval;
+
+const Thermostat_service = 'off'; // set to 'on' to activate thermostat service
+if (Thermostat_service === 'on') {
+    // get thermostat state for UI every 10min
+    setInterval(getThermostatData, 10 * 60 * 1000);
+    // uncomment to activate thermostat
+    interval = setInterval(check, CHECK_INTERVAL);
+}
 let activated = false;
 
 function log(type, duration) {

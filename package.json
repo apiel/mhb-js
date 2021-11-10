@@ -8,7 +8,7 @@
     "status": "systemctl status mhb-js.service",
     "prod": "sudo systemctl start mhb-js",
     "stop": "sudo systemctl stop mhb-js",
-    "restart": "sudo systemctl restart mhb-js",
+    "restart": "sudo systemctl restart mhb-js && npm run log",
     "log": "journalctl -u mhb-js.service -f"
   },
   "dependencies": {

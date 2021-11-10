@@ -13,16 +13,30 @@ const { allFlatOff, allLivingRoomOff } = require('../scene/all');
 
 function action(addr, payload) {
     console.log('action device', addr, payload);
-    if (addr === devices.IKEA_ONOFF.addr || addr === devices.IKEA_ONOFF2.addr) {
-        console.log('ikea btn', addr);
+    // sleeping room
+    if (addr === devices.IKEA_ONOFF.addr) {
+        console.log('ikea btn sleeping room', addr);
+        if (payload.click === 'brightness_up') {
+            toggleBri(devices.INNR_E14_BULB.addr);
+        } else if (payload.click === 'brightness_down') {
+            setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
+        } else if (payload.click === 'on') {
+            toggleBri(devices.INNR_E14_BULB.addr);
+        } else if (payload.click === 'off') {
+            setOnOff(devices.INNR_E14_BULB.addr, 'toggle');
+        }
+    }
+    // living room
+    else if (addr === devices.IKEA_ONOFF2.addr) {
+        console.log('ikea btn living room', addr);
         if (payload.click === 'brightness_up') {
             toggleBri(devices.IKEA_E27_BULB_TRIANGLE.addr);
         } else if (payload.click === 'brightness_down') {
-            toggleBri(devices.IKEA_E27_BULB_SOFA.addr);
+            toggleBri(devices.IKEA_GU10_BULB_SOFA.addr);
         } else if (payload.click === 'on') {
             setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'toggle');
         } else if (payload.click === 'off') {
-            setOnOff(devices.IKEA_E27_BULB_SOFA.addr, 'toggle');
+            setOnOff(devices.IKEA_GU10_BULB_SOFA.addr, 'toggle');
         }
     } else if (addr === devices.AQARA_OPPLE.addr) {
         if (payload.action === 'button_1_single') {
@@ -40,9 +54,9 @@ function action(addr, payload) {
         } else if (payload.action === 'button_4_single') {
             call(urls.LIGHT_KITCHEN_TOGGLE);
         } else if (payload.action === 'button_5_single') {
-            setOnOff(devices.IKEA_E27_BULB_SOFA.addr, 'toggle');
+            setOnOff(devices.IKEA_GU10_BULB_SOFA.addr, 'toggle');
         } else if (payload.action === 'button_5_single') {
-            toggleBri(devices.IKEA_E27_BULB_SOFA.addr);
+            toggleBri(devices.IKEA_GU10_BULB_SOFA.addr);
         }
         // till 6
     } else if (addr === devices.XIAOMI_CUBE.addr) {
@@ -69,7 +83,8 @@ function action(addr, payload) {
         }
     } else if (addr === devices.XIAOMI_BTN_ROOM_REMOTE.addr) {
         if (payload.click === 'single') {
-            setOnOff(devices.INNR_E14_BULB.addr, 'toggle');
+            setOnOff(devices.LINKIND_KITCHEN_PLUG.addr, 'toggle');
+            // call(urls.LIGHT_KITCHEN_TOGGLE);
         } else if (payload.click === 'double') {
             setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
 	}
