@@ -63,7 +63,3 @@ mock('zigbee2mqtt/dist/mqtt', MQTT);
 const Controller = require('zigbee2mqtt/dist/controller');
 const controller = new Controller();
 controller.start();
-
-// emitter.on('message', (data) => {
-//     // controller.onMQTTMessage(data);
-// });
