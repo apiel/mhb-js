@@ -3,6 +3,8 @@ permit_join: true
 mqtt:
   base_topic: zigbee2mqtt
   server: 'mqtt://localhost'
+frontend:
+  port: 8080
 serial:
   port: /dev/ttyACM0
 devices:

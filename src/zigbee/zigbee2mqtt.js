@@ -9,6 +9,9 @@ process.env.ZIGBEE2MQTT_DATA = dataPath;
 
 const addresses = Object.values(devices).map((device) => device.addr);
 
+// might have a look at https://www.zigbee2mqtt.io/advanced/more/user_extensions.html#user-extensions-list
+// and just skip mqtt connect
+
 class MQTT {
     constructor(eventBus) {
         this.eventBus = eventBus;
@@ -45,16 +48,17 @@ class MQTT {
             action(topic, myPayload);
         } else {
             console.log('pub', { topic, payload: myPayload, options, rest });
+
+            // do what was zigbee2mqtt is more or less normaly doing
+            const defaultOptions = { qos: 0, retain: false };
+            topic = `zigbee2mqtt/${topic}`;
+    
+            this.eventBus.emitMQTTMessagePublished({
+                topic,
+                payload,
+                options: { ...defaultOptions, ...options },
+            });
         }
-
-        // const defaultOptions = { qos: 0, retain: false };
-        // topic = `zigbee2mqtt/${topic}`;
-
-        // this.eventBus.emitMQTTMessagePublished({
-        //     topic,
-        //     payload,
-        //     options: { ...defaultOptions, ...options },
-        // });
     }
 }
 mock('zigbee2mqtt/dist/mqtt', MQTT);
