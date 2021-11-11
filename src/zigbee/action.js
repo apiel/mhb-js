@@ -26,6 +26,16 @@ function action(addr, payload) {
             setOnOff(devices.INNR_E14_BULB.addr, 'toggle');
         }
     }
+    // entrance
+    else if (addr === devices.LINKIND_BUTTON.addr) {
+        console.log('LINKIND buttom', addr, payload);
+        if (payload.action === 'on' || payload.action === 'off') {
+            setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
+        } else if (payload.action === 'brightness_stop') {
+            allFlatOff();
+        }
+        // brightness_move_down brightness_move_up
+    }
     // living room
     else if (addr === devices.IKEA_ONOFF2.addr) {
         console.log('ikea btn living room', addr);
@@ -87,7 +97,7 @@ function action(addr, payload) {
             // call(urls.LIGHT_KITCHEN_TOGGLE);
         } else if (payload.click === 'double') {
             setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
-	}
+        }
     }
 }
 
