@@ -31,10 +31,10 @@ function action(addr, payload) {
         console.log('LINKIND buttom', addr, payload);
         if (payload.action === 'on' || payload.action === 'off') {
             setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
-        } else if (payload.action === 'brightness_stop') {
-            allFlatOff();
+        // } else if (payload.action === 'brightness_stop') {
+        } else if (payload.action === 'brightness_move_down' || payload.action === 'brightness_move_up') {
+	    allFlatOff();
         }
-        // brightness_move_down brightness_move_up
     }
     // living room
     else if (addr === devices.IKEA_ONOFF2.addr) {
