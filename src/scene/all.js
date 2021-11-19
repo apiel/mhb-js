@@ -15,7 +15,8 @@ function allLivingRoomOff() {
     console.log('devices', devices);
     trylog(() => setOnOff(devices.IKEA_GU10_BULB_SOFA.addr, 'off'));
     trylog(() => setOnOff(devices.IKEA_E27_BULB_SOFA.addr, 'off'));
-    trylog(() => setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'off'));
+    trylog(() => setOnOff(devices.IKEA_E27_BIG_BULB.addr, 'off'));
+    trylog(() => setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'off'));   
     trylog(() => call(urls.LIGHT_KITCHEN_OFF));
     trylog(() => call(urls.LIGHT_LIVING_ROOM_OFF));
 }

@@ -23,7 +23,7 @@ function handleEspButton(req, res) {
         } else if (query.btn2 === '2') {
             call(urls.LIGHT_WALL_ENTRANCE_TOGGLE);
         } else if (query.btn1 === '2') {
-            setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'toggle');
+            setOnOff(devices.IKEA_E27_BIG_BULB.addr, 'toggle');
         } else if (query.btn1 === '3') {
             setOnOff(devices.IKEA_E27_BULB_SOFA.addr, 'toggle');
         } else if (query.btn1 === '-1' || query.btn2 === '-1') {

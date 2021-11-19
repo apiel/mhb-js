@@ -40,11 +40,11 @@ function action(addr, payload) {
     else if (addr === devices.IKEA_ONOFF2.addr) {
         console.log('ikea btn living room', addr);
         if (payload.click === 'brightness_up') {
-            toggleBri(devices.IKEA_E27_BULB_TRIANGLE.addr);
+            toggleBri(devices.IKEA_E27_BIG_BULB.addr);
         } else if (payload.click === 'brightness_down') {
             toggleBri(devices.IKEA_GU10_BULB_SOFA.addr);
         } else if (payload.click === 'on') {
-            setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'toggle');
+            setOnOff(devices.IKEA_E27_BIG_BULB.addr, 'toggle');
         } else if (payload.click === 'off') {
             setOnOff(devices.IKEA_GU10_BULB_SOFA.addr, 'toggle');
         }
@@ -58,9 +58,9 @@ function action(addr, payload) {
         } else if (payload.action === 'button_2_single') {
             setOnOff(devices.IKEA_OUTLET_HALLWAY.addr, 'toggle');
         } else if (payload.action === 'button_3_single') {
-            setOnOff(devices.IKEA_E27_BULB_TRIANGLE.addr, 'toggle');
+            setOnOff(devices.IKEA_E27_BIG_BULB.addr, 'toggle');
         } else if (payload.action === 'button_3_hold') {
-            toggleBri(devices.IKEA_E27_BULB_TRIANGLE.addr);
+            toggleBri(devices.IKEA_E27_BIG_BULB.addr);
         } else if (payload.action === 'button_4_single') {
             call(urls.LIGHT_KITCHEN_TOGGLE);
         } else if (payload.action === 'button_5_single') {

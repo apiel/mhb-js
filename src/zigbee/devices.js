@@ -34,6 +34,11 @@ module.exports = {
         name: 'little light',
         type: 'light',
     },
+    IKEA_E27_BIG_BULB: {
+        addr: '0x842e14fffe484934',
+        name: 'big bulb',
+        type: 'light',
+    },
     IKEA_DIMMER_SOFA: {
         addr: '0x000b57fffe150865',
         name: 'dimmer sofa',

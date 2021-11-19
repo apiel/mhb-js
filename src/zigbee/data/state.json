@@ -79,6 +79,10 @@
         "battery": 96
     },
     "0x680ae2fffefbaac7": {
-        "state": "ON"
+        "state": "OFF"
+    },
+    "0x842e14fffe484934": {
+        "state": "ON",
+        "brightness": 254
     }
 }
